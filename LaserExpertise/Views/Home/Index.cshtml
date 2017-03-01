@@ -1,31 +1,344 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿<head>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            $('.parallax').parallax();
+        });
+        $(document).ready(function () {
+            $('.slider').slider();
+        });
+        $(document).ready(function () {
+            var list = document.getElementById('lib-block').getElementsByTagName('div');
+            for (var index = 0; index < list.length; index++) {
+                list[index].getElementsByTagName('p')[0].setAttribute("style", "height: 400px;");
+            }
+        });
+    </script>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="parallax-container">
+        <div class="parallax">
+            <img style="width: inherit; height: inherit" src="~/Images/Main.jpg" />
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <div>
+        <h4 class="center">ХУДОЖНИКИ</h4>
+        <div class="slider">
+            <ul class="slides">
+                <li>
+                    <div class="row">
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/1" class="circle">
+                            <p class="center">center</p>
+                            <p class="center">kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/1" class="circle">
+                            <p class="center">center</p>
+                            <p class="center">kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/1" class="circle">
+                            <p class="center">center</p>
+                            <p class="center">kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/1" class="circle">
+                            <p class="center">center</p>
+                            <p class="center">kok</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="row">
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/1" class="circle">
+                            <p class="center">center</p>
+                            <p class="center">kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/1" class="circle">
+                            <p class="center">center</p>
+                            <p class="center">kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/1" class="circle">
+                            <p class="center">center</p>
+                            <p class="center">kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/1" class="circle">
+                            <p class="center">center</p>
+                            <p class="center">kok</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="row">
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/1" class="circle">
+                            <p class="center">center</p>
+                            <p class="center">kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/2" class="circle">
+                            <p class="center">center</p>
+                            <p class="center">kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/3" class="circle">
+                            <p class="center">center</p>
+                            <p class="center">kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/4" class="circle">
+                            <p class="center">center</p>
+                            <p class="center">kok</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="row">
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/4" class="circle">
+                            <p class="center">center</p>
+                            <p class="center">kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/3" class="circle">
+                            <p class="center">center</p>
+                            <p class="center">kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/2" class="circle">
+                            <p class="center">center</p>
+                            <p class="center">kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/1" class="circle">
+                            <p class="center">center</p>
+                            <p class="center">kok</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="orange">
+        <div class="row">
+            <div class="col s6 vertical-line-right">
+                <h4 class="white-text">Контакты</h4>
+                <div class="row">
+                    <div class="col s1">
+                        <i class="material-icons white-text">mail</i>
+                    </div>
+                    <div class="col s5 white-text">some_email@gmail.com</div>
+                </div>
+                <div class="row">
+                    <div class="col s1">
+                        <i class="material-icons white-text">phone</i>
+                    </div>
+                    <div class="col s5 white-text">+12312312</div>
+                </div>
+                <div class="row">
+                    <div class="col s1">
+                        <i class="material-icons white-text">place</i>
+                    </div>
+                    <div class="col s5 white-text">some place</div>
+                </div>
+            </div>
+            <div class="col s6">
+                <h4 class="white-text">Мы в социальных сетях</h4>
+            </div>
+        </div>
     </div>
-</div>
+    <div class="row" id="lib-block">
+        <h4 class="center">БИБЛИОТЕКИ</h4>
+
+        <div class="col s3 vertical-line-right">
+
+
+            <h4 class="center">text</h4>
+            <p>
+                text text text text text text text text text text text text text text text text text text text text
+
+            </p>
+            <i class="material-icons center">arrow forward</i>
+
+
+        </div>
+        <div class="col s3 vertical-line-right">
+            <h4 class="center">text</h4>
+            <p>
+                text text text text text text text text text text text text text text text text text text text text
+
+            </p>
+            <i class="material-icons center">arrow forward</i>
+
+        </div>
+        <div class="col s3 vertical-line-right">
+            <h4 class="center">text</h4>
+            <p>
+                text text text text text text text text text text text text text text text text text text text text
+                text text text text text text text text text text text text text text text text text text text text text text text text
+                text text text text text text text text text text text text text text text text text text text text text text text text
+                text text text text text text text text text text text text text text text text text text text text text text text text
+                text text text text text text text text text text text text text text text text text text text text text text text text
+            </p>
+            <i class="material-icons center">arrow forward</i>
+
+        </div>
+        <div class="col s3">
+            <h4 class="center">text</h4>
+            <p>
+                text text text text text text text text text text text text text text text text text text text text
+                text text text text text text text text text text text text text text text text text text text text text text text text
+                text text text text text text text text text text text text text text text text text text text text text text text text
+                text text text text text text text text text text text text text text text text text text text text text text text text
+                text text text text text text text text text text text text text text text text text text text text text text text text
+            </p>
+            <i class="material-icons center">arrow forward</i>
+
+        </div>
+    </div>
+    <div class="row grey">
+        <div class="col s8 offset-s2 ">
+            <h4 class="center white-text">О ПРОЕКТЕ</h4>
+            <p class="white-text">
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+                text text text
+            </p>
+        </div>
+    </div>
+    <div>
+        <h4>ГАЛЕРЕЯ</h4>
+        <div class="slider">
+            <ul class="slides">
+                <li>
+                    <div class="row">
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/3" />
+                            <p>center</p>
+                            <p>kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/3" />
+                            <p>center</p>
+                            <p>kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/3" />
+                            <p>center</p>
+                            <p>kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/3" />
+                            <p>center</p>
+                            <p>kok</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="row">
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/3" />
+                            <p>center</p>
+                            <p>kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/3" />
+                            <p>center</p>
+                            <p>kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/3" />
+                            <p>center</p>
+                            <p>kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/3" />
+                            <p>center</p>
+                            <p>kok</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="row">
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/3" />
+                            <p>center</p>
+                            <p>kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/3" />
+                            <p>center</p>
+                            <p>kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/3" />
+                            <p>center</p>
+                            <p>kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/3" />
+                            <p>center</p>
+                            <p>kok</p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="row">
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/4" />
+                            <p>center</p>
+                            <p>kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/4" />
+                            <p>center</p>
+                            <p>kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/4" />
+                            <p>center</p>
+                            <p>kok</p>
+                        </div>
+                        <div class="col s3">
+                            <img src="http://lorempixel.com/580/250/nature/4" />
+                            <p>center</p>
+                            <p>kok</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>

@@ -6,6 +6,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+User.config
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -143,7 +144,7 @@ publish/
 *.azurePubxml
 # TODO: Comment the next line if you want to checkin your web deploy settings
 # but database connection strings (with potential passwords) will be unencrypted
-#*.pubxml
+*.pubxml
 *.publishproj
 
 # Microsoft Azure Web App publish settings. Comment the next line if you want to
@@ -189,7 +190,6 @@ ClientBin/
 *~
 *.dbmdl
 *.dbproj.schemaview
-*.jfm
 *.pfx
 *.publishsettings
 node_modules/
@@ -252,10 +252,5 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
-
-# CodeRush
-.cr/
-
-# Python Tools for Visual Studio (PTVS)
-__pycache__/
-*.pyc
+*.zip
+*.stackdump

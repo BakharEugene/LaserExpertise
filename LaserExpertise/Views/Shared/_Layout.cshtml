@@ -20,78 +20,114 @@
 
 </head>
 <body>
-    <div class="navbar-fixed grey">
-        <ul id="dropdown1" class="dropdown-content">
-            <li><a href="#!">one</a></li>
-            <li><a href="#!">two</a></li>
-            <li class="divider"></li>
-            <li><a href="#!">three</a></li>
-        </ul>
-        <nav>
-            <div class="nav-wrapper">
-                <a href="#" class="brand-logo"><i class="material-icons">cloud</i>LASER EXPERTISE</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="../Home/Index.cshtml">ГЛАВНАЯ</a></li>
-                    <li><a href="../Home/Index.cshtml">ХУДОЖНИКИ</a></li>
-                    <li><a href="../Home/Index.cshtml">БИБЛИОТЕКА</a></li>
-                    <li><a href="../Home/Index.cshtml">О ПРОЕКТЕ</a></li>
-                    <li><a href="../Home/Index.cshtml">КОНТАКТЫ</a></li>
+<script>
+    $('.dropdown-button').dropdown({
+        
+        constrainWidth: true, // Does not change width of dropdown to that of the activator
+        hover: true, // Activate on hover
+        }
+    );
+</script>
+<div class="navbar-fixed grey">
+    <ul id="dropdown1" class="dropdown-content">
+        <li>@Html.ActionLink("Картины", "Index", "Home", new {area = ""}, new {@class = "active"})</li>
+        <li>@Html.ActionLink("Направления", "Contact", "Home", new {area = ""}, new {@class = "active"})</li>
+        <li>@Html.ActionLink("Период", "Index", "Home", new {area = ""}, new {@class = "active"})</li>
+        <li>@Html.ActionLink("Школа", "Index", "Home", new {area = ""}, new {@class = "active"})</li>
 
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="../Home/Index.cshtml" class="brand-logo"><i class="material-icons">cloud</i>LASER EXPERTISE</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li>
+                    @Html.ActionLink("Главная", "Index", "Home", new {area = ""}, new {@class = "active"})
+                </li>
+                <li>
+                    @Html.ActionLink("Художники", "Index", "Home", new {area = ""}, new {@class = "active"})
+                </li>
+                <li><a class="dropdown-button" href="#" data-activates="dropdown1">Галерея<i class="material-icons right">arrow_drop_down</i></a></li>
 
-                </ul>
+                <li>
+                    @Html.ActionLink("Библиотека", "Index", "Home", new {area = ""}, new {@class = "active"})
+                </li>
+                <li>
+                    @Html.ActionLink("О проекте", "Index", "Home", new {area = ""}, new {@class = "active"})
+                </li>
+                <li>
+                    @Html.ActionLink("Контакты", "Index", "Home", new {area = ""}, new {@class = "active"})
+                </li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li>
+                        @Html.ActionLink("Личный кабинет", "Profile", "Account", new { area = "" }, new { @class = "active" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Выйти", "Logoff", "Account", new { area = "" }, new { @class = "active" })
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        @Html.ActionLink("Регистрация", "Register", "Account", new { area = "" }, new { @class = "active" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Войти", "Login", "Account", new { area = "" }, new { @class = "active" })
+                    </li>
+                }
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="body-content container">
+    @RenderBody()
+
+</div>
+<footer class="page-footer" style="background-color: #2c2c2c">
+    <div class="container">
+        <div class="row">
+            <div class="col s4">
+                <h4 class="white-text">LASER EXPERTISE</h4>
             </div>
-        </nav>
+            <div class="col s2 vertical-line-right">
+                <a>
+                    <p class="white-text">
+                        Художники
+                    </p>
+                </a>
+                <a>
+                    <p class="white-text">
+                        Библиотеки
+                    </p>
+                </a>
+                <a>
+                    <p class="white-text">
+                        Галерея
+                    </p>
+                </a>
+                <a>
+                    <p class="white-text">
+                        О проекте
+                    </p>
+                </a>
+            </div>
+            <div class="col s6">
+                <p class="white-text">Соцсети</p>
+                <div>
+                    ...
+                </div>
+                <p class="white-text">Подписка</p>
+                <input type="email" placeholder="Ваш e-mail" class="white"/>
+            </div>
+        </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-
-    </div>
-    <footer class="page-footer" style="background-color: #2c2c2c">
+    <div class="footer-copyright">
         <div class="container">
-            <div class="row">
-                <div class="col s4">
-                    <h4 class="white-text">LASER EXPERTISE</h4>
-                </div>
-                <div class="col s2 vertical-line-right">
-                    <a>
-                        <p class="white-text">
-                            Художники
-                        </p>
-                    </a>
-                    <a>
-                        <p class="white-text">
-                            Библиотеки
-                        </p>
-                    </a>
-                    <a>
-                        <p class="white-text">
-                            Галерея
-                        </p>
-                    </a>
-                    <a>
-                        <p class="white-text">
-                            О проекте
-                        </p>
-                    </a>
-                </div>
-                <div class="col s6">
-                    <p class="white-text">Соцсети</p>
-                    <div>
-                        ...
-                    </div>
-                    <p class="white-text">Подписка</p>
-                    <input type="email" placeholder="Ваш e-mail" class="white"/>
-                </div>
-            </div>
+            © @DateTime.Now.Year - Laser Expertise
         </div>
-        <div class="footer-copyright">
-            <div class="container">
-                © @DateTime.Now.Year - Laser Expertise
-            </div>
-        </div>
-    </footer>
+    </div>
+</footer>
 
-    @RenderSection("scripts", required: false)
+@RenderSection("scripts", required: false)
 </body>
 </html>

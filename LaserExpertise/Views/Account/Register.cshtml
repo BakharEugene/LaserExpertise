@@ -1,0 +1,84 @@
+﻿@model LaserExpertise.DAL.Models.User.RegisterModel
+@{
+    ViewBag.Title = "Регистрация";
+}<h2>Регистрация</h2>
+<script>
+    $(document).ready(function () {
+        $("select").material_select();
+
+        // for HTML5 "required" attribute
+        $("select[required]").css({ position: "absolute", display: "inline", height: 0, padding: 0, width: 0 });
+    });
+</script>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col s12">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger  red-text" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6">
+            @Html.LabelFor(model => model.Password)
+
+            @Html.PasswordFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger  red-text" })
+        </div>
+        <div class="col s6">
+            @Html.LabelFor(model => model.ConfirmPassword)
+
+            @Html.PasswordFor(model => model.ConfirmPassword)
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger  red-text" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s6">
+            @Html.LabelFor(model => model.FirstName)
+            @Html.TextBoxFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger  red-text" })
+        </div>
+        <div class="col s6">
+            @Html.LabelFor(model => model.LastName)
+            @Html.TextBoxFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger  red-text" })
+
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col s6">
+            @Html.LabelFor(model => model.Skype)
+            @Html.TextBoxFor(model => model.Skype)
+            @Html.ValidationMessageFor(model => model.Skype, "", new { @class = "text-danger  red-text" })
+        </div>
+        <div class="col s6">
+
+            @Html.LabelFor(model => model.Telephone)
+            @Html.TextBoxFor(model => model.Telephone)
+            @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger  red-text" })
+
+        </div>
+        <div class="col s6">
+
+            @Html.LabelFor(model => model.Gender)
+            @Html.EnumDropDownListFor(model => model.Gender)
+            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger  red-text" })
+
+
+        </div>
+
+    </div>
+    <div>
+        <p>
+            <div class="col-md-offset-2 col-md-10" style="margin-top:10px">
+                <input type="submit" value="Зарегистрировать" class="btn btn-default grey" />
+            </div>
+        </p>
+    </div>
+}

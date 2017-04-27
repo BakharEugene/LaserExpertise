@@ -40,6 +40,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
@@ -52,7 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\EFPictureRepository.cs" />
+    <Compile Include="Abstract\IPictureRepository.cs" />
+    <Compile Include="Data\Entities\Enum\PictureCategory.cs" />
     <Compile Include="EF\LaserExpertiseContext.cs" />
+    <Compile Include="Data\Entities\Picture.cs" />
     <Compile Include="Migrations\201704261054441_initial.cs" />
     <Compile Include="Migrations\201704261054441_initial.Designer.cs">
       <DependentUpon>201704261054441_initial.cs</DependentUpon>

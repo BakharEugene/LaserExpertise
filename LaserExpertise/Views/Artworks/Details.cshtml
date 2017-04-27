@@ -1,0 +1,113 @@
+﻿@model LaserExpertise.DAL.Models.Artwork.Artwork
+
+@{
+    ViewBag.Title = "Details";
+}
+<script>
+    $(document).ready(function () {
+        $('.slider').slider();
+    });
+</script>
+
+<div class="row" style="margin-top: 30px">
+    <div class="col s3">
+        <img src="../../Files/1.jpg" style="width: 100%"/>
+        @*Model.Pictures.ToList()[0].Path*@
+        Vasja
+        <h4>@Model.Name</h4>
+        <hr/>
+        <h5>@Model.Description</h5>
+        <hr/>
+        @Html.ActionLink("View all","Index","Artworks")
+        <hr/>
+        @Html.ActionLink("All pictures this artist","Index","Artworks")
+        <hr />
+        @Html.ActionLink("View spektrs", "Index", "Artworks")
+        <hr/>
+        @Html.ActionLink("View techniques used", "Index", "Artworks")
+        <hr/>
+        @Html.ActionLink("Other information", "Index", "Artworks")
+
+
+    </div>
+    <div class="col s9 vertical-line-left">
+        <div id="main-photo" class="col s12">
+            <img src="http://lorempixel.com/580/250/nature/4 " style="width: 100%"/>
+        </div>
+        <div id="photos">
+            <div>
+                <h4 class="center">ХУДОЖНИКИ</h4>
+                <div class="slider">
+                    <ul class="slides">
+                        <li>
+                            <div class="row">
+                                <div class="col s3">
+                                    <img src="http://lorempixel.com/580/250/nature/4 "/>
+                                </div>
+                                <div class="col s3">
+                                    <img src="http://lorempixel.com/580/250/nature/3 "/>
+                                </div>
+                                <div class="col s3">
+                                    <img src="http://lorempixel.com/580/250/nature/1 "/>
+                                </div>
+                                <div class="col s3">
+                                    <img src="http://lorempixel.com/580/250/nature/2 "/>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col s3">
+                                    <img src="http://lorempixel.com/580/250/nature/3 "/>
+                                </div>
+                                <div class="col s3">
+                                    <img src="http://lorempixel.com/580/250/nature/4 "/>
+                                </div>
+                                <div class="col s3">
+                                    <img src="http://lorempixel.com/580/250/nature/2 "/>
+                                </div>
+                                <div class="col s3">
+                                    <img src="http://lorempixel.com/580/250/nature/1 "/>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col s3">
+                                    <img src="http://lorempixel.com/580/250/nature/4 "/>
+                                </div>
+                                <div class="col s3">
+                                    <img src="http://lorempixel.com/580/250/nature/3 "/>
+                                </div>
+                                <div class="col s3">
+                                    <img src="http://lorempixel.com/580/250/nature/2 "/>
+                                </div>
+                                <div class="col s3">
+                                    <img src="http://lorempixel.com/580/250/nature/1 "/>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col s3">
+                                    <img src="http://lorempixel.com/580/250/nature/1 "/>
+                                </div>
+                                <div class="col s3">
+                                    <img src="http://lorempixel.com/580/250/nature/2 "/>
+                                </div>
+                                <div class="col s3">
+                                    <img src="http://lorempixel.com/580/250/nature/3 "/>
+                                </div>
+                                <div class="col s3">
+                                    <img src="http://lorempixel.com/580/250/nature/4 "/>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

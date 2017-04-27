@@ -53,13 +53,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EF\LaserExpertiseContext.cs" />
-    <Compile Include="Migrations\201704261054441_initial.cs" />
-    <Compile Include="Migrations\201704261054441_initial.Designer.cs">
-      <DependentUpon>201704261054441_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201704271916437_initial.cs" />
+    <Compile Include="Migrations\201704271916437_initial.Designer.cs">
+      <DependentUpon>201704271916437_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704271924002_initial1.cs" />
+    <Compile Include="Migrations\201704271924002_initial1.Designer.cs">
+      <DependentUpon>201704271924002_initial1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704271940415_initial2.cs" />
+    <Compile Include="Migrations\201704271940415_initial2.Designer.cs">
+      <DependentUpon>201704271940415_initial2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Artist\Artist.cs" />
     <Compile Include="Models\Information\Enums.cs" />
     <Compile Include="Models\Information\UnitOfWork.cs" />
+    <Compile Include="Models\Artwork\Artwork.cs" />
+    <Compile Include="Models\Picture\Picture.cs" />
     <Compile Include="Models\Providers\CustomRoleProvider.cs" />
     <Compile Include="Models\User\EditModel.cs" />
     <Compile Include="Models\User\Human.cs" />
@@ -68,7 +79,10 @@
     <Compile Include="Models\User\Role.cs" />
     <Compile Include="Models\User\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ArtistRepository.cs" />
+    <Compile Include="Repositories\ArtworkRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\PictureRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
@@ -78,10 +92,15 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704261054441_initial.resx">
-      <DependentUpon>201704261054441_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201704271916437_initial.resx">
+      <DependentUpon>201704271916437_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704271924002_initial1.resx">
+      <DependentUpon>201704271924002_initial1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704271940415_initial2.resx">
+      <DependentUpon>201704271940415_initial2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

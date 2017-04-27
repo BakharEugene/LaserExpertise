@@ -30,7 +30,7 @@
 </script>
 <div class="navbar-fixed grey">
     <ul id="dropdown1" class="dropdown-content">
-        <li>@Html.ActionLink("Картины", "Index", "Home", new {area = ""}, new {@class = "active"})</li>
+        <li>@Html.ActionLink("Картины", "Index", "Artworks", new {area = ""}, new {@class = "active"})</li>
         <li>@Html.ActionLink("Направления", "Contact", "Home", new {area = ""}, new {@class = "active"})</li>
         <li>@Html.ActionLink("Период", "Index", "Home", new {area = ""}, new {@class = "active"})</li>
         <li>@Html.ActionLink("Школа", "Index", "Home", new {area = ""}, new {@class = "active"})</li>
@@ -38,7 +38,7 @@
     </ul>
     <nav>
         <div class="nav-wrapper">
-            <a href="../Home/Index.cshtml" class="brand-logo"><i class="material-icons">cloud</i>LASER EXPERTISE</a>
+            <a href="#" class="brand-logo"><i class="material-icons">cloud</i>LASER EXPERTISE</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>
                     @Html.ActionLink("Главная", "Index", "Home", new {area = ""}, new {@class = "active"})
@@ -79,7 +79,7 @@
         </div>
     </nav>
 </div>
-<div class="body-content container">
+<div class="body-content">
     @RenderBody()
 
 </div>

@@ -1,0 +1,60 @@
+﻿@model LaserExpertise.Models.IndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+
+    <!-- items being paged -->
+    <ul>
+        @foreach (var item in Model.Items)
+        {
+            <div class="col s2">
+                <a href="@Url.Action("Details","Artworks",new {item.Id})">
+                    <img src=@item.Pictures.ToList()[0].Path style="width: 100%" />
+                    
+                    <p>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </p>
+                </a>
+            </div>
+        }
+    </ul>
+</div>
+<!-- pager -->
+<div class="center">
+    @if (Model.Pager.EndPage > 1)
+    {
+        <ul class="pagination">
+            @if (Model.Pager.CurrentPage > 1)
+            {
+                <li>
+                    <a href="~/Artworks/Index">First</a>
+                </li>
+                <li>
+                    <a href="~/Artworks/Index?page=@(Model.Pager.CurrentPage - 1)">Previous</a>
+                </li>
+            }
+
+            @for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+            {
+                <li class="@(page == Model.Pager.CurrentPage ? "active" : "")">
+                    <a href="~/Artworks/Index?page=@page">@page</a>
+                </li>}
+
+            @if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+            {
+
+
+                <li>
+                    <a href="~/Artworks/Index?page=@(Model.Pager.CurrentPage + 1)">Next</a>
+                </li>
+                <li>
+                    <a href="~/Artworks/Index?page=@(Model.Pager.TotalPages)">Last</a>
+                </li>
+            }
+        </ul>
+    }
+</div>
+

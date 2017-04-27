@@ -10,9 +10,29 @@ namespace LaserExpertise.DAL.Models.Information
 
         private UserRepository userRepository;
         private RoleRepository roleRepository;
+        private PictureRepository pictureRepository;
+        private ArtworkRepository artworkRepository;
+
+        public PictureRepository Pictures
+        {
+            get
+            {
+                if (pictureRepository == null)
+                    pictureRepository = new PictureRepository(db);
+                return pictureRepository;
+            }
+        }
 
 
-
+        public ArtworkRepository Artworks
+        {
+            get
+            {
+                if (artworkRepository == null)
+                    artworkRepository = new ArtworkRepository(db);
+                return artworkRepository;
+            }
+        }
 
         public RoleRepository Roles
         {

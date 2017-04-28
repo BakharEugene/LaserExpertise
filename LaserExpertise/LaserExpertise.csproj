@@ -153,13 +153,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Models\IndexViewModel.cs" />
-=======
-    <Compile Include="Pictures\Controllers\EditPictureController.cs" />
-    <Compile Include="Pictures\Controllers\NavController.cs" />
-    <Compile Include="Pictures\PicturesRegistration.cs" />
->>>>>>> fa1d56a5af27cd928890a55802fd3e4e6f9c9f0c
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -216,12 +210,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Images\Logos\" />
-<<<<<<< HEAD
-=======
-    <Folder Include="Models\" />
-    <Folder Include="Pictures\Models\" />
-    <Folder Include="Pictures\Views\" />
->>>>>>> fa1d56a5af27cd928890a55802fd3e4e6f9c9f0c
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

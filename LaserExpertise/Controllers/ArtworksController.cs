@@ -17,39 +17,22 @@ namespace LaserExpertise.Controllers
     public class ArtworksController : Controller
     {
         UnitOfWork unit = new UnitOfWork();
-
+        [HttpGet]
+        public JsonResult Index()
+        {
+            var artworks = unit.Artworks.GetAll();
+            return Json(artworks,JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult Detail(int id)
+        {
+            var artwork = unit.Artworks.GetById(id);
+            return Json(artwork, JsonRequestBehavior.AllowGet);
+        }
         // GET: Artworks
-        public ActionResult Index(int? page)
-        {
 
-            var pager = new Pager(unit.Artworks.GetAll().Count(), page);
 
-            var viewModel = new IndexViewModel
-            {
-                Items = unit.Artworks.GetAll().OrderBy(p=>p.Name).
-                    Skip((pager.CurrentPage - 1) * pager.PageSize).
-                    Take(pager.PageSize),
-                Pager = pager
-            };
-
-            return View(viewModel);
-        }
-
-        // GET: Artworks/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Artwork artwork = unit.Artworks.GetById(id);
-            if (artwork == null)
-            {
-                return HttpNotFound();
-            }
-            return View(artwork);
-        }
-
+      
         // GET: Artworks/Create
         public ActionResult Create()
         {
@@ -163,7 +146,6 @@ namespace LaserExpertise.Controllers
             if (disposing)
             {
                 unit.Dispose();
-                //db.Dispose();
             }
             base.Dispose(disposing);
         }

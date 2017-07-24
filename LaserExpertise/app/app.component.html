@@ -1,0 +1,38 @@
+﻿<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display --
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li *ngIf="isLoggedIn()"><a class="active" routerLinkActive="active">Привет {{currentUser.Email}}</a></li>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="active" routerLink="/artworks" routerLinkActive="active">Главная</a></li>
+                <li><a class="active" routerLink="/artworks" routerLinkActive="active">Художники</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Галерея<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a routerLink="/artworks" routerLinkActive="active">Картины</a></li>
+                        <li><a routerLink="/artworks" routerLinkActive="active">Направления</a></li>
+                        <li><a routerLink="/artworks" routerLinkActive="active">Период</a></li>
+                        <li><a routerLink="/artworks" routerLinkActive="active">Школа</a></li>
+                    </ul>
+                </li>
+                <li><a class="active" routerLink="/artworks" routerLinkActive="active">Библиотека</a></li>
+                <li><a class="active" routerLink="/artworks" routerLinkActive="active">О проекте</a></li>
+                <li><a class="active" routerLink="/artworks" routerLinkActive="active">Контакты</a></li>
+                <li *ngIf="!isLoggedIn()"><a class="active" routerLink="/login" routerLinkActive="active">Войти</a></li>
+                <li *ngIf="!isLoggedIn()"><a class="active" routerLink="/register" routerLinkActive="active">Регистрация</a></li>
+                <li *ngIf="isLoggedIn()"><a class="active" routerLink="/logout" routerLinkActive="active">Выйти</a></li>
+
+            </ul>
+        </div>
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="row">
+    <alert class="col-md-offset-4 col-md-4"></alert>
+
+</div>
+<router-outlet></router-outlet>

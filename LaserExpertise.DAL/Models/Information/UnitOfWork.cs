@@ -12,6 +12,27 @@ namespace LaserExpertise.DAL.Models.Information
         private RoleRepository roleRepository;
         private PictureRepository pictureRepository;
         private ArtworkRepository artworkRepository;
+        private ServiceRepository serviceRepository;
+        private ServiceStatesRepository serviceStatesRepository;
+
+        public ServiceStatesRepository ServiceStates
+        {
+            get
+            {
+                if (serviceStatesRepository == null)
+                    serviceStatesRepository = new ServiceStatesRepository(db);
+                return serviceStatesRepository;
+            }
+        }
+        public ServiceRepository Services
+        {
+            get
+            {
+                if (serviceRepository == null)
+                    serviceRepository = new ServiceRepository(db);
+                return serviceRepository;
+            }
+        }
 
         public PictureRepository Pictures
         {

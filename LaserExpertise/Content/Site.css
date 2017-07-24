@@ -1,7 +1,13 @@
 ﻿body {
-    font-style: italic;
-}
+        font-family: cursive !important;
 
+}
+.vertical-line-left {
+    border-left: thick solid #424242;
+}
+.vertical-line-right {
+    border-right: thick solid #424242;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;

@@ -1,7 +1,7 @@
 /*!
  * Materialize v0.98.0 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
- * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
+ * MIT License (https://raw.githubServicecontent.com/Dogfalo/materialize/master/LICENSE)
  */
 .vertical-line-left {
     border-left: thick solid #424242;
@@ -2149,7 +2149,7 @@
 /**
  * 1. Set default font family to sans-serif.
  * 2. Prevent iOS and IE text size adjust after device orientation change,
- *    without disabling user zoom.
+ *    without disabling Service zoom.
  */
 html {
     font-family: cursive;
@@ -3266,10 +3266,10 @@ td, th {
 .no-select, input[type=range],
 input[type=range] + .thumb {
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  -webkit-Service-select: none;
+  -moz-Service-select: none;
+  -ms-Service-select: none;
+  Service-select: none;
 }
 
 .circle {
@@ -5284,10 +5284,10 @@ button.btn-floating {
   cursor: pointer;
   display: inline-block;
   overflow: hidden;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -webkit-Service-select: none;
+     -moz-Service-select: none;
+      -ms-Service-select: none;
+          Service-select: none;
   -webkit-tap-highlight-color: transparent;
   vertical-align: middle;
   z-index: 1;
@@ -6195,10 +6195,10 @@ textarea.materialize-textarea {
   font-size: 1rem;
   transition: .28s ease;
   /* webkit (konqueror) browsers */
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -webkit-Service-select: none;
+     -moz-Service-select: none;
+      -ms-Service-select: none;
+          Service-select: none;
 }
 
 [type="radio"] + label:before,
@@ -6328,13 +6328,13 @@ form p:last-child {
   height: 25px;
   line-height: 25px;
   font-size: 1rem;
-  -webkit-user-select: none;
+  -webkit-Service-select: none;
   /* webkit (safari, chrome) browsers */
-  -moz-user-select: none;
+  -moz-Service-select: none;
   /* mozilla browsers */
-  -khtml-user-select: none;
+  -khtml-Service-select: none;
   /* webkit (konqueror) browsers */
-  -ms-user-select: none;
+  -ms-Service-select: none;
   /* IE10+ */
 }
 
@@ -6512,10 +6512,10 @@ form p:last-child {
    ========================================================================== */
 .switch,
 .switch * {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -khtml-user-select: none;
-  -ms-user-select: none;
+  -webkit-Service-select: none;
+  -moz-Service-select: none;
+  -khtml-Service-select: none;
+  -ms-Service-select: none;
 }
 
 .switch label {
@@ -6587,7 +6587,6 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
 /* Select Field
    ========================================================================== */
 select {
-  display: none;
 }
 
 select.browser-default {
@@ -6656,11 +6655,11 @@ select:disabled {
 .select-wrapper input.select-dropdown:disabled {
   color: rgba(0, 0, 0, 0.3);
   cursor: default;
-  -webkit-user-select: none;
+  -webkit-Service-select: none;
   /* webkit (safari, chrome) browsers */
-  -moz-user-select: none;
+  -moz-Service-select: none;
   /* mozilla browsers */
-  -ms-user-select: none;
+  -ms-Service-select: none;
   /* IE10+ */
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
@@ -7040,22 +7039,22 @@ input[type=range]:focus::-ms-fill-upper {
   background-color: transparent;
 }
 
-.side-nav .userView {
+.side-nav .ServiceView {
   position: relative;
   padding: 32px 32px 0;
   margin-bottom: 8px;
 }
 
-.side-nav .userView > a {
+.side-nav .ServiceView > a {
   height: auto;
   padding: 0;
 }
 
-.side-nav .userView > a:hover {
+.side-nav .ServiceView > a:hover {
   background-color: transparent;
 }
 
-.side-nav .userView .background {
+.side-nav .ServiceView .background {
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -7065,27 +7064,27 @@ input[type=range]:focus::-ms-fill-upper {
   z-index: -1;
 }
 
-.side-nav .userView .circle, .side-nav .userView .name, .side-nav .userView .email {
+.side-nav .ServiceView .circle, .side-nav .ServiceView .name, .side-nav .ServiceView .email {
   display: block;
 }
 
-.side-nav .userView .circle {
+.side-nav .ServiceView .circle {
   height: 64px;
   width: 64px;
 }
 
-.side-nav .userView .name,
-.side-nav .userView .email {
+.side-nav .ServiceView .name,
+.side-nav .ServiceView .email {
   font-size: 14px;
   line-height: 24px;
 }
 
-.side-nav .userView .name {
+.side-nav .ServiceView .name {
   margin-top: 16px;
   font-weight: 500;
 }
 
-.side-nav .userView .email {
+.side-nav .ServiceView .email {
   padding-bottom: 16px;
   font-weight: 400;
 }
@@ -7122,7 +7121,7 @@ input[type=range]:focus::-ms-fill-upper {
   .side-nav a {
     padding: 0 16px;
   }
-  .side-nav .userView {
+  .side-nav .ServiceView {
     padding: 16px 16px 0;
   }
 }
@@ -7854,10 +7853,10 @@ input[type=range]:focus::-ms-fill-upper {
   color: #000000;
   position: absolute;
   z-index: 10000;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  -webkit-Service-select: none;
+  -moz-Service-select: none;
+  -ms-Service-select: none;
+  Service-select: none;
 }
 
 /**

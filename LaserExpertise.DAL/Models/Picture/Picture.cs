@@ -9,10 +9,10 @@ namespace LaserExpertise.DAL.Models.Picture
         public Picture(string path, Artwork.Artwork artwork)
         {
             this.Path = path;
-            this.Artwork = artwork;
+            //this.Artwork = artwork;
         }
         public Picture() { }
         public int? ArtworkId { get; set; }
-        public virtual Artwork.Artwork Artwork { get; set; }
+        //public virtual Artwork.Artwork Artwork { get; set; }
     }
 }

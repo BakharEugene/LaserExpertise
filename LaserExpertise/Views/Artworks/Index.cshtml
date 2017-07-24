@@ -1,4 +1,4 @@
-﻿@model LaserExpertise.Models.IndexViewModel
+﻿@model LaserExpertise.Models.IndexViewModel<LaserExpertise.DAL.Models.Artwork.Artwork>
 
 @{
     ViewBag.Title = "Index";
@@ -7,20 +7,21 @@
 <div class="row">
 
     <!-- items being paged -->
-    <ul>
         @foreach (var item in Model.Items)
         {
+            try
+            {
             <div class="col s2">
-                <a href="@Url.Action("Details","Artworks",new {item.Id})">
-                    <img src=@item.Pictures.ToList()[0].Path style="width: 100%" />
-                    
-                    <p>
+                <a href="@Url.Action("Details", "Artworks", new { item.Id })">
+                    <img src=@item.Pictures.ToList()[0].Path style="width: 100%;height:200px;" />
+                    <p class="center black-text text-black">
                         @Html.DisplayFor(modelItem => item.Name)
                     </p>
                 </a>
             </div>
+            }
+            catch (ArgumentOutOfRangeException ex) { }
         }
-    </ul>
 </div>
 <!-- pager -->
 <div class="center">

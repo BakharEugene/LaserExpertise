@@ -1,0 +1,43 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <label class="pull-left">Total:{{filteredItems.length}} Found products </label>
+        <select id="pageSelector" class="pull-right" [(ngModel)]="pageSize"
+                (change)="onChangePageSize()">
+            <option [ngValue]=6>6</option>
+            <option [ngValue]=12>12</option>
+            <option [ngValue]=24>24</option>
+            <option [ngValue]=48>48</option>
+        </select>
+        <label for="pageSelector" class="pull-right">items in page</label>
+
+        <h3 class="text-center">Список картин</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2" *ngFor="let artwork of  artworks" style="height:250px;">
+                <a class="text-center" [routerLink]="['/artworks/detail', artwork.Id]">
+                    <img class="col-md-12" src="{{artwork.Pictures[0].Path}}" style=" height:200px" />
+                    <p>Название картины: {{artwork.Name}}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="pagination-toolbar" role="toolbar">
+        <div class="center">
+            <div class="text-center">
+                <ul class="pagination pager">
+                    <li [ngClass]="{'disabled': (currentIndex == 1 || pages == 0)}">
+                        <a class="btn" (click)="prevPage()">Prev</a>
+                    </li>
+                    <li *ngFor="let page of pagesIndex" [ngClass]="{'active': (currentIndex == page)}">
+                        <a class="btn" (click)="setPage(page)">{{page}}</a>
+                    </li>
+                    <li [ngClass]="{'disabled': (currentIndex == pages || pages == 0)}">
+                        <a class="btn" (click)="nextPage()">Next</a>
+                    </li>
+                </ul>
+                <p class="center">Page {{currentIndex}}/{{pages}}</p>
+            </div>
+        </div>
+    </div>
+</div>

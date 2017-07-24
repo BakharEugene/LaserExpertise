@@ -4,8 +4,12 @@ using System.Web.Mvc;
 using System.Web.Security;
 using LaserExpertise.DAL.EF;
 using LaserExpertise.DAL.Models.Information;
+using LaserExpertise.DAL.Models.Services;
 using LaserExpertise.DAL.Models.User;
 using Microsoft.ApplicationInsights.Extensibility.Implementation;
+using System.Collections;
+using System.Collections.Generic;
+using System.Web.Helpers;
 
 namespace LaserExpertise.Controllers
 {
@@ -13,36 +17,40 @@ namespace LaserExpertise.Controllers
     {
         UnitOfWork unit = new UnitOfWork();
         private LaserExpertiseContext db = new LaserExpertiseContext();
-        public ActionResult Login()
-        {
-            return View();
-        }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model)
+        public void Login(User user)
         {
+            unit.Users.Create(user);
+            unit.Save();
+        }
+        [HttpPost]
+        public void Login(string kek)
+        {
+
             if (ModelState.IsValid)
             {
                 // поиск пользователя в бд
                 User user = null;
 
-                user = unit.Users.GetAll().FirstOrDefault(u => u.Email == model.Email && u.Password == model.Password);
-
+                //user = unit.Users.GetAll().FirstOrDefault(u => u.Email == model.Email && u.Password == model.Password);
+                ;
 
                 if (user != null)
                 {
-                    FormsAuthentication.SetAuthCookie(model.Email, true);
-                    return RedirectToAction("Index", "Home");
+                    //  FormsAuthentication.SetAuthCookie(model.Email, true);
+                    // return RedirectToAction("Index", "Home");
                 }
                 else
                 {
                     ModelState.AddModelError("", "Пользователя с таким логином и паролем нет");
                 }
             }
-
-            return View(model);
         }
+
+
+
+       
         [Authorize]
         public ActionResult Profile()
         {
@@ -54,7 +62,7 @@ namespace LaserExpertise.Controllers
                 LastName = user.LastName,
                 Id = user.Id,
                 Skype = user.Skype,
-                Telephone = user.Telephone,
+                Telephone =user.Telephone,
                 Role = user.Role,
                 RoleId = user.RoleId
             };
@@ -70,12 +78,12 @@ namespace LaserExpertise.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = unit.Users.GetById(id);//db.Monuments.Find(id);
-            if (user == null)
+            User User = unit.Users.GetById(id);//db.Monuments.Find(id);
+            if (User == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(User);
         }
 
         // POST: Monuments/Edit/5
@@ -84,20 +92,21 @@ namespace LaserExpertise.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit(User user)
+        public ActionResult Edit(User User)
         {
             if (ModelState.IsValid)
             {
-                user.Role = unit.Roles.GetById(user.RoleId);
-                unit.Users.Update(user);
+                User.Role = unit.Roles.GetById(User.RoleId);
+                unit.Users.Update(User);
                 unit.Save();
                 return RedirectToAction("Index");
             }
-            return View(user);
+            return View(User);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Profile(EditModel edit)
         {
             User user = unit.Users.GetAll().FirstOrDefault(u => u.Email == User.Identity.Name);
@@ -131,24 +140,34 @@ namespace LaserExpertise.Controllers
                 
                 if (user == null)
                 {
+                    user = new User()
+                    {
+                        Email = model.Email,
+                        Password = model.Password,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        ConfirmPassword = model.ConfirmPassword,
+                        Gender = model.Gender,
+                        Skype = model.Skype,
+                        Telephone = model.Telephone,
+                        //ServiceStateses = new List<ServiceStates>(),
+                        RoleId = 3
+                    };
+                    foreach(var service in unit.Services.GetAll())
+                    {
+                        ServiceStates serviceState = new ServiceStates(user, service);
+                        //user.ServiceStateses.Add(serviceState);
+                        unit.ServiceStates.Create(serviceState);
+                    }
                     // создаем нового пользователя
-                        unit.Users.Create(new User
-                        {
-                            Email = model.Email,
-                            Password = model.Password,
-                            FirstName = model.FirstName,
-                            LastName = model.LastName,
-                            ConfirmPassword = model.ConfirmPassword,
-                            Gender = model.Gender,
-                            Skype = model.Skype,
-                            Telephone = model.Telephone,
-                            RoleId = 3
-                        });
+
+                    unit.Users.Create(user);
+                    
                         unit.Save();
                         //db.SaveChanges();
                         user = unit.Users.GetAll().Where(u => u.Email == model.Email && u.Password == model.Password).FirstOrDefault();
                     // если пользователь удачно добавлен в бд
-                    if (user != null)
+                    if (User != null)
                     {
                         FormsAuthentication.SetAuthCookie(model.Email, true);
                         return RedirectToAction("Index", "Home");
@@ -168,12 +187,12 @@ namespace LaserExpertise.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = unit.Users.GetById(id);
-            if (user == null)
+            User User = unit.Users.GetById(id);
+            if (User == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(User);
         }
 
         // POST: Monuments/Delete/5
@@ -182,8 +201,8 @@ namespace LaserExpertise.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
-            User user = unit.Users.GetById(id);
-            unit.Users.Delete(user.Id);
+            User User = unit.Users.GetById(id);
+            unit.Users.Delete(User.Id);
             unit.Save();
             return RedirectToAction("Index");
         }

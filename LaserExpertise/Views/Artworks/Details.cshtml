@@ -1,6 +1,7 @@
 ﻿@model LaserExpertise.DAL.Models.Artwork.Artwork
 
 @{
+    LaserExpertise.DAL.Models.Information.UnitOfWork unit = new LaserExpertise.DAL.Models.Information.UnitOfWork();
     ViewBag.Title = "Details";
 }
 <script>
@@ -11,9 +12,10 @@
 
 <div class="row" style="margin-top: 30px">
     <div class="col s3">
-        <img src="../../Files/1.jpg" style="width: 100%"/>
+        <img src="@Model.Pictures.ToList()[0].Path" style="width: 100%; height:auto"/>
         @*Model.Pictures.ToList()[0].Path*@
-        Vasja
+        <h4>@unit.Users.GetById(Model.ArtistId).FirstName @unit.Users.GetById(Model.ArtistId).LastName</h4>
+        <hr />
         <h4>@Model.Name</h4>
         <hr/>
         <h5>@Model.Description</h5>
@@ -32,7 +34,7 @@
     </div>
     <div class="col s9 vertical-line-left">
         <div id="main-photo" class="col s12">
-            <img src="http://lorempixel.com/580/250/nature/4 " style="width: 100%"/>
+            <img src="@Model.Pictures.ToList()[0].Path" style="width: 100%"/>
         </div>
         <div id="photos">
             <div>

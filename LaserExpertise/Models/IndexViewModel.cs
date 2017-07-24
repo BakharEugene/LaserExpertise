@@ -7,9 +7,10 @@ using LaserExpertise.DAL.Models.Artwork;
 namespace LaserExpertise.Models
 {
 
-    public class IndexViewModel
+    public class IndexViewModel<T>
+        where T:class
     {
-        public IEnumerable<Artwork> Items { get; set; }
+        public IEnumerable<T> Items { get; set; }
         public Pager Pager { get; set; }
     }
 

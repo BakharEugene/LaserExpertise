@@ -1,0 +1,132 @@
+﻿<div class="col-md-4 col-md-offset-4">
+    <h2>Register</h2>
+    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
+        <div class="row">
+
+            <div class="col-md-12">
+                <label for="name">First Name</label>
+                <input type="text" id="name" class="form-control"
+                       required minlength="4" maxlength="24"
+                       name="name" [(ngModel)]="model.FirstName"
+                       #name="ngModel">
+                <div *ngIf="name.errors && (name.dirty || name.touched)"
+                     class="alert alert-danger">
+                    <div [hidden]="!name.errors.required">
+                        Name is required
+                    </div>
+                    <div [hidden]="!name.errors.minlength">
+                        Name must be at least 4 characters long.
+                    </div>
+                    <div [hidden]="!name.errors.maxlength">
+                        Name cannot be more than 24 characters long.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label for="lastname">Last Name</label>
+                <input type="text" id="lastname" class="form-control"
+                       required minlength="4" maxlength="24"
+                       name="lastname" [(ngModel)]="model.LastName"
+                       #lastname="ngModel">
+                <div *ngIf="lastname.errors && (lastname.dirty || lastname.touched)"
+                     class="alert alert-danger">
+                    <div [hidden]="!lastname.errors.required">
+                        Lastname is required
+                    </div>
+                    <div [hidden]="!lastname.errors.minlength">
+                        Lastname must be at least 4 characters long.
+                    </div>
+                    <div [hidden]="!lastname.errors.maxlength">
+                        Lastname cannot be more than 24 characters long.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label for="Email">Email</label>
+                <input type="email" id="email" class="form-control"
+                       required minlength="4" maxlength="24"
+                       name="email" [(ngModel)]="model.Email"
+                       #email="ngModel">
+                <div *ngIf="email.errors && (email.dirty || email.touched)"
+                     class="alert alert-danger">
+                    <div [hidden]="!email.errors.required">
+                        Email is required
+                    </div>
+                    <div [hidden]="!email.errors.minlength">
+                        Email must be at least 4 characters long.
+                    </div>
+                    <div [hidden]="!email.errors.maxlength">
+                        Email cannot be more than 24 characters long.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control"
+                       required minlength="6" 
+                       name="password" [(ngModel)]="model.Password"
+                       #password="ngModel">
+                <div *ngIf="password.errors && (password.dirty || password.touched)"
+                     class="alert alert-danger">
+                    <div [hidden]="!password.errors.required">
+                        Password is required
+                    </div>
+                    <div [hidden]="!password.errors.minlength">
+                        Password must be at least 6 characters long.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label for="telephone">Telephone</label>
+                <input type="text" id="telephone" class="form-control"
+                       required minlength="6" maxlength="13"
+                       name="telephone" [(ngModel)]="model.Telephone"
+                       #telephone="ngModel">
+                <div *ngIf="telephone.errors && (telephone.dirty || telephone.touched)"
+                     class="alert alert-danger">
+                    <div [hidden]="!telephone.errors.required">
+                        Telephone is required
+                    </div>
+                    <div [hidden]="!telephone.errors.minlength">
+                        Telephone must be at least 6 characters long.
+                    </div>
+                    <div [hidden]="!telephone.errors.maxlength">
+                        Telephone cannot be more than 13 characters long.
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-12">
+                <label for="skype">Skype</label>
+                <input type="text" id="skype" class="form-control"
+                       required minlength="6" maxlength="13"
+                       name="skype" [(ngModel)]="model.Skype"
+                       #skype="ngModel">
+                <div *ngIf="skype.errors && (skype.dirty || skype.touched)"
+                     class="alert alert-danger">
+                    <div [hidden]="!skype.errors.required">
+                        Skype is required
+                    </div>
+                    <div [hidden]="!skype.errors.minlength">
+                        Skype must be at least 6 characters long.
+                    </div>
+                    <div [hidden]="!skype.errors.maxlength">
+                        Skype cannot be more than 13 characters long.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <button [disabled]="loading" class="btn btn-primary">Register</button>
+                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                <a [routerLink]="['/login']" class="btn btn-primary">Cancel</a>
+            </div>
+        </div>
+
+       
+    </form>
+</div>

@@ -1,7 +1,6 @@
 ﻿import {Injectable} from "@angular/core";
 import {ActivatedRouteSnapshot, CanActivate, Router} from "@angular/router";
 import {User} from "../../models/user";
-import {AuthorityWorker} from "../common/authority-worker";
 import {Role} from "../../models/role";
 
 @Injectable()
@@ -12,15 +11,21 @@ export class SecurityService implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot): boolean {
         let canActivate: boolean = false;
-        const authorities = route.data["roles"] as Array<string>;
-        const user: User = AuthorityWorker.getCurrentUser();
-        if (authorities.length > 0 && user) {
-            canActivate = this.checkAuthorities(authorities, user.authorities);
+        const roles = route.data["roles"] as Array<string>;
+        const user: User = this.getCurrentUser();
+        if (roles.length > 0 && user) {
+            canActivate = this.checkRoles(roles, user.Role);
         }
         return canActivate;
     }
 
-    static containsAuthority(array: any[], obj: any): boolean {
+    getCurrentUser(): User {
+
+        let user: User = JSON.parse(localStorage.getItem('currentUser'));
+        return user;
+    }
+
+    static containsRole(array: any[], obj: any): boolean {
         let index = array.length;
         while (index--) {
             if (array[index] === obj)
@@ -29,12 +34,11 @@ export class SecurityService implements CanActivate {
         return false;
     }
 
-    private checkAuthorities(availableAuthorityList: string[], currentAuthorityList: Authority[]): boolean {
+    private checkRoles(availableRolesList: string[], currentRole:Role): boolean {
         let flag = false;
-        currentAuthorityList.forEach(currentAuthority => {
-            if (SecurityService.containsAuthority(availableAuthorityList, currentAuthority.name))
-                flag = true;
-        });
+        if (SecurityService.containsRole(availableRolesList, currentRole)) {
+            flag = true;
+        }
         return flag;
     }
 }

@@ -12,11 +12,13 @@ const core_1 = require('@angular/core');
 const router_1 = require('@angular/router');
 const artwork_component_1 = require('./artwork/artwork.component');
 const artwork_content_component_1 = require('./artwork/content/artwork-content.component');
+const home_component_1 = require('./home/home.component');
 const login_component_1 = require('./authorization/login/login.component');
 const register_component_1 = require('./authorization/register/register.component');
 const routes = [
-    { path: '', redirectTo: 'artworks', pathMatch: 'full' },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'artworks', component: artwork_component_1.ArtworkComponent },
+    { path: 'home', component: home_component_1.HomeComponent },
     { path: 'artworks/detail/:id', component: artwork_content_component_1.ArtworkContentComponent },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'register', component: register_component_1.RegisterComponent },

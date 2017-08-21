@@ -1,10 +1,11 @@
 ﻿body {
-        font-family: cursive !important;
-
+    font-family: cursive !important;
 }
+
 .vertical-line-left {
     border-left: thick solid #424242;
 }
+
 .vertical-line-right {
     border-right: thick solid #424242;
 }
@@ -14,6 +15,16 @@
     padding-right: 15px;
 }
 
+.bg-black {
+    background-color: #000000 !important;
+}
+
+.bg-orange {
+}
+
+.text-black {
+    color: #ffffff  !important;
+}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */

@@ -1,38 +1,77 @@
-﻿<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display --
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-left">
-                <li *ngIf="isLoggedIn()"><a class="active" routerLinkActive="active">Привет {{currentUser.Email}}</a></li>
-            </ul>
-            
-            <ul class="nav navbar-nav navbar-right">
-                <li><a class="active" routerLink="/artworks" routerLinkActive="active">Главная</a></li>
-                <li><a class="active" routerLink="/artworks" routerLinkActive="active">Художники</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Галерея<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a routerLink="/artworks" routerLinkActive="active">Картины</a></li>
-                        <li><a routerLink="/artworks" routerLinkActive="active">Направления</a></li>
-                        <li><a routerLink="/artworks" routerLinkActive="active">Период</a></li>
-                        <li><a routerLink="/artworks" routerLinkActive="active">Школа</a></li>
-                    </ul>
-                </li>
-                <li><a class="active" routerLink="/artworks" routerLinkActive="active">Библиотека</a></li>
-                <li><a class="active" routerLink="/artworks" routerLinkActive="active">О проекте</a></li>
-                <li><a class="active" routerLink="/artworks" routerLinkActive="active">Контакты</a></li>
-                <li *ngIf="!isLoggedIn()"><a class="active" routerLink="/login" routerLinkActive="active">Войти</a></li>
-                <li *ngIf="!isLoggedIn()"><a class="active" routerLink="/register" routerLinkActive="active">Регистрация</a></li>
-                <li *ngIf="isLoggedIn()"><a class="active" routerLink="/logout" routerLinkActive="active">Выйти</a></li>
+﻿<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li *ngIf="isLoggedIn()"><a class="active" routerLinkActive="active">Привет {{currentUser.Email}}</a></li>
+        </ul>
 
-            </ul>
-        </div>
-    </div><!-- /.container-fluid -->
+        <ul class="nav  justify-content-end text-dark">
+            <li class="nav-item active">
+                <a class="nav-link text-dark" routerLink="/home" routerLinkActive="active">Главная</a>
+            </li>
+            <li class="nav-item active"><a class="nav-link text-dark" routerLink="/artworks" routerLinkActive="active">Художники</a></li>
+            <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Галерея
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a routerLink="/artworks" class="dropdown-item text-dark" routerLinkActive="active">Картины</a>
+                    <a routerLink="/artworks" class="dropdown-item text-dark" routerLinkActive="active">Направления</a>
+                    <a routerLink="/artworks" class="dropdown-item text-dark" routerLinkActive="active">Период</a>
+                    <a routerLink="/artworks" class="dropdown-item text-dark" routerLinkActive="active">Школа</a>
+                </div>
+            </li>
+            <li class="nav-item active"><a class="nav-link text-dark" routerLink="/artworks" routerLinkActive="active">Библиотека</a></li>
+            <li class="nav-item active"><a class="nav-link text-dark" routerLink="/artworks" routerLinkActive="active">О проекте</a></li>
+            <li class="nav-item active"><a class="nav-link text-dark" routerLink="/artworks" routerLinkActive="active">Контакты</a></li>
+            <li class="nav-item active" *ngIf="!isLoggedIn()"><a class="nav-link text-dark" routerLink="/login" routerLinkActive="active">Войти</a></li>
+            <li class="nav-item active" *ngIf="!isLoggedIn()"><a class="nav-link text-dark" routerLink="/register" routerLinkActive="active">Регистрация</a></li>
+            <li class="nav-item active" *ngIf="isLoggedIn()"><a class="nav-link text-dark" routerLink="/logout" routerLinkActive="active">Выйти</a></li>
+
+        </ul>
+    </div>
 </nav>
+
+
 
 <div class="row">
     <alert class="col-md-offset-4 col-md-4"></alert>
 
 </div>
 <router-outlet></router-outlet>
+<div class="divider"></div>
+<footer class="footer" style="background-color:#e6e6e6!important;">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <h3 class="text-center">LASEREXPERTISE</h3>
+                </div>
+                <div class="col">
+                    <a routerLink="/artworks" class="dropdown-item " routerLinkActive="active">Художники</a>
+                    <a routerLink="/artworks" class="dropdown-item " routerLinkActive="active">Библиотеки</a>
+                    <a routerLink="/artworks" class="dropdown-item " routerLinkActive="active">Галерея</a>
+                    <a routerLink="/artworks" class="dropdown-item " routerLinkActive="active">О проекте</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h3>Мы в социальных сетях</h3>
+            <div>
+                <a class="d-inline" href="https://vk.com"><img src="../../Images/Logos/social/vk-with-circle.svg" style="height:25px; width:25px;" /></a>
+                <a class="d-inline" href="https://twitter.com/"><img src="../../Images/Logos/social/twitter-with-circle.svg" style="height:25px; width:25px;" /></a>
+                <a class="d-inline" href="https://www.instagram.com/"><img src="../../Images/Logos/social/instagram-with-circle.svg" style="height:25px; width:25px;" /></a>
+                <a class="d-inline" href="https://www.facebook.com/"><img src="../../Images/Logos/social/facebook-with-circle.svg" style="height:25px; width:25px;" /></a>
+                <a class="d-inline" href="https://www.linkedin.com/"><img src="../../Images/Logos/social/linkedin-with-circle.svg" style="height:25px; width:25px;" /></a>
+                <a class="d-inline" href="https://plus.google.com/"><img src="../../Images/Logos/social/google-with-circle.svg" style="height:25px; width:25px;" /></a>
+            </div>
+
+            <h3>Подписка</h3>
+
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email">
+            </div>
+
+        </div>
+    </div>
+</footer>

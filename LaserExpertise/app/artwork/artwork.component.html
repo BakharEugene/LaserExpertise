@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-md-2" *ngFor="let artwork of  artworks" style="height:250px;">
                 <a class="text-center" [routerLink]="['/artworks/detail', artwork.Id]">
-                    <img class="col-md-12" src="{{artwork.Pictures[0].Path}}" style=" height:200px" />
+                    <img class="col-md-12" src="{{artwork.Pictures[0].Path}}" style="height:200px" />
                     <p>Название картины: {{artwork.Name}}</p>
                 </a>
             </div>

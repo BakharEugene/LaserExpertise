@@ -40,7 +40,8 @@ let LoginComponent = class LoginComponent {
 };
 LoginComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/authorization/login/login.component.html'
+        templateUrl: 'app/authorization/login/login.component.html',
+        selector: 'login',
     }), 
     __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, authentication_service_1.AuthenticationService, alert_service_1.AlertService])
 ], LoginComponent);

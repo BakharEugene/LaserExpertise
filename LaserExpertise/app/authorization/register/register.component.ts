@@ -5,7 +5,8 @@ import { AuthenticationService } from '../services/authentication.service';
 import {AlertService} from '../services/alert/alert.service';
 import {UserService} from '../services/user.service';
 @Component({
-    templateUrl: 'app/authorization/register/register.component.html'
+    templateUrl: 'app/authorization/register/register.component.html',
+        selector: 'register'
 })
 
 export class RegisterComponent {
@@ -22,11 +23,12 @@ export class RegisterComponent {
         this.userService.create(this.model)
             .subscribe(
             data => {
-                this.alertService.success('Registration successful', true);
+                this.alertService.success(JSON.stringify(data), true);
                 this.router.navigate(['/login']);
             },
             error => {
-                this.alertService.error(error);
+                alert(error);
+                this.alertService.error(JSON.stringify(error));
                 this.loading = false;
             });
     }

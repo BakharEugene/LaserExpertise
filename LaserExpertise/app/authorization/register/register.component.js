@@ -24,17 +24,19 @@ let RegisterComponent = class RegisterComponent {
         this.loading = true;
         this.userService.create(this.model)
             .subscribe(data => {
-            this.alertService.success('Registration successful', true);
+            this.alertService.success(JSON.stringify(data), true);
             this.router.navigate(['/login']);
         }, error => {
-            this.alertService.error(error);
+            alert(error);
+            this.alertService.error(JSON.stringify(error));
             this.loading = false;
         });
     }
 };
 RegisterComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/authorization/register/register.component.html'
+        templateUrl: 'app/authorization/register/register.component.html',
+        selector: 'register'
     }), 
     __metadata('design:paramtypes', [router_1.Router, user_service_1.UserService, alert_service_1.AlertService])
 ], RegisterComponent);

@@ -3,6 +3,7 @@ using LaserExpertise.DAL.Models.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -26,9 +27,19 @@ namespace LaserExpertise.Controllers
         [HttpPost]
         public JsonResult Create(User user)
         {
-            unit.Users.Create(user);
-            unit.Save();
-            return Json(unit.Users.GetAll().FirstOrDefault(x => x.Email == user.Email && x.Password == user.Password),JsonRequestBehavior.AllowGet);
+            User tempuser = null;
+
+            tempuser = unit.Users.GetAll().FirstOrDefault(x => x.Email == user.Email);
+            if (tempuser == null)
+            {
+                unit.Users.Create(user);
+                unit.Save();
+                return Json("Registration success", JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json("This email already used", JsonRequestBehavior.AllowGet);
+            }
         }
         [HttpPost]
         public JsonResult Login(LoginModel login)

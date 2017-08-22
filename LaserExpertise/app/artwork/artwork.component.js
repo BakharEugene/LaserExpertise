@@ -36,6 +36,7 @@ let ArtworkComponent = class ArtworkComponent {
         });
     }
     createPagination() {
+        alert(this.pageSize);
         this.currentIndex = 1;
         this.pageStart = 1;
         this.pages = parseInt("" + this.filteredItems.length / this.pageSize);
@@ -43,6 +44,9 @@ let ArtworkComponent = class ArtworkComponent {
             this.pages++;
         }
         this.refreshItems();
+    }
+    onChangePageSize() {
+        this.createPagination();
     }
     refreshItems() {
         this.artworks = this.filteredItems.slice((this.currentIndex - 1) * this.pageSize, (this.currentIndex) * this.pageSize);
@@ -76,9 +80,6 @@ let ArtworkComponent = class ArtworkComponent {
     setPage(index) {
         this.currentIndex = index;
         this.refreshItems();
-    }
-    onChangePageSize() {
-        this.createPagination();
     }
 };
 ArtworkComponent = __decorate([

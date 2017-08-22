@@ -48,6 +48,7 @@ export class ArtworkComponent implements OnInit {
 
 
     createPagination(): void {
+        alert(this.pageSize);
         this.currentIndex = 1;
         this.pageStart = 1;
         this.pages = parseInt("" + this.filteredItems.length / this.pageSize);
@@ -55,8 +56,11 @@ export class ArtworkComponent implements OnInit {
             this.pages++;
         }
         this.refreshItems();
-    }
 
+    }
+    onChangePageSize(): void {
+        this.createPagination();
+    }
     refreshItems(): void {
         this.artworks = this.filteredItems.slice((this.currentIndex - 1) * this.pageSize, (this.currentIndex) * this.pageSize);
         this.pagesIndex = this.fillArray();
@@ -96,8 +100,6 @@ export class ArtworkComponent implements OnInit {
     }
     
 
-    onChangePageSize(): void {
-        this.createPagination();
-    }
+
 
 }

@@ -14,17 +14,40 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+    min-width: 100%;
+}
+
+body {
+    margin-bottom: 200px;
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 200px;
+    /* Set the fixed height of the footer here */
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
 
 .bg-black {
     background-color: #000000 !important;
 }
 
-.bg-orange {
+.text-black {
+    color: #000000 !important;
 }
 
-.text-black {
-    color: #ffffff  !important;
-}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */

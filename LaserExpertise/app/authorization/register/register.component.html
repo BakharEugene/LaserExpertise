@@ -24,7 +24,7 @@
     <div class="d-block w-50 mx-auto">
         <label for="lastname">Last Name</label>
         <input type="text" id="lastname" class="form-control"
-               required minlength="4" maxlength="24"
+               required minlength="2" maxlength="24"
                name="lastname" [(ngModel)]="model.LastName"
                #lastname="ngModel">
         <div *ngIf="lastname.errors && (lastname.dirty || lastname.touched)"
@@ -33,7 +33,7 @@
                 Lastname is required
             </div>
             <div [hidden]="!lastname.errors.minlength">
-                Lastname must be at least 4 characters long.
+                Lastname must be at least 2 characters long.
             </div>
             <div [hidden]="!lastname.errors.maxlength">
                 Lastname cannot be more than 24 characters long.

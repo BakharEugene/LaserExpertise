@@ -1,0 +1,151 @@
+﻿<h4 class="text-center">Личный кабинет</h4>
+<div class="row mt-5">
+
+    <form name="form" class="col-4 " (ngSubmit)="f.form.valid && profile()" #f="ngForm" novalidate>
+        <div class="form-group col-10 d-block mx-auto border">
+            <h4>Ваши данные</h4>
+            <div class="d-block mx-auto">
+                
+                
+                <div class="d-block mx-auto">
+                    <label for="familyname">Фамилия</label>
+
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <img src="../../../Images/Logos/social/user.svg" class="rounded-circle" style="height:25px;width:25px" />
+                        </div>
+                        <input type="text" class="form-control" id="familyname" placeholder="Фамилия">
+                    </div>
+                </div>
+
+                <div class="d-block mx-auto">
+                    <label for="firstname">Имя</label>
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <img src="../../../Images/Logos/social/user.svg" class="rounded-circle" style="height:25px;width:25px" />
+                        </div>
+                        <input type="text" class="form-control" id="firstname" placeholder="Имя">
+                    </div>
+                </div>
+
+
+                <label for="gender">Пол</label>
+
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="gender" id="gender" value="male" checked>
+                        Мужской
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="gender" id="gender" value="female">
+                        Женский
+                    </label>
+                </div>
+            </div>
+            <div class="d-block mx-auto">
+                <label for="datetime">
+                    Дата рождения
+                </label>
+                <div class="input-group">
+                    <input type="date" class="form-control" id="datetime" placeholder="birthday" />
+                </div>
+            </div>
+            <div class="d-block mx-auto">
+                <label for="address">
+                    Почтовый адрес
+                </label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="addressindex" placeholder="Почтовый индекс" />
+                </div>
+                <div class="input-group mt-3">
+                    <input type="text" class="form-control" id="addressline1" placeholder="Почтовый адрес строка 1" />
+                </div>
+                <div class="input-group mt-3">
+                    <input type="text" class="form-control" id="addressline2" placeholder="Почтовый адрес строка 2" />
+                </div>
+            </div>
+            <div class="d-block mx-auto mt-3">
+                <button [disabled]="loading" class="btn btn-primary">Сохранить изменения</button>
+                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </div>
+        </div>
+    </form>
+
+    <form name="form" class="col-4 " (ngSubmit)="f.form.valid && changePassword()" #f="ngForm" novalidate>
+        <div class="form-group col-10 d-block mx-auto border">
+            <h4>Сменить пароль</h4>
+
+            <div class="d-block mx-auto">
+                <label for="InputOldPassword">Старый пароль</label>
+
+                <div class="input-group">
+
+                    <div class="input-group-addon">
+                        <img src="../../../Images/Logos/social/lock.svg" class="rounded-circle" style="height:25px;width:25px" />
+                    </div>
+                    <input type="password" id="InputOldPassword" placeholder="Старый пароль" class="form-control">
+                </div>
+            </div>
+            <div class="d-block mx-auto">
+                <label for="InputNewPassword">Новый пароль</label>
+
+                <div class="input-group">
+
+                    <div class="input-group-addon">
+                        <img src="../../../Images/Logos/social/lock-open.svg" class="rounded-circle" style="height:25px;width:25px" />
+                    </div>
+                    <input type="password" id="InputNewPassword" placeholder="Новый пароль" class="form-control">
+                </div>
+            </div>
+            <div class="d-block mx-auto">
+                <label for="RepeatNewPassword">Повторите новый пароль</label>
+
+                <div class="input-group">
+
+                    <div class="input-group-addon">
+                        <img src="../../../Images/Logos/social/lock-open.svg" class="rounded-circle" style="height:25px;width:25px" />
+                    </div>
+                    <input type="password" id="RepeatNewPassword" placeholder="Повторите новый пароль" class="form-control">
+                </div>
+            </div>
+            <div class="d-block mx-auto mt-3">
+                <button [disabled]="loading" class="btn btn-primary">Сохранить изменения</button>
+                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </div>
+        </div>
+    </form>
+
+
+    <form name="form" class="col-4 " (ngSubmit)="changeContacts()" [formGroup]="contactsForm" novalidate>
+        <div class="form-group col-10 d-block mx-auto border">
+            <h4>Контакты</h4>
+
+            <div class="d-block mx-auto">
+                <label for="Skype">Skype</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <img src="../../../Images/Logos/social/mail.svg" class="rounded-circle" style="height:25px;width:25px" />
+                    </div>
+                    <input type="text" formControlName="Skype" id="Skype" placeholder="Skype" class="form-control" #Skype>
+                </div>
+            </div>
+
+            <div class="d-block mx-auto">
+                <label for="Telephone">Телефон</label>
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <img src="../../../Images/Logos/social/phone.svg" class="rounded-circle" style="height:25px;width:25px" />
+                    </div>
+                    <input type="text" formControlName="Telephone" id="Telephone" placeholder="Телефон" class="form-control" #Telephone>
+                </div>
+            </div>
+            <div class="d-block mx-auto mt-3">
+                <button [disabled]="loading" class="btn btn-primary">Сохранить изменения</button>
+                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </div>
+        </div>
+    </form>
+
+</div>

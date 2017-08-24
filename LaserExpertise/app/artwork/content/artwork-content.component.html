@@ -1,45 +1,47 @@
 ﻿
 <div class="row">
-    <div class="col-md-3  text-center">
-        <img class="col-md-12" src="{{artwork?.Pictures[0].Path}}" style="height:200px;" />
-        <div class="col-md-12">
+    <div class="col-3  text-center">
+        <img class="col-12" src="{{artwork?.Pictures[0].Path}}" style="height:200px;" />
+        <div class="col-12">
             <h4>Название картины: {{artwork?.Name}} </h4>
             <hr />
             <h5>Описание: {{artwork?.Description}}</h5>
             <hr />
-            <a class="col-md-12" routerLink="/artworks" routerLinkActive="active">Посмотреть все</a>
+            <a class="d-block active text-black" routerLink="/artworks" routerLinkActive="active">Посмотреть все картины</a>
 
-            <a class="col-md-12" routerLink="/artworks" routerLinkActive="active">Все картины артиста</a>
+            <a class="d-block active text-black" routerLink="/artworks" routerLinkActive="active">Все картины артиста</a>
 
-            <a class="col-md-12" routerLink="/artworks" routerLinkActive="active">Посмотреть спектры</a>
+            <a class="d-block active text-black" routerLink="/artworks" routerLinkActive="active">Посмотреть спектры</a>
 
-            <a class="col-md-12" routerLink="/artworks" routerLinkActive="active">Посмотреть используемые технологии</a>
+            <a class="d-block active text-black" routerLink="/artworks" routerLinkActive="active">Посмотреть используемые технологии</a>
 
-            <a class="col-md-12" routerLink="/artworks" routerLinkActive="active">Другая информация</a>
+            <a class="d-block active text-black" routerLink="/artworks" routerLinkActive="active">Другая информация</a>
         </div>
     </div>
-    <div class="col-md-9 vertical-line-left">
-        <div id="myCarousel"  class="carousel slide " data-ride="carousel" style="height:400px;">
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner row" *ngFor="let image of  artwork?.Pictures" >
-                <div class="item active col-md-12  text-center">
-                    <img class="col-md-8 col-md-offset-2" style="height:100%"  src="{{image.Path}}" alt="Los Angeles">
+    <div class="col-9 vertical-line-left">
+
+        <div id="carouselForPictures" class="carousel slide " data-ride="carousel2">
+            <div class="carousel-inner ">
+                <div class="carousel-item" *ngFor="let image of artwork?.Pictures; let i=index" [ngClass]="{'active': i===0}">
+                    <img src="{{image.Path}}" class="w-50 h-50 d-block mx-auto" />
                 </div>
             </div>
-
-            <!-- Left and right controls -->
-            <a *ngIf="artwork?.Pictures>1" class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
+            <a class="carousel-control-prev" href="#carouselForPictures" role="button" data-slide="prev">
+                <img src="../../../Images/Logos/social/chevron-left.svg" style="height:40px; width:40px">
                 <span class="sr-only">Previous</span>
             </a>
-            <a *ngIf="artwork?.Pictures>1" class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
+            <a class="carousel-control-next" href="#carouselForPictures" role="button" data-slide="next">
+                <img src="../../../Images/Logos/social/chevron-right.svg" style="height:40px; width:40px">
                 <span class="sr-only">Next</span>
             </a>
-
-
         </div>
+
     </div>
+
+
+
+
+
 </div>
 
 

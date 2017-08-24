@@ -4,15 +4,17 @@
     <div class="panel-heading">
 
         <div class="form-row justify-content-end">
-            <label class="col-2 mt-2">Total:{{filteredItems.length}} Found products </label>
-            <select id="pageSelector" class="form-control col-2" [(ngModel)]="pageSize"
+            <div class="col-2 mt-2">
+                <label class="col-lg-10 ml-10">Total:{{filteredItems.length}} Found products </label>
+            </div>
+                <select id="pageSelector" class="form-control col-2" [(ngModel)]="pageSize"
                     (ngModelChange)="onChangePageSize($event)">
                 <option [ngValue]=6>6</option>
                 <option [ngValue]=12>12</option>
                 <option [ngValue]=24>24</option>
                 <option [ngValue]=48>48</option>
             </select>
-            <label for="pageSelector" class="col-1 mt-2">items in page</label>
+            <label for="pageSelector" class="col-1 mt-2">items on page</label>
         </div>
 
     </div>

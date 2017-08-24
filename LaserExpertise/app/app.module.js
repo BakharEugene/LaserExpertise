@@ -18,6 +18,7 @@ const artwork_module_1 = require('./artwork/artwork.module');
 const home_module_1 = require('./home/home.module');
 const register_module_1 = require('./authorization/register/register.module');
 const login_module_1 = require('./authorization/login/login.module');
+const profile_module_1 = require('./authorization/profile/profile.module');
 const alert_component_1 = require('./authorization/services/alert/alert.component');
 const alert_service_1 = require('./authorization/services/alert/alert.service');
 let AppModule = class AppModule {
@@ -32,11 +33,13 @@ AppModule = __decorate([
             home_module_1.HomeModule,
             register_module_1.RegisterModule,
             login_module_1.LoginModule,
+            profile_module_1.ProfileModule
         ],
         providers: [
             alert_service_1.AlertService
         ],
-        declarations: [app_component_1.AppComponent,
+        declarations: [
+            app_component_1.AppComponent,
             alert_component_1.AlertComponent
         ],
         bootstrap: [app_component_1.AppComponent]

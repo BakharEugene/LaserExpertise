@@ -9,6 +9,7 @@ import {HomeModule} from './home/home.module'
 import {RegisterModule} from './authorization/register/register.module'
 import {LoginModule} from './authorization/login/login.module'
 import {AlertModule} from './authorization/services/alert/alert.module';
+import {ProfileModule} from './authorization/profile/profile.module'
 
 import { AlertComponent } from './authorization/services/alert/alert.component';
 import { AlertService} from './authorization/services/alert/alert.service';
@@ -24,12 +25,13 @@ import { AlertService} from './authorization/services/alert/alert.service';
         HomeModule,
         RegisterModule,
         LoginModule,
-
+        ProfileModule
     ],
     providers: [
         AlertService
     ],
-    declarations: [AppComponent,
+    declarations: [
+        AppComponent,
         AlertComponent
     ],
     bootstrap: [AppComponent]

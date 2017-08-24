@@ -36,7 +36,6 @@ let ArtworkComponent = class ArtworkComponent {
         });
     }
     createPagination() {
-        alert(this.pageSize);
         this.currentIndex = 1;
         this.pageStart = 1;
         this.pages = parseInt("" + this.filteredItems.length / this.pageSize);

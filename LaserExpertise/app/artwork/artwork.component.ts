@@ -48,7 +48,6 @@ export class ArtworkComponent implements OnInit {
 
 
     createPagination(): void {
-        alert(this.pageSize);
         this.currentIndex = 1;
         this.pageStart = 1;
         this.pages = parseInt("" + this.filteredItems.length / this.pageSize);

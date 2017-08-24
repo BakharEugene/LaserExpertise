@@ -15,6 +15,7 @@ const artwork_content_component_1 = require('./artwork/content/artwork-content.c
 const home_component_1 = require('./home/home.component');
 const login_component_1 = require('./authorization/login/login.component');
 const register_component_1 = require('./authorization/register/register.component');
+const profile_component_1 = require('./authorization/profile/profile.component');
 const routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'artworks', component: artwork_component_1.ArtworkComponent },
@@ -23,6 +24,7 @@ const routes = [
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'register', component: register_component_1.RegisterComponent },
     { path: 'logout', component: login_component_1.LoginComponent },
+    { path: 'profile', component: profile_component_1.ProfileComponent }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };

@@ -7,9 +7,8 @@ export class User {
     Telephone: string;
     Skype: string
     Role: Role;
-    Gender: boolean;
+    Gender: string;
     Password: string;
-
 
     constructor(username: string, password: string) {
         this.Email = username;

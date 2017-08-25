@@ -42,7 +42,8 @@ export class ProfileComponent implements OnInit {
         });
         this.personalDataForm = new FormGroup({
             FirstName: new FormControl('', [Validators.required, Validators.minLength(4)]),
-            FamilyName: new FormControl('', [Validators.required, Validators.minLength(2)])
+            FamilyName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+            Gender : new FormControl('')
         });
         this.changePasswordForm = new FormGroup({
             OldPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
@@ -55,6 +56,11 @@ export class ProfileComponent implements OnInit {
         this.contactsForm.setValue({
             Skype: this.user.Skype,
             Telephone: this.user.Telephone
+        });
+        this.personalDataForm.setValue({
+            FirstName: this.user.FirstName,
+            FamilyName: this.user.LastName,
+            Gender: this.user.Gender
         });
     }
     profile() {

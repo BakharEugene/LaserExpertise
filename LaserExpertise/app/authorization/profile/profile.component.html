@@ -1,12 +1,10 @@
 ﻿<h4 class="text-center">Личный кабинет</h4>
 <div class="row mt-5">
 
-    <form name="form" class="col-4 " (ngSubmit)="f.form.valid && profile()" #f="ngForm" novalidate>
+    <form name="form" class="col-4 " (ngSubmit)="f.form.valid && profile()" [formGroup]="personalDataForm" novalidate>
         <div class="form-group col-10 d-block mx-auto border">
             <h4>Ваши данные</h4>
             <div class="d-block mx-auto">
-                
-                
                 <div class="d-block mx-auto">
                     <label for="familyname">Фамилия</label>
 
@@ -14,7 +12,7 @@
                         <div class="input-group-addon">
                             <img src="../../../Images/Logos/social/user.svg" class="rounded-circle" style="height:25px;width:25px" />
                         </div>
-                        <input type="text" class="form-control" id="familyname" placeholder="Фамилия">
+                        <input type="text" formControlName="FamilyName" class="form-control" id="familyname" placeholder="Фамилия" #FamilyName>
                     </div>
                 </div>
 
@@ -24,22 +22,22 @@
                         <div class="input-group-addon">
                             <img src="../../../Images/Logos/social/user.svg" class="rounded-circle" style="height:25px;width:25px" />
                         </div>
-                        <input type="text" class="form-control" id="firstname" placeholder="Имя">
+                        <input type="text" class="form-control" id="firstname" formControlName="FirstName" placeholder="Имя" #FirstName>
                     </div>
                 </div>
 
-
-                <label for="gender">Пол</label>
+                govno
+                <label for="Gender">Пол</label>
 
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="gender" id="gender" value="male" checked>
+                        <input class="form-check-input" type="radio" name="Gender" id="Gender" formControlName="Gender" #Gender value="0" [checked]="personalDataForm.controls['Gender'].value === 0">
                         Мужской
                     </label>
                 </div>
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="gender" id="gender" value="female">
+                        <input class="form-check-input" type="radio" name="Gender" id="Gender" formControlName="Gender" #Gender value="1" [checked]="personalDataForm.controls['Gender'].value === 1">
                         Женский
                     </label>
                 </div>

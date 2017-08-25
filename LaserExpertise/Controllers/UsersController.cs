@@ -32,6 +32,7 @@ namespace LaserExpertise.Controllers
             tempuser = unit.Users.GetAll().FirstOrDefault(x => x.Email == user.Email);
             if (tempuser == null)
             {
+
                 unit.Users.Create(user);
                 unit.Save();
                 return Json("Registration success", JsonRequestBehavior.AllowGet);

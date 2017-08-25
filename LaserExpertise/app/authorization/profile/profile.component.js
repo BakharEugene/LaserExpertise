@@ -32,7 +32,8 @@ let ProfileComponent = class ProfileComponent {
         });
         this.personalDataForm = new forms_1.FormGroup({
             FirstName: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(4)]),
-            FamilyName: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(2)])
+            FamilyName: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(2)]),
+            Gender: new forms_1.FormControl('')
         });
         this.changePasswordForm = new forms_1.FormGroup({
             OldPassword: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(6)]),
@@ -44,6 +45,11 @@ let ProfileComponent = class ProfileComponent {
         this.contactsForm.setValue({
             Skype: this.user.Skype,
             Telephone: this.user.Telephone
+        });
+        this.personalDataForm.setValue({
+            FirstName: this.user.FirstName,
+            FamilyName: this.user.LastName,
+            Gender: this.user.Gender
         });
     }
     profile() {

@@ -43,7 +43,8 @@ export class ProfileComponent implements OnInit {
         this.personalDataForm = new FormGroup({
             FirstName: new FormControl('', [Validators.required, Validators.minLength(4)]),
             FamilyName: new FormControl('', [Validators.required, Validators.minLength(2)]),
-            Gender : new FormControl('')
+            Gender: new FormControl(''),
+            Birthday: new FormControl('')
         });
         this.changePasswordForm = new FormGroup({
             OldPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
@@ -57,10 +58,13 @@ export class ProfileComponent implements OnInit {
             Skype: this.user.Skype,
             Telephone: this.user.Telephone
         });
+        alert(JSON.stringify(this.user.BirthDay));
         this.personalDataForm.setValue({
             FirstName: this.user.FirstName,
             FamilyName: this.user.LastName,
-            Gender: this.user.Gender
+            Gender: this.user.Gender,
+            Birthday: this.user.BirthDay
+
         });
     }
     profile() {

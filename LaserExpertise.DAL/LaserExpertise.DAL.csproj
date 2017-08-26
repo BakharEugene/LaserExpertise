@@ -70,6 +70,18 @@
     <Compile Include="Migrations\201705061250291_initial3.Designer.cs">
       <DependentUpon>201705061250291_initial3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708261230024_initial4.cs" />
+    <Compile Include="Migrations\201708261230024_initial4.Designer.cs">
+      <DependentUpon>201708261230024_initial4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708262131181_initial5.cs" />
+    <Compile Include="Migrations\201708262131181_initial5.Designer.cs">
+      <DependentUpon>201708262131181_initial5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708262131558_initial6.cs" />
+    <Compile Include="Migrations\201708262131558_initial6.Designer.cs">
+      <DependentUpon>201708262131558_initial6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Artist\Artist.cs" />
     <Compile Include="Models\Information\Enums.cs" />
@@ -113,6 +125,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705061250291_initial3.resx">
       <DependentUpon>201705061250291_initial3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708261230024_initial4.resx">
+      <DependentUpon>201708261230024_initial4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708262131181_initial5.resx">
+      <DependentUpon>201708262131181_initial5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708262131558_initial6.resx">
+      <DependentUpon>201708262131558_initial6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

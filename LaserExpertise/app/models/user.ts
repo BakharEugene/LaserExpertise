@@ -9,6 +9,8 @@ export class User {
     Role: Role;
     Gender: string;
     Password: string;
+    BirthDay: Date;
+
 
     constructor(username: string, password: string) {
         this.Email = username;

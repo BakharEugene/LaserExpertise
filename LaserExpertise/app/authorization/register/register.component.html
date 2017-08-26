@@ -87,21 +87,36 @@
 
             <div class="form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="gender" [(ngModel)]="model.Gender" #gender="ngModel" id="gender" value="1" checked>Мужской
+                    <input class="form-check-input" type="radio" name="gender" [(ngModel)]="model.Gender" #gender="ngModel" id="gender" value="0" checked>Мужской
                 </label>
             </div>
             <div class="form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="gender" [(ngModel)]="model.Gender" #gender="ngModel" id="gender" value="2">Женский
+                    <input class="form-check-input" type="radio" name="gender" [(ngModel)]="model.Gender" #gender="ngModel" id="gender" value="1">Женский
                 </label>
+
+            </div>
+            <div *ngIf="gender.errors && (gender.dirty || gender.touched)"
+                 class="alert alert-danger">
+                <div [hidden]="!gender.errors.required">
+                    Gender is required
+                </div>
             </div>
         </div>
         <div class="col-4">
-            <label for="datetime">
+            <label for="birthday">
                 Дата рождения
             </label>
             <div class="input-group">
-                <input type="date" class="form-control" id="datetime" placeholder="birthday" />
+                <input type="date" class="form-control" name="birthday" id="birthday" placeholder="birthday" 
+                   [(ngModel)]="model.birthday"
+                   #birthday="ngModel"/>
+                <div *ngIf="birthday.errors && (birthday.dirty || birthday.touched)"
+                     class="alert alert-danger">
+                    <div [hidden]="!birthday.errors.required">
+                        Birthday is required
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -150,7 +165,7 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-4">
+        <div class="col-8">
             <button [disabled]="loading" class="btn btn-primary">Register</button>
             <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
             <a [routerLink]="['/login']" class="btn btn-primary">Cancel</a>

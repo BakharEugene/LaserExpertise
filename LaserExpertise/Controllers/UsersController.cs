@@ -1,10 +1,12 @@
 ﻿using LaserExpertise.DAL.Models.Information;
 using LaserExpertise.DAL.Models.User;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace LaserExpertise.Controllers
@@ -45,6 +47,7 @@ namespace LaserExpertise.Controllers
         [HttpPost]
         public JsonResult Login(LoginModel login)
         {
+            
             User user = unit.Users.GetAll().FirstOrDefault(x => x.Email == login.Email && x.Password == login.Password);
             return Json(user, JsonRequestBehavior.AllowGet);
         }

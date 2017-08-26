@@ -16,4 +16,5 @@ namespace LaserExpertise.DAL.Models.User
 //        public virtual ICollection<ServiceStates> ServiceStateses { get; set; }
 
     }
+
 }

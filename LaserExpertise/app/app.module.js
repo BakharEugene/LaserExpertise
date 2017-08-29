@@ -19,8 +19,8 @@ const home_module_1 = require('./home/home.module');
 const register_module_1 = require('./authorization/register/register.module');
 const login_module_1 = require('./authorization/login/login.module');
 const profile_module_1 = require('./authorization/profile/profile.module');
-const alert_component_1 = require('./authorization/services/alert/alert.component');
-const alert_service_1 = require('./authorization/services/alert/alert.service');
+const alert_component_1 = require('./alert/alert.component');
+const alert_service_1 = require('./alert/alert.service');
 let AppModule = class AppModule {
 };
 AppModule = __decorate([

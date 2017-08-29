@@ -10,56 +10,59 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require('@angular/core');
 const router_1 = require('@angular/router');
-const forms_1 = require("@angular/forms");
+const forms_1 = require('@angular/forms');
 const authentication_service_1 = require('../services/authentication.service');
-const alert_service_1 = require('../services/alert/alert.service');
+const alert_service_1 = require('../../alert/alert.service');
 let ProfileComponent = class ProfileComponent {
     constructor(route, router, authenticationService, alertService) {
         this.route = route;
         this.router = router;
         this.authenticationService = authenticationService;
         this.alertService = alertService;
+        this.fb = new forms_1.FormBuilder();
     }
     ngOnInit() {
         this.user = JSON.parse(localStorage.getItem('currentUser'));
-        this.creatyEmptyForms();
-        this.FillEmptyForms();
+        this.createForms();
     }
-    creatyEmptyForms() {
-        this.contactsForm = new forms_1.FormGroup({
-            Skype: new forms_1.FormControl('', forms_1.Validators.required),
-            Telephone: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(7), forms_1.Validators.pattern("^\d+$")])
+    createForms() {
+        this.contactsForm = this.fb.group({
+            Skype: [this.user.Skype, [forms_1.Validators.required]],
+            Telephone: [this.user.Telephone, [forms_1.Validators.required, forms_1.Validators.minLength(7), forms_1.Validators.pattern("^\d+$")]]
         });
-        this.personalDataForm = new forms_1.FormGroup({
-            FirstName: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(4)]),
-            FamilyName: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(2)]),
-            Gender: new forms_1.FormControl(''),
-            Birthday: new forms_1.FormControl('')
+        this.personalDataForm = this.fb.group({
+            FirstName: [this.user.FirstName, [forms_1.Validators.required, forms_1.Validators.minLength(4)]],
+            LastName: [this.user.LastName, [forms_1.Validators.required, forms_1.Validators.minLength(2)]],
+            Gender: [this.user.Gender],
+            Birthday: [this.user.BirthDay]
         });
-        this.changePasswordForm = new forms_1.FormGroup({
-            OldPassword: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(6)]),
-            NewPassword: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(6)]),
-            RepeatNewPassword: new forms_1.FormControl('', [forms_1.Validators.required, forms_1.Validators.minLength(6)]),
+        this.changePasswordForm = this.fb.group({
+            OldPassword: ['', [forms_1.Validators.required, forms_1.Validators.minLength(6)]],
+            Passwords: this.fb.group({
+                NewPassword: ['', [forms_1.Validators.required, forms_1.Validators.minLength(6)]],
+                RepeatNewPassword: ['', [forms_1.Validators.required, forms_1.Validators.minLength(6)]]
+            }, {
+                validator: this.areEqual
+            })
         });
     }
-    FillEmptyForms() {
-        this.contactsForm.setValue({
-            Skype: this.user.Skype,
-            Telephone: this.user.Telephone
-        });
-        alert(JSON.stringify(this.user.BirthDay));
-        this.personalDataForm.setValue({
-            FirstName: this.user.FirstName,
-            FamilyName: this.user.LastName,
-            Gender: this.user.Gender,
-            Birthday: this.user.BirthDay
-        });
+    areEqual(group) {
+        var valid = false;
+        var val1 = group.controls["NewPassword"].value;
+        var val2 = group.controls["RepeatNewPassword"].value;
+        if (val1 === val2) {
+            valid = true;
+        }
+        if (valid) {
+            return null;
+        }
+        return {
+            areEqual: true
+        };
     }
     profile() {
-        alert("mem");
     }
     changePassword() {
-        alert("kek");
     }
     changeContacts(skype, telephone) {
         alert(skype);

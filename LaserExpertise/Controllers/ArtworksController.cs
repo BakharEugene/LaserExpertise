@@ -21,7 +21,7 @@ namespace LaserExpertise.Controllers
         public JsonResult Index()
         {
             var artworks = unit.Artworks.GetAll();
-            return Json(artworks,JsonRequestBehavior.AllowGet);
+            return Json(artworks, JsonRequestBehavior.AllowGet);
         }
         [HttpGet]
         public JsonResult Detail(int id)
@@ -29,33 +29,11 @@ namespace LaserExpertise.Controllers
             var artwork = unit.Artworks.GetById(id);
             return Json(artwork, JsonRequestBehavior.AllowGet);
         }
-        // GET: Artworks
 
-
-      
-        // GET: Artworks/Create
-        public ActionResult Create()
-        {
-            ViewBag.ArtistId = new SelectList(unit.Users.GetAll(), "Id", "Email");
-            return View();
-        }
-
-        // POST: Artworks/Create
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,ArtistId,Genre,School,Description")] Artwork artwork)
+        public JsonResult Create(Artwork artwork)
         {
-            if (ModelState.IsValid)
-            {
-                unit.Artworks.Create(artwork);
-                unit.Save();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.ArtistId = new SelectList(unit.Users.GetAll(), "Id", "Email", artwork.ArtistId);
-            return View(artwork);
+                return Json("Kek", JsonRequestBehavior.AllowGet);
         }
 
         // GET: Artworks/Edit/5

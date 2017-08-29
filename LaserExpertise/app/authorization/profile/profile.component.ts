@@ -1,11 +1,11 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Response} from '@angular/http';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
-import {AlertService} from '../services/alert/alert.service';
+import {AlertService} from '../../alert/alert.service';
 import {User} from '../../models/user';
-
+import { PasswordValidation }  from '../services/passwordvalidation.service';
 
 @Component({
     templateUrl: 'app/authorization/profile/profile.component.html',
@@ -16,6 +16,7 @@ import {User} from '../../models/user';
 export class ProfileComponent implements OnInit {
 
     user: User;
+    fb: FormBuilder;
     contactsForm: FormGroup;
     personalDataForm: FormGroup;
     changePasswordForm: FormGroup;
@@ -25,53 +26,63 @@ export class ProfileComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService) { }
+        private alertService: AlertService) {
+        this.fb = new FormBuilder();
+    }
 
 
     ngOnInit() {
         this.user = JSON.parse(localStorage.getItem('currentUser'));
-        this.creatyEmptyForms();
-        this.FillEmptyForms();
+        this.createForms();
     }
 
-    
-    private creatyEmptyForms(): void {
-        this.contactsForm = new FormGroup({
-            Skype: new FormControl('', Validators.required),
-            Telephone: new FormControl('', [Validators.required, Validators.minLength(7), Validators.pattern("^\d+$")])
-        });
-        this.personalDataForm = new FormGroup({
-            FirstName: new FormControl('', [Validators.required, Validators.minLength(4)]),
-            FamilyName: new FormControl('', [Validators.required, Validators.minLength(2)]),
-            Gender: new FormControl(''),
-            Birthday: new FormControl('')
-        });
-        this.changePasswordForm = new FormGroup({
-            OldPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
-            NewPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
-            RepeatNewPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
-        });
 
-    }
-    private FillEmptyForms(): void {
-        this.contactsForm.setValue({
-            Skype: this.user.Skype,
-            Telephone: this.user.Telephone
+    private createForms(): void {
+        this.contactsForm = this.fb.group({
+            Skype: [this.user.Skype, [Validators.required]],
+            Telephone: [this.user.Telephone, [Validators.required, Validators.minLength(7), Validators.pattern("^\d+$")]]
         });
-        alert(JSON.stringify(this.user.BirthDay));
-        this.personalDataForm.setValue({
-            FirstName: this.user.FirstName,
-            FamilyName: this.user.LastName,
-            Gender: this.user.Gender,
-            Birthday: this.user.BirthDay
+        this.personalDataForm = this.fb.group({
+            FirstName: [this.user.FirstName, [Validators.required, Validators.minLength(4)]],
+            LastName: [this.user.LastName, [Validators.required, Validators.minLength(2)]],
+            Gender: [this.user.Gender],
+            Birthday: [this.user.BirthDay]
+        });
+        this.changePasswordForm = this.fb.group({
+            OldPassword: ['', [Validators.required, Validators.minLength(6)]],
+            Passwords: this.fb.group({
+                NewPassword: ['', [Validators.required, Validators.minLength(6)]],
+                RepeatNewPassword: ['', [Validators.required, Validators.minLength(6)]]
+            },
+                {
+                    validator: this.areEqual
+                }
+            )
 
         });
     }
+
+    areEqual(group: FormGroup) {
+        var valid = false;
+
+        var val1 = group.controls["NewPassword"].value;
+        var val2 = group.controls["RepeatNewPassword"].value;
+
+        if (val1 === val2) { valid = true;}
+        
+        if (valid) {
+            return null;
+        }
+
+        return {
+            areEqual: true
+        };
+    }
+
+
     profile() {
-        alert("mem");
     }
     changePassword() {
-        alert("kek");
     }
     changeContacts(skype: string, telephone: string) {
         alert(skype);

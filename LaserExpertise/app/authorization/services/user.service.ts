@@ -20,6 +20,10 @@ export class UserService {
         return this.http.post('/Users/Create', user, this.jwt()).map((response: Response) => response.json());
     }
 
+    changePassword(user: User, password: string) {
+        return this.http.put('/Users/UpdatePassword' + user.Id, password, this.jwt()).map((response: Response) => response.json());
+    }
+
     update(user: User) {
         return this.http.put('/Users/Users/' + user.Id, user, this.jwt()).map((response: Response) => response.json());
     }
@@ -29,7 +33,6 @@ export class UserService {
     }
 
     // private helper methods
-
     private jwt() {
         // create authorization header with jwt token
         let currentUser = JSON.parse(localStorage.getItem('currentUser'));

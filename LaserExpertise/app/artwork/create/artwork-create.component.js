@@ -10,40 +10,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require('@angular/core');
 const router_1 = require('@angular/router');
-const authentication_service_1 = require('../services/authentication.service');
 const alert_service_1 = require('../../alert/alert.service');
-let LoginComponent = class LoginComponent {
-    constructor(route, router, authenticationService, alertService) {
-        this.route = route;
+const artwork_service_1 = require('../artwork.service');
+let ArtworCreateComponent = class ArtworCreateComponent {
+    constructor(router, artworkService, alertService) {
         this.router = router;
-        this.authenticationService = authenticationService;
+        this.artworkService = artworkService;
         this.alertService = alertService;
         this.model = {};
-        this.loading = false;
     }
     ngOnInit() {
-        // reset login status
-        this.authenticationService.logout();
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
-    login() {
+    create() {
         this.loading = true;
-        this.authenticationService.login(this.model.username, this.model.password)
+        this.artworkService.create(this.model)
             .subscribe(data => {
-            this.router.navigate([this.returnUrl]);
+            this.alertService.success(JSON.stringify(data), true);
+            this.router.navigate(['/artworks']);
         }, error => {
-            this.alertService.error(error);
+            this.alertService.error(JSON.stringify(error));
             this.loading = false;
         });
     }
 };
-LoginComponent = __decorate([
+ArtworCreateComponent = __decorate([
     core_1.Component({
-        templateUrl: 'app/authorization/login/login.component.html',
-        selector: 'login',
+        selector: 'artwork-create',
+        templateUrl: 'app/artwork/content/artwork-create.component.html',
+        providers: [artwork_service_1.ArtworkService]
     }), 
-    __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, authentication_service_1.AuthenticationService, alert_service_1.AlertService])
-], LoginComponent);
-exports.LoginComponent = LoginComponent;
-//# sourceMappingURL=login.component.js.map
+    __metadata('design:paramtypes', [router_1.Router, artwork_service_1.ArtworkService, alert_service_1.AlertService])
+], ArtworCreateComponent);
+exports.ArtworCreateComponent = ArtworCreateComponent;
+//# sourceMappingURL=artwork-create.component.js.map

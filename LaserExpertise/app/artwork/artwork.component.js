@@ -24,7 +24,7 @@ let ArtworkComponent = class ArtworkComponent {
         this.load();
     }
     load() {
-        this.httpService.Artworks()
+        this.httpService.artworks()
             .subscribe((data) => {
             let artworksList = data.json();
             for (let index in artworksList) {
@@ -85,9 +85,9 @@ ArtworkComponent = __decorate([
     core_1.Component({
         selector: 'artwork',
         templateUrl: 'app/artwork/artwork.component.html',
-        providers: [artwork_service_1.HttpService]
+        providers: [artwork_service_1.ArtworkService]
     }), 
-    __metadata('design:paramtypes', [artwork_service_1.HttpService])
+    __metadata('design:paramtypes', [artwork_service_1.ArtworkService])
 ], ArtworkComponent);
 exports.ArtworkComponent = ArtworkComponent;
 //# sourceMappingURL=artwork.component.js.map

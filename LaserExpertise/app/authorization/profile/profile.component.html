@@ -10,9 +10,9 @@
 
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <img src="../../../Images/Logos/social/user.svg" class="rounded-circle" style="height:25px;width:25px" />
+                            <img src="../../../Images/Logos/social/user.svg" class="" style="height:25px;width:25px" />
                         </div>
-                        <input type="text" formControlName="FamilyName" class="form-control" id="familyname" placeholder="Фамилия" #FamilyName>
+                        <input type="text" formControlName="LastName" name="LastName" class="form-control" id="familyname" placeholder="Фамилия" #FamilyName>
                     </div>
                 </div>
 
@@ -20,9 +20,9 @@
                     <label for="firstname">Имя</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <img src="../../../Images/Logos/social/user.svg" class="rounded-circle" style="height:25px;width:25px" />
+                            <img src="../../../Images/Logos/social/user.svg" class="" style="height:25px;width:25px" />
                         </div>
-                        <input type="text" class="form-control" id="firstname" formControlName="FirstName" placeholder="Имя" #FirstName>
+                        <input type="text" class="form-control" id="firstname" name="FirstName" formControlName="FirstName" placeholder="Имя" #FirstName>
                     </div>
                 </div>
 
@@ -30,13 +30,13 @@
 
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="Gender" id="Gender" formControlName="Gender" #Gender value="0" [checked]="personalDataForm.controls['Gender'].value === 0">
+                        <input class="form-check-input" type="radio" name="Gender" id="Gender" formControlName="Gender" #Gender value="0" [checked]="Gender.value === 0">
                         Мужской
                     </label>
                 </div>
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="Gender" id="Gender" formControlName="Gender" #Gender value="1" [checked]="personalDataForm.controls['Gender'].value === 1">
+                        <input class="form-check-input" type="radio" name="Gender" id="Gender" formControlName="Gender" #Gender value="1" [checked]="Gender.value === 1">
                         Женский
                     </label>
                 </div>
@@ -45,7 +45,11 @@
                 <label for="Birthday">
                     Дата рождения
                 </label>
+
                 <div class="input-group">
+                    <div class="input-group-addon">
+                        <img src="../../../Images/Logos/social/calendar.svg" class="" style="height:25px;width:25px" />
+                    </div>
                     <input type="date" class="form-control" id="Birthday" name="Birthday" formControlName="Birthday" placeholder="Birthday" />
                 </div>
             </div>
@@ -54,12 +58,21 @@
                     Почтовый адрес
                 </label>
                 <div class="input-group">
+                    <div class="input-group-addon">
+                        <img src="../../../Images/Logos/social/location.svg" class="" style="height:25px;width:25px" />
+                    </div>
                     <input type="text" class="form-control" id="addressindex" placeholder="Почтовый индекс" />
                 </div>
                 <div class="input-group mt-3">
+                    <div class="input-group-addon">
+                        <img src="../../../Images/Logos/social/location.svg" class="" style="height:25px;width:25px" />
+                    </div>
                     <input type="text" class="form-control" id="addressline1" placeholder="Почтовый адрес строка 1" />
                 </div>
                 <div class="input-group mt-3">
+                    <div class="input-group-addon">
+                        <img src="../../../Images/Logos/social/location.svg" class="" style="height:25px;width:25px" />
+                    </div>
                     <input type="text" class="form-control" id="addressline2" placeholder="Почтовый адрес строка 2" />
                 </div>
             </div>
@@ -70,31 +83,34 @@
         </div>
     </form>
 
-    <form name="form" class="col-4 " (ngSubmit)="f.form.valid && changePassword()" #f="ngForm" novalidate>
+
+
+
+
+    <form name="form" class="col-4 " (ngSubmit)="changePassword()" [formGroup]="changePasswordForm" novalidate>
         <div class="form-group col-10 d-block mx-auto border">
             <h4>Сменить пароль</h4>
 
             <div class="d-block mx-auto">
-                <label for="InputOldPassword">Старый пароль</label>
-
+                <label for="OldPassword">Старый пароль</label>
                 <div class="input-group">
-
                     <div class="input-group-addon">
-                        <img src="../../../Images/Logos/social/lock.svg" class="rounded-circle" style="height:25px;width:25px" />
+                        <img src="../../../Images/Logos/social/lock.svg" class="" style="height:25px;width:25px" />
                     </div>
-                    <input type="password" id="InputOldPassword" placeholder="Старый пароль" class="form-control">
+                    <input type="password" id="OldPassword" name="OldPassword" formControlName="OldPassword" placeholder="Старый пароль" class="form-control" required>
                 </div>
             </div>
             <div class="d-block mx-auto">
-                <label for="InputNewPassword">Новый пароль</label>
-
+                <label for="NewPassword">Новый пароль</label>
                 <div class="input-group">
-
                     <div class="input-group-addon">
-                        <img src="../../../Images/Logos/social/lock-open.svg" class="rounded-circle" style="height:25px;width:25px" />
+                        <img src="../../../Images/Logos/social/lock-open.svg" class="" style="height:25px;width:25px" />
                     </div>
-                    <input type="password" id="InputNewPassword" placeholder="Новый пароль" class="form-control">
+                    <div formGroupName="Passwords" class="input-group">
+                        <input type="password" id="NewPassword" name="NewPassword" formControlName="NewPassword" placeholder="Новый пароль" class="form-control" min="6">
+                    </div>
                 </div>
+
             </div>
             <div class="d-block mx-auto">
                 <label for="RepeatNewPassword">Повторите новый пароль</label>
@@ -102,17 +118,28 @@
                 <div class="input-group">
 
                     <div class="input-group-addon">
-                        <img src="../../../Images/Logos/social/lock-open.svg" class="rounded-circle" style="height:25px;width:25px" />
+                        <img src="../../../Images/Logos/social/lock-open.svg" class="" style="height:25px;width:25px" />
                     </div>
-                    <input type="password" id="RepeatNewPassword" placeholder="Повторите новый пароль" class="form-control">
+                    <div formGroupName="Passwords" class="input-group">
+                        <input type="password" id="RepeatNewPassword" formControlName="RepeatNewPassword" name="RepeatNewPassword" placeholder="Повторите новый пароль" class="form-control "  min="6" />
+                    </div>
+
+                    
+                </div>
+                <div *ngIf="changePasswordForm.get('Passwords').hasError('areEqual') " class="alert alert-danger ">
+                    Пароли не совпадают
                 </div>
             </div>
             <div class="d-block mx-auto mt-3">
-                <button [disabled]="loading" class="btn btn-primary">Сохранить изменения</button>
+                <button [disabled]="changePasswordForm.invalid" class="btn btn-primary">Сохранить изменения</button>
                 <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
             </div>
         </div>
     </form>
+
+
+
+
 
 
     <form name="form" class="col-4 " (ngSubmit)="changeContacts()" [formGroup]="contactsForm" novalidate>
@@ -123,7 +150,7 @@
                 <label for="Skype">Skype</label>
                 <div class="input-group">
                     <div class="input-group-addon">
-                        <img src="../../../Images/Logos/social/mail.svg" class="rounded-circle" style="height:25px;width:25px" />
+                        <img src="../../../Images/Logos/social/mail.svg" class="" style="height:25px;width:25px" />
                     </div>
                     <input type="text" formControlName="Skype" id="Skype" placeholder="Skype" class="form-control" #Skype>
                 </div>
@@ -133,7 +160,7 @@
                 <label for="Telephone">Телефон</label>
                 <div class="input-group">
                     <div class="input-group-addon">
-                        <img src="../../../Images/Logos/social/phone.svg" class="rounded-circle" style="height:25px;width:25px" />
+                        <img src="../../../Images/Logos/social/phone.svg" class="" style="height:25px;width:25px" />
                     </div>
                     <input type="text" formControlName="Telephone" id="Telephone" placeholder="Телефон" class="form-control" #Telephone>
                 </div>

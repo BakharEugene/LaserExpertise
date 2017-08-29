@@ -20,7 +20,7 @@ let ArtworkContentComponent = class ArtworkContentComponent {
         this.id = activateRoute.snapshot.params['id'];
     }
     ngOnInit() {
-        this.httpService.ArtworksById(this.id).subscribe((data) => {
+        this.httpService.artworksById(this.id).subscribe((data) => {
             this.artwork = serializable_1.SerializationHelper.toInstance(new artwork_1.Artwork, (JSON.stringify(data.json())));
             alert(JSON.stringify(this.artwork));
         });
@@ -34,9 +34,9 @@ ArtworkContentComponent = __decorate([
     core_1.Component({
         selector: 'artwork-content',
         templateUrl: 'app/artwork/content/artwork-content.component.html',
-        providers: [artwork_service_1.HttpService]
+        providers: [artwork_service_1.ArtworkService]
     }), 
-    __metadata('design:paramtypes', [artwork_service_1.HttpService, router_1.ActivatedRoute])
+    __metadata('design:paramtypes', [artwork_service_1.ArtworkService, router_1.ActivatedRoute])
 ], ArtworkContentComponent);
 exports.ArtworkContentComponent = ArtworkContentComponent;
 //# sourceMappingURL=artwork-content.component.js.map

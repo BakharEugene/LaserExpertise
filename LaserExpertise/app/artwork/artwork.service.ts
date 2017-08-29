@@ -1,18 +1,23 @@
-﻿import {Injectable} from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 
-import {Http} from '@angular/http';
+import { Http } from '@angular/http';
 import { Artwork } from '../models/artwork';
 
 @Injectable()
-export class HttpService {
+export class ArtworkService {
 
     constructor(private http: Http) { }
 
-    Artworks() {
+    artworks() {
         return this.http.get('/Artworks/Index');
     }
-    ArtworksById(id: number) {
+    artworksById(id: number) {
         return this.http.get('/Artworks/Detail/'+id);
+    }
+
+    create(artwork: Artwork) {
+        
+        return this.http.post('/Artworks/Create' + artwork,"");
     }
 }

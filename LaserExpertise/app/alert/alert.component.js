@@ -21,7 +21,7 @@ let AlertComponent = class AlertComponent {
 AlertComponent = __decorate([
     core_1.Component({
         selector: 'alert',
-        templateUrl: 'app/authorization/services/alert/alert.component.html'
+        templateUrl: 'app/alert/alert.component.html'
     }), 
     __metadata('design:paramtypes', [alert_service_1.AlertService])
 ], AlertComponent);

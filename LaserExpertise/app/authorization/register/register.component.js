@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require('@angular/core');
 const router_1 = require('@angular/router');
-const alert_service_1 = require('../services/alert/alert.service');
+const alert_service_1 = require('../../alert/alert.service');
 const user_service_1 = require('../services/user.service');
 let RegisterComponent = class RegisterComponent {
     constructor(router, userService, alertService) {

@@ -10,20 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require('@angular/core');
 const http_1 = require('@angular/http');
-let HttpService = class HttpService {
+let ArtworkService = class ArtworkService {
     constructor(http) {
         this.http = http;
     }
-    Artworks() {
+    artworks() {
         return this.http.get('/Artworks/Index');
     }
-    ArtworksById(id) {
+    artworksById(id) {
         return this.http.get('/Artworks/Detail/' + id);
     }
+    create(artwork) {
+        return this.http.post('/Artworks/Create' + artwork, "");
+    }
 };
-HttpService = __decorate([
+ArtworkService = __decorate([
     core_1.Injectable(), 
     __metadata('design:paramtypes', [http_1.Http])
-], HttpService);
-exports.HttpService = HttpService;
+], ArtworkService);
+exports.ArtworkService = ArtworkService;
 //# sourceMappingURL=artwork.service.js.map

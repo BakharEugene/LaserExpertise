@@ -2,7 +2,7 @@
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../services/authentication.service';
-import {AlertService} from '../services/alert/alert.service';
+import {AlertService} from '../../alert/alert.service';
 import {UserService} from '../services/user.service';
 @Component({
     templateUrl: 'app/authorization/register/register.component.html',

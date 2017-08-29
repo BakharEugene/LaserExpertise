@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit} from '@angular/core';
 import { Response} from '@angular/http';
-import { HttpService} from './artwork.service';
+import { ArtworkService } from './artwork.service';
 import {Artwork} from '../models/artwork';
 import { RouterModule, Routes } from '@angular/router';
 import {SerializationHelper} from '../serialize/serializable'
@@ -9,7 +9,7 @@ import {SerializationHelper} from '../serialize/serializable'
 @Component({
     selector: 'artwork',
     templateUrl: 'app/artwork/artwork.component.html',
-    providers: [HttpService]
+    providers: [ArtworkService]
 })
 export class ArtworkComponent implements OnInit {
 
@@ -21,7 +21,7 @@ export class ArtworkComponent implements OnInit {
     pagesIndex: number[];
     pageStart: number;
 
-    constructor(private httpService: HttpService) {
+    constructor(private httpService: ArtworkService) {
         this.artworks = [];
         this.pagesIndex = [];
         this.filteredItems = [];
@@ -33,7 +33,7 @@ export class ArtworkComponent implements OnInit {
 
 
     private load(): void {
-        this.httpService.Artworks()
+        this.httpService.artworks()
             .subscribe((data: Response) => {
                 let artworksList = data.json();
                 for (let index in artworksList) {

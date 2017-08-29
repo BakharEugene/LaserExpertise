@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Response} from '@angular/http';
 
 import { AuthenticationService } from '../services/authentication.service';
-import {AlertService} from '../services/alert/alert.service';
+import {AlertService} from '../../alert/alert.service';
 import {User} from '../../models/user';
 @Component({
     templateUrl: 'app/authorization/login/login.component.html',

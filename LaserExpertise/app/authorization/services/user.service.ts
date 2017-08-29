@@ -20,8 +20,8 @@ export class UserService {
         return this.http.post('/Users/Create', user, this.jwt()).map((response: Response) => response.json());
     }
 
-    changePassword(user: User, password: string) {
-        return this.http.put('/Users/UpdatePassword' + user.Id, password, this.jwt()).map((response: Response) => response.json());
+    changePassword(oldPassword: string, newPassword: string) {
+        return this.http.put('/Users/UpdatePassword', [oldPassword, newPassword], this.jwt()).map((response: Response) => response.json());
     }
 
     update(user: User) {

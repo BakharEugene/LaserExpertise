@@ -30,13 +30,13 @@
 
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="Gender" id="Gender" formControlName="Gender" #Gender value="0" [checked]="Gender.value === 0">
+                        <input class="form-check-input" type="radio" name="Gender" id="Gender" formControlName="Gender" #Gender value="0" [checked]="personalDataForm.get('Gender').value===0"/>
                         Мужской
                     </label>
                 </div>
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="Gender" id="Gender" formControlName="Gender" #Gender value="1" [checked]="Gender.value === 1">
+                        <input class="form-check-input" type="radio" name="Gender" id="Gender" formControlName="Gender" #Gender value="1" [checked]="personalDataForm.get('Gender').value===1">
                         Женский
                     </label>
                 </div>

@@ -5,6 +5,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
 import {AlertService} from '../../alert/alert.service';
 import {User} from '../../models/user';
+import {UserService} from '../services/user.service';
+
 import { PasswordValidation }  from '../services/passwordvalidation.service';
 
 @Component({
@@ -25,7 +27,7 @@ export class ProfileComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthenticationService,
+        private userService: UserService,
         private alertService: AlertService) {
         this.fb = new FormBuilder();
     }
@@ -68,8 +70,8 @@ export class ProfileComponent implements OnInit {
         var val1 = group.controls["NewPassword"].value;
         var val2 = group.controls["RepeatNewPassword"].value;
 
-        if (val1 === val2) { valid = true;}
-        
+        if (val1 === val2) { valid = true; }
+
         if (valid) {
             return null;
         }
@@ -82,8 +84,22 @@ export class ProfileComponent implements OnInit {
 
     profile() {
     }
+
+
     changePassword() {
+        this.userService.changePassword(this.changePasswordForm.controls["OldPassword"].value, this.changePasswordForm.controls["NewPassword"].value)
+            .subscribe(
+            data => {
+                this.alertService.success(JSON.stringify(data), true);
+                this.router.navigate(['/login']);
+            },
+            error => {
+                this.alertService.error(JSON.stringify(error));
+                this.loading = false;
+            });
     }
+
+
     changeContacts(skype: string, telephone: string) {
         alert(skype);
         alert(telephone)

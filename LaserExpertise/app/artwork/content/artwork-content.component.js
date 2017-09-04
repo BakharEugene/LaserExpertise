@@ -22,7 +22,6 @@ let ArtworkContentComponent = class ArtworkContentComponent {
     ngOnInit() {
         this.httpService.artworksById(this.id).subscribe((data) => {
             this.artwork = serializable_1.SerializationHelper.toInstance(new artwork_1.Artwork, (JSON.stringify(data.json())));
-            alert(JSON.stringify(this.artwork));
         });
     }
 };

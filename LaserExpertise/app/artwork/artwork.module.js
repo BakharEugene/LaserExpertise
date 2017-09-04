@@ -15,6 +15,7 @@ const router_1 = require('@angular/router');
 const forms_1 = require('@angular/forms');
 const artwork_component_1 = require('./artwork.component');
 const artwork_content_component_1 = require('./content/artwork-content.component');
+const artwork_create_component_1 = require('./create/artwork-create.component');
 let ArtworkModule = class ArtworkModule {
 };
 ArtworkModule = __decorate([
@@ -26,7 +27,7 @@ ArtworkModule = __decorate([
             forms_1.FormsModule
         ],
         declarations: [
-            artwork_component_1.ArtworkComponent, artwork_content_component_1.ArtworkContentComponent
+            artwork_component_1.ArtworkComponent, artwork_content_component_1.ArtworkContentComponent, artwork_create_component_1.ArtworCreateComponent
         ],
         bootstrap: [artwork_component_1.ArtworkComponent]
     }), 

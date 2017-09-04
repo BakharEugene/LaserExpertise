@@ -23,7 +23,6 @@ export class ArtworkContentComponent implements OnInit {
     ngOnInit() {
         this.httpService.artworksById(this.id).subscribe((data: Response) => {
             this.artwork = SerializationHelper.toInstance(new Artwork, (JSON.stringify(data.json())));
-            alert(JSON.stringify(this.artwork));
         });
     }
 }   

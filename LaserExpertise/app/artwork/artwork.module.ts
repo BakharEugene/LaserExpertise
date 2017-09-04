@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ArtworkComponent }  from './artwork.component';
 import {ArtworkContentComponent} from './content/artwork-content.component';
+import { ArtworCreateComponent } from './create/artwork-create.component';
 
 @NgModule({
     imports: [
@@ -16,7 +17,7 @@ import {ArtworkContentComponent} from './content/artwork-content.component';
     ],
 
     declarations: [
-        ArtworkComponent, ArtworkContentComponent
+        ArtworkComponent, ArtworkContentComponent, ArtworCreateComponent
     ],
     bootstrap: [ArtworkComponent]
 })

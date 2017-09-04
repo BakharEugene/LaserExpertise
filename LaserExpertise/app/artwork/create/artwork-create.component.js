@@ -18,6 +18,20 @@ let ArtworCreateComponent = class ArtworCreateComponent {
         this.artworkService = artworkService;
         this.alertService = alertService;
         this.model = {};
+        this.genres = [
+            { id: 1, name: "United States" },
+            { id: 2, name: "Australia" },
+            { id: 3, name: "Canada" },
+            { id: 4, name: "Brazil" },
+            { id: 5, name: "England" }
+        ];
+        this.schools = [
+            { id: 1, name: "kek" },
+            { id: 2, name: "mem" },
+            { id: 3, name: "lol" },
+            { id: 4, name: "lul" },
+            { id: 5, name: "lel" }
+        ];
     }
     ngOnInit() {
     }
@@ -28,6 +42,7 @@ let ArtworCreateComponent = class ArtworCreateComponent {
             this.alertService.success(JSON.stringify(data), true);
             this.router.navigate(['/artworks']);
         }, error => {
+            alert(JSON.stringify(this.model));
             this.alertService.error(JSON.stringify(error));
             this.loading = false;
         });
@@ -36,7 +51,7 @@ let ArtworCreateComponent = class ArtworCreateComponent {
 ArtworCreateComponent = __decorate([
     core_1.Component({
         selector: 'artwork-create',
-        templateUrl: 'app/artwork/content/artwork-create.component.html',
+        templateUrl: 'app/artwork/create/artwork-create.component.html',
         providers: [artwork_service_1.ArtworkService]
     }), 
     __metadata('design:paramtypes', [router_1.Router, artwork_service_1.ArtworkService, alert_service_1.AlertService])

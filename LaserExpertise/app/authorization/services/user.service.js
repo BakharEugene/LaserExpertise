@@ -25,8 +25,8 @@ let UserService = class UserService {
     create(user) {
         return this.http.post('/Users/Create', user, this.jwt()).map((response) => response.json());
     }
-    changePassword(user, password) {
-        return this.http.put('/Users/UpdatePassword' + user.Id, password, this.jwt()).map((response) => response.json());
+    changePassword(oldPassword, newPassword) {
+        return this.http.put('/Users/UpdatePassword', [oldPassword, newPassword], this.jwt()).map((response) => response.json());
     }
     update(user) {
         return this.http.put('/Users/Users/' + user.Id, user, this.jwt()).map((response) => response.json());

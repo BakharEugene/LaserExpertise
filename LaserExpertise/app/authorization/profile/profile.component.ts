@@ -7,8 +7,6 @@ import {AlertService} from '../../alert/alert.service';
 import {User} from '../../models/user';
 import {UserService} from '../services/user.service';
 
-import { PasswordValidation }  from '../services/passwordvalidation.service';
-
 @Component({
     templateUrl: 'app/authorization/profile/profile.component.html',
     selector: 'profile',
@@ -95,7 +93,6 @@ export class ProfileComponent implements OnInit {
             },
             error => {
                 this.alertService.error(JSON.stringify(error));
-                this.loading = false;
             });
     }
 

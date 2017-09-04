@@ -6,22 +6,36 @@ import {AlertService} from '../../alert/alert.service';
 import { ArtworkService } from '../artwork.service';
 @Component({
     selector: 'artwork-create',
-    templateUrl: 'app/artwork/content/artwork-create.component.html',
+    templateUrl: 'app/artwork/create/artwork-create.component.html',
     providers: [ArtworkService]
 })
 export class ArtworCreateComponent implements OnInit {
     model: any = {};
     loading: boolean;
-    artwork: Artwork;
+    genres = [
+        { id: 1, name: "United States" },
+        { id: 2, name: "Australia" },
+        { id: 3, name: "Canada" },
+        { id: 4, name: "Brazil" },
+        { id: 5, name: "England" }
+    ];
+
+    schools = [
+        { id: 1, name: "kek" },
+        { id: 2, name: "mem" },
+        { id: 3, name: "lol" },
+        { id: 4, name: "lul" },
+        { id: 5, name: "lel" }
+    ];
 
     constructor(
         private router: Router,
         private artworkService: ArtworkService,
         private alertService: AlertService) {
-
     }
 
     ngOnInit() {
+
     }
 
     create(): void {
@@ -33,8 +47,13 @@ export class ArtworCreateComponent implements OnInit {
                 this.router.navigate(['/artworks']);
             },
             error => {
+                alert(JSON.stringify(this.model));
+
                 this.alertService.error(JSON.stringify(error));
                 this.loading = false;
             });
     }
+
+
+
 }   

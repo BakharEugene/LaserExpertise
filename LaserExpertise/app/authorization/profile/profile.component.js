@@ -11,13 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 const core_1 = require('@angular/core');
 const router_1 = require('@angular/router');
 const forms_1 = require('@angular/forms');
-const authentication_service_1 = require('../services/authentication.service');
 const alert_service_1 = require('../../alert/alert.service');
+const user_service_1 = require('../services/user.service');
 let ProfileComponent = class ProfileComponent {
-    constructor(route, router, authenticationService, alertService) {
+    constructor(route, router, userService, alertService) {
         this.route = route;
         this.router = router;
-        this.authenticationService = authenticationService;
+        this.userService = userService;
         this.alertService = alertService;
         this.fb = new forms_1.FormBuilder();
     }
@@ -63,6 +63,13 @@ let ProfileComponent = class ProfileComponent {
     profile() {
     }
     changePassword() {
+        this.userService.changePassword(this.changePasswordForm.controls["OldPassword"].value, this.changePasswordForm.controls["NewPassword"].value)
+            .subscribe(data => {
+            this.alertService.success(JSON.stringify(data), true);
+            this.router.navigate(['/login']);
+        }, error => {
+            this.alertService.error(JSON.stringify(error));
+        });
     }
     changeContacts(skype, telephone) {
         alert(skype);
@@ -74,7 +81,7 @@ ProfileComponent = __decorate([
         templateUrl: 'app/authorization/profile/profile.component.html',
         selector: 'profile',
     }), 
-    __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, authentication_service_1.AuthenticationService, alert_service_1.AlertService])
+    __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, user_service_1.UserService, alert_service_1.AlertService])
 ], ProfileComponent);
 exports.ProfileComponent = ProfileComponent;
 //# sourceMappingURL=profile.component.js.map

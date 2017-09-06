@@ -8,12 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-const alert_service_1 = require('../../alert/alert.service');
-const artwork_service_1 = require('../artwork.service');
-let ArtworCreateComponent = class ArtworCreateComponent {
-    constructor(router, artworkService, alertService) {
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var alert_service_1 = require("../../alert/alert.service");
+var artwork_service_1 = require("../artwork.service");
+var ArtworCreateComponent = (function () {
+    function ArtworCreateComponent(router, artworkService, alertService) {
         this.router = router;
         this.artworkService = artworkService;
         this.alertService = alertService;
@@ -33,28 +33,34 @@ let ArtworCreateComponent = class ArtworCreateComponent {
             { id: 5, name: "lel" }
         ];
     }
-    ngOnInit() {
-    }
-    create() {
+    ArtworCreateComponent.prototype.ngOnInit = function () {
+    };
+    ArtworCreateComponent.prototype.create = function () {
+        var _this = this;
         this.loading = true;
         this.artworkService.create(this.model)
-            .subscribe(data => {
-            this.alertService.success(JSON.stringify(data), true);
-            this.router.navigate(['/artworks']);
-        }, error => {
-            alert(JSON.stringify(this.model));
-            this.alertService.error(JSON.stringify(error));
-            this.loading = false;
+            .subscribe(function (data) {
+            _this.alertService.success(JSON.stringify(data), true);
+            _this.router.navigate(['/artworks']);
+        }, function (error) {
+            alert(JSON.stringify(_this.model));
+            _this.alertService.error(JSON.stringify(error));
+            _this.loading = false;
         });
-    }
-};
+    };
+    ArtworCreateComponent.prototype.onChange = function (event) {
+    };
+    return ArtworCreateComponent;
+}());
 ArtworCreateComponent = __decorate([
     core_1.Component({
         selector: 'artwork-create',
         templateUrl: 'app/artwork/create/artwork-create.component.html',
         providers: [artwork_service_1.ArtworkService]
-    }), 
-    __metadata('design:paramtypes', [router_1.Router, artwork_service_1.ArtworkService, alert_service_1.AlertService])
+    }),
+    __metadata("design:paramtypes", [router_1.Router,
+        artwork_service_1.ArtworkService,
+        alert_service_1.AlertService])
 ], ArtworCreateComponent);
 exports.ArtworCreateComponent = ArtworCreateComponent;
 //# sourceMappingURL=artwork-create.component.js.map

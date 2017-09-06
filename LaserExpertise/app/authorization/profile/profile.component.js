@@ -8,24 +8,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-const forms_1 = require('@angular/forms');
-const alert_service_1 = require('../../alert/alert.service');
-const user_service_1 = require('../services/user.service');
-let ProfileComponent = class ProfileComponent {
-    constructor(route, router, userService, alertService) {
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var forms_1 = require("@angular/forms");
+var alert_service_1 = require("../../alert/alert.service");
+var user_service_1 = require("../services/user.service");
+var ProfileComponent = (function () {
+    function ProfileComponent(route, router, userService, alertService) {
         this.route = route;
         this.router = router;
         this.userService = userService;
         this.alertService = alertService;
         this.fb = new forms_1.FormBuilder();
     }
-    ngOnInit() {
+    ProfileComponent.prototype.ngOnInit = function () {
         this.user = JSON.parse(localStorage.getItem('currentUser'));
         this.createForms();
-    }
-    createForms() {
+    };
+    ProfileComponent.prototype.createForms = function () {
         this.contactsForm = this.fb.group({
             Skype: [this.user.Skype, [forms_1.Validators.required]],
             Telephone: [this.user.Telephone, [forms_1.Validators.required, forms_1.Validators.minLength(7), forms_1.Validators.pattern("^\d+$")]]
@@ -45,8 +45,8 @@ let ProfileComponent = class ProfileComponent {
                 validator: this.areEqual
             })
         });
-    }
-    areEqual(group) {
+    };
+    ProfileComponent.prototype.areEqual = function (group) {
         var valid = false;
         var val1 = group.controls["NewPassword"].value;
         var val2 = group.controls["RepeatNewPassword"].value;
@@ -59,29 +59,34 @@ let ProfileComponent = class ProfileComponent {
         return {
             areEqual: true
         };
-    }
-    profile() {
-    }
-    changePassword() {
+    };
+    ProfileComponent.prototype.profile = function () {
+    };
+    ProfileComponent.prototype.changePassword = function () {
+        var _this = this;
         this.userService.changePassword(this.changePasswordForm.controls["OldPassword"].value, this.changePasswordForm.controls["NewPassword"].value)
-            .subscribe(data => {
-            this.alertService.success(JSON.stringify(data), true);
-            this.router.navigate(['/login']);
-        }, error => {
-            this.alertService.error(JSON.stringify(error));
+            .subscribe(function (data) {
+            _this.alertService.success(JSON.stringify(data), true);
+            _this.router.navigate(['/login']);
+        }, function (error) {
+            _this.alertService.error(JSON.stringify(error));
         });
-    }
-    changeContacts(skype, telephone) {
+    };
+    ProfileComponent.prototype.changeContacts = function (skype, telephone) {
         alert(skype);
         alert(telephone);
-    }
-};
+    };
+    return ProfileComponent;
+}());
 ProfileComponent = __decorate([
     core_1.Component({
         templateUrl: 'app/authorization/profile/profile.component.html',
         selector: 'profile',
-    }), 
-    __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, user_service_1.UserService, alert_service_1.AlertService])
+    }),
+    __metadata("design:paramtypes", [router_1.ActivatedRoute,
+        router_1.Router,
+        user_service_1.UserService,
+        alert_service_1.AlertService])
 ], ProfileComponent);
 exports.ProfileComponent = ProfileComponent;
 //# sourceMappingURL=profile.component.js.map

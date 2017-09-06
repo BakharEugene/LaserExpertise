@@ -8,46 +8,47 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require("@angular/core");
-const router_1 = require("@angular/router");
-let SecurityService_1;
-let SecurityService = SecurityService_1 = class SecurityService {
-    constructor(router) {
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var SecurityService = SecurityService_1 = (function () {
+    function SecurityService(router) {
         this.router = router;
         this.router = router;
     }
-    canActivate(route) {
-        let canActivate = false;
-        const roles = route.data["roles"];
-        const user = this.getCurrentUser();
+    SecurityService.prototype.canActivate = function (route) {
+        var canActivate = false;
+        var roles = route.data["roles"];
+        var user = this.getCurrentUser();
         if (roles.length > 0 && user) {
             canActivate = this.checkRoles(roles, user.Role);
         }
         return canActivate;
-    }
-    getCurrentUser() {
-        let user = JSON.parse(localStorage.getItem('currentUser'));
+    };
+    SecurityService.prototype.getCurrentUser = function () {
+        var user = JSON.parse(localStorage.getItem('currentUser'));
         return user;
-    }
-    static containsRole(array, obj) {
-        let index = array.length;
+    };
+    SecurityService.containsRole = function (array, obj) {
+        var index = array.length;
         while (index--) {
             if (array[index] === obj)
                 return true;
         }
         return false;
-    }
-    checkRoles(availableRolesList, currentRole) {
-        let flag = false;
+    };
+    SecurityService.prototype.checkRoles = function (availableRolesList, currentRole) {
+        var flag = false;
         if (SecurityService_1.containsRole(availableRolesList, currentRole)) {
             flag = true;
         }
         return flag;
-    }
-};
+    };
+    return SecurityService;
+}());
 SecurityService = SecurityService_1 = __decorate([
-    core_1.Injectable(), 
-    __metadata('design:paramtypes', [router_1.Router])
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [router_1.Router])
 ], SecurityService);
 exports.SecurityService = SecurityService;
+var SecurityService_1;
 //# sourceMappingURL=security.service.js.map

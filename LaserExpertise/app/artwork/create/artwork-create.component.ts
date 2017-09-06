@@ -54,6 +54,7 @@ export class ArtworCreateComponent implements OnInit {
             });
     }
 
+    onChange(event: EventTarget) {
 
-
-}   
+    }
+}

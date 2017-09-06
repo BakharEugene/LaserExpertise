@@ -5,18 +5,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-const core_1 = require('@angular/core');
-const platform_browser_1 = require('@angular/platform-browser');
-const http_1 = require('@angular/http');
-const router_1 = require('@angular/router');
-const forms_1 = require('@angular/forms');
-const alert_component_1 = require('./alert.component');
-const alert_service_1 = require('./alert.service');
-let AlertModule = class AlertModule {
-};
+var core_1 = require("@angular/core");
+var platform_browser_1 = require("@angular/platform-browser");
+var http_1 = require("@angular/http");
+var router_1 = require("@angular/router");
+var forms_1 = require("@angular/forms");
+var alert_component_1 = require("./alert.component");
+var alert_service_1 = require("./alert.service");
+var AlertModule = (function () {
+    function AlertModule() {
+    }
+    return AlertModule;
+}());
 AlertModule = __decorate([
     core_1.NgModule({
         imports: [
@@ -30,8 +30,7 @@ AlertModule = __decorate([
         ],
         providers: [alert_service_1.AlertService],
         bootstrap: [alert_component_1.AlertComponent]
-    }), 
-    __metadata('design:paramtypes', [])
+    })
 ], AlertModule);
 exports.AlertModule = AlertModule;
 //# sourceMappingURL=alert.module.js.map

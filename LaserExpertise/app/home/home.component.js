@@ -8,12 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const serializable_1 = require('../serialize/serializable');
-const home_service_1 = require('./home.service');
-const artwork_1 = require('../models/artwork');
-let HomeComponent = class HomeComponent {
-    constructor(httpService) {
+var core_1 = require("@angular/core");
+var serializable_1 = require("../serialize/serializable");
+var home_service_1 = require("./home.service");
+var artwork_1 = require("../models/artwork");
+var HomeComponent = (function () {
+    function HomeComponent(httpService) {
         this.httpService = httpService;
         this.artworks = [];
         for (var i = 0; i < 3; i++) {
@@ -21,23 +21,24 @@ let HomeComponent = class HomeComponent {
         }
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
-    ngOnInit() {
+    HomeComponent.prototype.ngOnInit = function () {
         this.getArtworks();
-    }
-    getArtworks() {
+    };
+    HomeComponent.prototype.getArtworks = function () {
+        var _this = this;
         this.httpService.Artworks()
-            .subscribe((data) => {
-            let artworksList = data.json();
-            let i = 0;
-            let j = 0;
-            let tempArtworkList = [];
-            for (let index in artworksList) {
-                let artwork;
+            .subscribe(function (data) {
+            var artworksList = data.json();
+            var i = 0;
+            var j = 0;
+            var tempArtworkList = [];
+            for (var index in artworksList) {
+                var artwork = void 0;
                 if (parseInt(index) < 12) {
                     tempArtworkList.push(artwork = serializable_1.SerializationHelper.toInstance(new artwork_1.Artwork, (JSON.stringify(artworksList[index]))));
                     i++;
                     if (i % 4 == 0) {
-                        this.artworks[j] = tempArtworkList;
+                        _this.artworks[j] = tempArtworkList;
                         i = 0;
                         j++;
                         tempArtworkList = [];
@@ -47,15 +48,16 @@ let HomeComponent = class HomeComponent {
                     break;
             }
         });
-    }
-};
+    };
+    return HomeComponent;
+}());
 HomeComponent = __decorate([
     core_1.Component({
         selector: 'home',
         templateUrl: 'app/home/home.component.html',
         providers: [home_service_1.HttpService]
-    }), 
-    __metadata('design:paramtypes', [home_service_1.HttpService])
+    }),
+    __metadata("design:paramtypes", [home_service_1.HttpService])
 ], HomeComponent);
 exports.HomeComponent = HomeComponent;
 //# sourceMappingURL=home.component.js.map

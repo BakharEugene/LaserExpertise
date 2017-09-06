@@ -8,34 +8,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const artwork_service_1 = require('./artwork.service');
-const artwork_1 = require('../models/artwork');
-const serializable_1 = require('../serialize/serializable');
-let ArtworkComponent = class ArtworkComponent {
-    constructor(httpService) {
+var core_1 = require("@angular/core");
+var artwork_service_1 = require("./artwork.service");
+var artwork_1 = require("../models/artwork");
+var serializable_1 = require("../serialize/serializable");
+var ArtworkComponent = (function () {
+    function ArtworkComponent(httpService) {
         this.httpService = httpService;
         this.pageSize = 6;
         this.artworks = [];
         this.pagesIndex = [];
         this.filteredItems = [];
     }
-    ngOnInit() {
+    ArtworkComponent.prototype.ngOnInit = function () {
         this.load();
-    }
-    load() {
+    };
+    ArtworkComponent.prototype.load = function () {
+        var _this = this;
         this.httpService.artworks()
-            .subscribe((data) => {
-            let artworksList = data.json();
-            for (let index in artworksList) {
-                let artwork;
-                this.artworks.push(artwork = serializable_1.SerializationHelper.toInstance(new artwork_1.Artwork, (JSON.stringify(artworksList[index]))));
+            .subscribe(function (data) {
+            var artworksList = data.json();
+            for (var index in artworksList) {
+                var artwork = void 0;
+                _this.artworks.push(artwork = serializable_1.SerializationHelper.toInstance(new artwork_1.Artwork, (JSON.stringify(artworksList[index]))));
             }
-            this.filteredItems = this.artworks;
-            this.createPagination();
+            _this.filteredItems = _this.artworks;
+            _this.createPagination();
         });
-    }
-    createPagination() {
+    };
+    ArtworkComponent.prototype.createPagination = function () {
         this.currentIndex = 1;
         this.pageStart = 1;
         this.pages = parseInt("" + this.filteredItems.length / this.pageSize);
@@ -43,22 +44,22 @@ let ArtworkComponent = class ArtworkComponent {
             this.pages++;
         }
         this.refreshItems();
-    }
-    onChangePageSize() {
+    };
+    ArtworkComponent.prototype.onChangePageSize = function () {
         this.createPagination();
-    }
-    refreshItems() {
+    };
+    ArtworkComponent.prototype.refreshItems = function () {
         this.artworks = this.filteredItems.slice((this.currentIndex - 1) * this.pageSize, (this.currentIndex) * this.pageSize);
         this.pagesIndex = this.fillArray();
-    }
-    fillArray() {
-        let obj = [];
-        for (let index = this.pageStart; index < this.pageStart + this.pages; index++) {
+    };
+    ArtworkComponent.prototype.fillArray = function () {
+        var obj = [];
+        for (var index = this.pageStart; index < this.pageStart + this.pages; index++) {
             obj.push(index);
         }
         return obj;
-    }
-    prevPage() {
+    };
+    ArtworkComponent.prototype.prevPage = function () {
         if (this.currentIndex > 1) {
             this.currentIndex--;
         }
@@ -66,8 +67,8 @@ let ArtworkComponent = class ArtworkComponent {
             this.pageStart = this.currentIndex;
         }
         this.refreshItems();
-    }
-    nextPage() {
+    };
+    ArtworkComponent.prototype.nextPage = function () {
         if (this.currentIndex < this.pages) {
             this.currentIndex++;
         }
@@ -75,19 +76,20 @@ let ArtworkComponent = class ArtworkComponent {
             this.pageStart = this.currentIndex - this.pages + 1;
         }
         this.refreshItems();
-    }
-    setPage(index) {
+    };
+    ArtworkComponent.prototype.setPage = function (index) {
         this.currentIndex = index;
         this.refreshItems();
-    }
-};
+    };
+    return ArtworkComponent;
+}());
 ArtworkComponent = __decorate([
     core_1.Component({
         selector: 'artwork',
         templateUrl: 'app/artwork/artwork.component.html',
         providers: [artwork_service_1.ArtworkService]
-    }), 
-    __metadata('design:paramtypes', [artwork_service_1.ArtworkService])
+    }),
+    __metadata("design:paramtypes", [artwork_service_1.ArtworkService])
 ], ArtworkComponent);
 exports.ArtworkComponent = ArtworkComponent;
 //# sourceMappingURL=artwork.component.js.map

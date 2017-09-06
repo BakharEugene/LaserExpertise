@@ -5,24 +5,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-const core_1 = require('@angular/core');
-const platform_browser_1 = require('@angular/platform-browser');
-const forms_1 = require('@angular/forms');
-const app_component_1 = require('./app.component');
-const http_1 = require('@angular/http');
-const app_routing_1 = require('./app-routing');
-const artwork_module_1 = require('./artwork/artwork.module');
-const home_module_1 = require('./home/home.module');
-const register_module_1 = require('./authorization/register/register.module');
-const login_module_1 = require('./authorization/login/login.module');
-const profile_module_1 = require('./authorization/profile/profile.module');
-const alert_component_1 = require('./alert/alert.component');
-const alert_service_1 = require('./alert/alert.service');
-let AppModule = class AppModule {
-};
+var core_1 = require("@angular/core");
+var platform_browser_1 = require("@angular/platform-browser");
+var forms_1 = require("@angular/forms");
+var app_component_1 = require("./app.component");
+var http_1 = require("@angular/http");
+var app_routing_1 = require("./app-routing");
+var artwork_module_1 = require("./artwork/artwork.module");
+var home_module_1 = require("./home/home.module");
+var register_module_1 = require("./authorization/register/register.module");
+var login_module_1 = require("./authorization/login/login.module");
+var profile_module_1 = require("./authorization/profile/profile.module");
+var alert_component_1 = require("./alert/alert.component");
+var alert_service_1 = require("./alert/alert.service");
+var AppModule = (function () {
+    function AppModule() {
+    }
+    return AppModule;
+}());
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule,
@@ -43,8 +43,7 @@ AppModule = __decorate([
             alert_component_1.AlertComponent
         ],
         bootstrap: [app_component_1.AppComponent]
-    }), 
-    __metadata('design:paramtypes', [])
+    })
 ], AppModule);
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map

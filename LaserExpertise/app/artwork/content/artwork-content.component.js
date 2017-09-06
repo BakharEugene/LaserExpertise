@@ -8,34 +8,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const artwork_service_1 = require('../artwork.service');
-const artwork_1 = require('../../models/artwork');
-const router_1 = require('@angular/router');
-const serializable_1 = require('../../serialize/serializable');
-let ArtworkContentComponent = class ArtworkContentComponent {
-    constructor(httpService, activateRoute) {
+var core_1 = require("@angular/core");
+var artwork_service_1 = require("../artwork.service");
+var artwork_1 = require("../../models/artwork");
+var router_1 = require("@angular/router");
+var serializable_1 = require("../../serialize/serializable");
+var ArtworkContentComponent = (function () {
+    function ArtworkContentComponent(httpService, activateRoute) {
         this.httpService = httpService;
         this.activateRoute = activateRoute;
         this.id = activateRoute.snapshot.params['id'];
     }
-    ngOnInit() {
-        this.httpService.artworksById(this.id).subscribe((data) => {
-            this.artwork = serializable_1.SerializationHelper.toInstance(new artwork_1.Artwork, (JSON.stringify(data.json())));
+    ArtworkContentComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.httpService.artworksById(this.id).subscribe(function (data) {
+            _this.artwork = serializable_1.SerializationHelper.toInstance(new artwork_1.Artwork, (JSON.stringify(data.json())));
         });
-    }
-};
+    };
+    return ArtworkContentComponent;
+}());
 __decorate([
-    core_1.Input(), 
-    __metadata('design:type', Number)
+    core_1.Input(),
+    __metadata("design:type", Number)
 ], ArtworkContentComponent.prototype, "id", void 0);
 ArtworkContentComponent = __decorate([
     core_1.Component({
         selector: 'artwork-content',
         templateUrl: 'app/artwork/content/artwork-content.component.html',
         providers: [artwork_service_1.ArtworkService]
-    }), 
-    __metadata('design:paramtypes', [artwork_service_1.ArtworkService, router_1.ActivatedRoute])
+    }),
+    __metadata("design:paramtypes", [artwork_service_1.ArtworkService,
+        router_1.ActivatedRoute])
 ], ArtworkContentComponent);
 exports.ArtworkContentComponent = ArtworkContentComponent;
 //# sourceMappingURL=artwork-content.component.js.map

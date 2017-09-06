@@ -8,45 +8,46 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const http_1 = require('@angular/http');
-require('rxjs/Rx');
-require('rxjs/add/operator/map');
-let UserService = class UserService {
-    constructor(http) {
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+require("rxjs/Rx");
+require("rxjs/add/operator/map");
+var UserService = (function () {
+    function UserService(http) {
         this.http = http;
     }
-    getAll() {
-        return this.http.get('/Users/Users', this.jwt()).map((response) => response.json());
-    }
-    getById(id) {
-        return this.http.get('/Users/Users/' + id, this.jwt()).map((response) => response.json());
-    }
-    create(user) {
-        return this.http.post('/Users/Create', user, this.jwt()).map((response) => response.json());
-    }
-    changePassword(oldPassword, newPassword) {
-        return this.http.put('/Users/UpdatePassword', [oldPassword, newPassword], this.jwt()).map((response) => response.json());
-    }
-    update(user) {
-        return this.http.put('/Users/Users/' + user.Id, user, this.jwt()).map((response) => response.json());
-    }
-    delete(id) {
-        return this.http.delete('/Users/UsersRemove/' + id, this.jwt()).map((response) => response.json());
-    }
+    UserService.prototype.getAll = function () {
+        return this.http.get('/Users/Users', this.jwt()).map(function (response) { return response.json(); });
+    };
+    UserService.prototype.getById = function (id) {
+        return this.http.get('/Users/Users/' + id, this.jwt()).map(function (response) { return response.json(); });
+    };
+    UserService.prototype.create = function (user) {
+        return this.http.post('/Users/Create', user, this.jwt()).map(function (response) { return response.json(); });
+    };
+    UserService.prototype.changePassword = function (oldPassword, newPassword) {
+        return this.http.put('/Users/UpdatePassword', [oldPassword, newPassword], this.jwt()).map(function (response) { return response.json(); });
+    };
+    UserService.prototype.update = function (user) {
+        return this.http.put('/Users/Users/' + user.Id, user, this.jwt()).map(function (response) { return response.json(); });
+    };
+    UserService.prototype.delete = function (id) {
+        return this.http.delete('/Users/UsersRemove/' + id, this.jwt()).map(function (response) { return response.json(); });
+    };
     // private helper methods
-    jwt() {
+    UserService.prototype.jwt = function () {
         // create authorization header with jwt token
-        let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (currentUser && currentUser.token) {
-            let headers = new http_1.Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+            var headers = new http_1.Headers({ 'Authorization': 'Bearer ' + currentUser.token });
             return new http_1.RequestOptions({ headers: headers });
         }
-    }
-};
+    };
+    return UserService;
+}());
 UserService = __decorate([
-    core_1.Injectable(), 
-    __metadata('design:paramtypes', [http_1.Http])
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
 ], UserService);
 exports.UserService = UserService;
 //# sourceMappingURL=user.service.js.map

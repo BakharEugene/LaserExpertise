@@ -13,8 +13,6 @@ export class AppComponent{
 
     public isLoggedIn(): boolean {
 
-        //this.currentUser = SerializationHelper.toInstance(new User(), (JSON.stringify(localStorage.getItem('currentUser'))));
-
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         if (this.currentUser) {
 

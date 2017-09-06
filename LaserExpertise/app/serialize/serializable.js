@@ -1,6 +1,8 @@
 "use strict";
-class SerializationHelper {
-    static toInstance(obj, json) {
+var SerializationHelper = (function () {
+    function SerializationHelper() {
+    }
+    SerializationHelper.toInstance = function (obj, json) {
         var jsonObj = JSON.parse(json);
         if (typeof obj["fromJSON"] === "function") {
             obj["fromJSON"](jsonObj);
@@ -11,7 +13,8 @@ class SerializationHelper {
             }
         }
         return obj;
-    }
-}
+    };
+    return SerializationHelper;
+}());
 exports.SerializationHelper = SerializationHelper;
 //# sourceMappingURL=serializable.js.map

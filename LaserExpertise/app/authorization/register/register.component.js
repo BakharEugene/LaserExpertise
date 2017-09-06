@@ -8,37 +8,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const router_1 = require('@angular/router');
-const alert_service_1 = require('../../alert/alert.service');
-const user_service_1 = require('../services/user.service');
-let RegisterComponent = class RegisterComponent {
-    constructor(router, userService, alertService) {
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var alert_service_1 = require("../../alert/alert.service");
+var user_service_1 = require("../services/user.service");
+var RegisterComponent = (function () {
+    function RegisterComponent(router, userService, alertService) {
         this.router = router;
         this.userService = userService;
         this.alertService = alertService;
         this.model = {};
         this.loading = false;
     }
-    register() {
+    RegisterComponent.prototype.register = function () {
+        var _this = this;
         this.loading = true;
         this.userService.create(this.model)
-            .subscribe(data => {
-            this.alertService.success(JSON.stringify(data), true);
-            this.router.navigate(['/login']);
-        }, error => {
+            .subscribe(function (data) {
+            _this.alertService.success(JSON.stringify(data), true);
+            _this.router.navigate(['/login']);
+        }, function (error) {
             alert(error);
-            this.alertService.error(JSON.stringify(error));
-            this.loading = false;
+            _this.alertService.error(JSON.stringify(error));
+            _this.loading = false;
         });
-    }
-};
+    };
+    return RegisterComponent;
+}());
 RegisterComponent = __decorate([
     core_1.Component({
         templateUrl: 'app/authorization/register/register.component.html',
         selector: 'register'
-    }), 
-    __metadata('design:paramtypes', [router_1.Router, user_service_1.UserService, alert_service_1.AlertService])
+    }),
+    __metadata("design:paramtypes", [router_1.Router,
+        user_service_1.UserService,
+        alert_service_1.AlertService])
 ], RegisterComponent);
 exports.RegisterComponent = RegisterComponent;
 //# sourceMappingURL=register.component.js.map

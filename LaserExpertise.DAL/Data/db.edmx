@@ -1,0 +1,1986 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LaserExpertiseContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ARTWORK">
+          <Key>
+            <PropertyRef Name="kod_artwork" />
+          </Key>
+          <Property Name="kod_artwork" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kod_ptechnique" Type="int" />
+          <Property Name="kod_genre" Type="int" />
+          <Property Name="kod_perioda" Type="int" />
+          <Property Name="kod_location" Type="int" />
+          <Property Name="kod_school" Type="int" />
+          <Property Name="kod_pstyle" Type="int" />
+          <Property Name="kod_author" Type="int" />
+          <Property Name="Kod_ATPosition" Type="int" />
+          <Property Name="artwork_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="original_name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="sizes" Type="varchar" MaxLength="50" />
+          <Property Name="creation_date" Type="datetime" />
+          <Property Name="description" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="basis" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cost" Type="money" />
+        </EntityType>
+        <EntityType Name="ARTWORK_GENRE">
+          <Key>
+            <PropertyRef Name="kod_genre" />
+          </Key>
+          <Property Name="kod_genre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="genre_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ARTWORK_TYPE_POSITION">
+          <Key>
+            <PropertyRef Name="Kod_ATPosition" />
+          </Key>
+          <Property Name="Kod_ATPosition" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AUTHOR">
+          <Key>
+            <PropertyRef Name="kod_author" />
+          </Key>
+          <Property Name="kod_author" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="another_name" Type="varchar" MaxLength="50" />
+          <Property Name="pseudonym" Type="varchar" MaxLength="50" />
+          <Property Name="dateOfBirth" Type="datetime" Nullable="false" />
+          <Property Name="dateOfDeath" Type="datetime" Nullable="false" />
+          <Property Name="biography" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="photo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="soc_status" Type="varchar" MaxLength="50" />
+          <Property Name="oridin" Type="varchar" MaxLength="50" />
+          <Property Name="education" Type="varchar" MaxLength="50" />
+          <Property Name="sex" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="marital_status" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="CHEMICAL_ELEMENT">
+          <Key>
+            <PropertyRef Name="id_element" />
+          </Key>
+          <Property Name="id_element" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="element_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="atomic_number" Type="int" />
+          <Property Name="atomic_weight" Type="float" />
+          <Property Name="description" Type="varchar" MaxLength="150" />
+          <Property Name="core" Type="int" />
+          <Property Name="ions" Type="int" />
+        </EntityType>
+        <EntityType Name="CITY">
+          <Key>
+            <PropertyRef Name="kod_country" />
+            <PropertyRef Name="kod_location" />
+            <PropertyRef Name="kod_city" />
+          </Key>
+          <Property Name="kod_country" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kod_location" Type="int" Nullable="false" />
+          <Property Name="kod_city" Type="int" Nullable="false" />
+          <Property Name="city_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="administrative_devision" Type="varchar" MaxLength="100" />
+          <Property Name="region" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="COUNTRY">
+          <Key>
+            <PropertyRef Name="kod_country" />
+          </Key>
+          <Property Name="kod_country" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="country_name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="150" />
+          <Property Name="capital" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="languages" Type="varchar" MaxLength="50" />
+          <Property Name="country_code" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="CREATION_DATE">
+          <Key>
+            <PropertyRef Name="kod_date" />
+          </Key>
+          <Property Name="kod_date" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_value" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LaserExpertiseContext.dbo.DATE_REMARKS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DATE_REMARKS">
+          <Key>
+            <PropertyRef Name="kod_date" />
+          </Key>
+          <Property Name="kod_date" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kod_artwork" Type="int" />
+          <Property Name="remark_creation_date" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="EPOCH">
+          <Key>
+            <PropertyRef Name="kod_epoch" />
+          </Key>
+          <Property Name="kod_epoch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="epoch_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="epoch_time" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FOCUS_SECTION(SpectralResearch)">
+          <Key>
+            <PropertyRef Name="id_focus" />
+          </Key>
+          <Property Name="id_focus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kod_artwork" Type="int" />
+          <Property Name="focus_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="time" Type="datetime" />
+          <Property Name="file" Type="binary" MaxLength="8000" />
+          <Property Name="PointFocusDescription" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="MainColourFocus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FOTO">
+          <Key>
+            <PropertyRef Name="kod_foto" />
+          </Key>
+          <Property Name="kod_foto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kod_artwork" Type="int" />
+          <Property Name="path_to_foto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="foto_notes" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="HISTORICAL_PERIOD">
+          <Key>
+            <PropertyRef Name="kod_perioda" />
+          </Key>
+          <Property Name="kod_perioda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kod_epoch" Type="int" />
+          <Property Name="period_name" Type="varchar" MaxLength="100" />
+          <Property Name="short_description" Type="varchar" MaxLength="150" />
+          <Property Name="dates" Type="datetime" />
+        </EntityType>
+        <EntityType Name="INSTRUMENTAL_METHODS">
+          <Key>
+            <PropertyRef Name="kod_method" />
+          </Key>
+          <Property Name="kod_method" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="method_name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="LIBRARY_OF_SPEKTR_LINES">
+          <Key>
+            <PropertyRef Name="id_library" />
+          </Key>
+          <Property Name="id_library" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_library" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="library_description" Type="varchar" MaxLength="400" />
+          <Property Name="comments_library" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="LOCATION">
+          <Key>
+            <PropertyRef Name="kod_location" />
+          </Key>
+          <Property Name="kod_location" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="location_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="location_type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="longitude_loc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="latitude_loc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="location_description" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="id_organization" />
+          </Key>
+          <Property Name="id_organization" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="text" />
+          <Property Name="Status" Type="text" />
+          <Property Name="Type" Type="text" />
+          <Property Name="Description3" Type="text" />
+          <Property Name="Address" Type="text" />
+          <Property Name="Email" Type="text" />
+          <Property Name="Phone_Number" Type="text" />
+        </EntityType>
+        <EntityType Name="PAINTING_SCHOOL">
+          <Key>
+            <PropertyRef Name="kod_school" />
+          </Key>
+          <Property Name="kod_school" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="school_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="school_description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="creation_date" Type="datetime" Nullable="false" />
+          <Property Name="lead_school" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="origin_sname" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PAINTING_STYLE">
+          <Key>
+            <PropertyRef Name="kod_pstyle" />
+          </Key>
+          <Property Name="kod_pstyle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pstyle_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pstyle_description" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="pstyle_source" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="origin_pstyle" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PAINTING_TECHNIQUE">
+          <Key>
+            <PropertyRef Name="kod_ptechnique" />
+          </Key>
+          <Property Name="kod_ptechnique" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ptechnique_name" Type="varchar" MaxLength="100" />
+          <Property Name="ptechnique_description" Type="varchar" MaxLength="150" />
+          <Property Name="origin_ptechnique_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PAINTS">
+          <Key>
+            <PropertyRef Name="kod_paint" />
+          </Key>
+          <Property Name="kod_paint" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="paint_name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="remark" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PASSPORT_RESEARCH">
+          <Key>
+            <PropertyRef Name="kod_method" />
+          </Key>
+          <Property Name="kod_artwork" Type="int" />
+          <Property Name="kod_method" Type="int" Nullable="false" />
+          <Property Name="conclusion_method" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="PIGMENTS">
+          <Key>
+            <PropertyRef Name="id_pigment" />
+          </Key>
+          <Property Name="id_pigment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kod_paint" Type="int" Nullable="false" />
+          <Property Name="pigment_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="pigment_group" Type="varchar" MaxLength="50" />
+          <Property Name="pigment_description" Type="varchar" MaxLength="1024" />
+        </EntityType>
+        <EntityType Name="POSITION">
+          <Key>
+            <PropertyRef Name="kod_object" />
+          </Key>
+          <Property Name="kod_object" Type="int" Nullable="false" />
+          <Property Name="kod_country" Type="int" />
+          <Property Name="CIT_kod_location" Type="int" />
+          <Property Name="kod_city" Type="int" />
+          <Property Name="kod_location" Type="int" />
+          <Property Name="name_object" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="type_object" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="longitude_loc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="latitude_loc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pos_address" Type="varchar" MaxLength="100" />
+          <Property Name="description" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Privileges">
+          <Key>
+            <PropertyRef Name="id_privilege" />
+          </Key>
+          <Property Name="id_privilege" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="User_Type" Type="text" />
+          <Property Name="privileges" Type="int" />
+          <Property Name="Description2" Type="text" />
+        </EntityType>
+        <EntityType Name="Relationship_19">
+          <Key>
+            <PropertyRef Name="kod_object" />
+            <PropertyRef Name="kod_artwork" />
+          </Key>
+          <Property Name="kod_object" Type="int" Nullable="false" />
+          <Property Name="kod_artwork" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SPEKTR">
+          <Key>
+            <PropertyRef Name="kod_spektr" />
+          </Key>
+          <Property Name="kod_spektr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_focus" Type="int" Nullable="false" />
+          <Property Name="id_sp_line" Type="bigint" Nullable="false" />
+          <Property Name="id_element" Type="int" Nullable="false" />
+          <Property Name="Wave_Length" Type="int" />
+          <Property Name="Line_Description" Type="text" />
+          <Property Name="Spektrs_Base" Type="text" />
+        </EntityType>
+        <EntityType Name="SPEKTR_LINE">
+          <Key>
+            <PropertyRef Name="id_sp_line" />
+          </Key>
+          <Property Name="id_sp_line" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_library" Type="tinyint" Nullable="false" />
+          <Property Name="Date_line" Type="datetime" />
+          <Property Name="Name_of_the_person" Type="varchar" MaxLength="50" />
+          <Property Name="WavellengthLine" Type="float" />
+          <Property Name="Other_options" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_privilege" Type="int" />
+          <Property Name="Login_Name" Type="text" />
+          <Property Name="Password" Type="text" />
+        </EntityType>
+        <Association Name="FK_ARTWORK_ART_ARTGE_ARTWORK_">
+          <End Role="ARTWORK_GENRE" Type="Self.ARTWORK_GENRE" Multiplicity="0..1" />
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTWORK_GENRE">
+              <PropertyRef Name="kod_genre" />
+            </Principal>
+            <Dependent Role="ARTWORK">
+              <PropertyRef Name="kod_genre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTWORK_ART_HAS_T_PAINTING">
+          <End Role="PAINTING_TECHNIQUE" Type="Self.PAINTING_TECHNIQUE" Multiplicity="0..1" />
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAINTING_TECHNIQUE">
+              <PropertyRef Name="kod_ptechnique" />
+            </Principal>
+            <Dependent Role="ARTWORK">
+              <PropertyRef Name="kod_ptechnique" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTWORK_ART_STYLE_PAINTING">
+          <End Role="PAINTING_STYLE" Type="Self.PAINTING_STYLE" Multiplicity="0..1" />
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAINTING_STYLE">
+              <PropertyRef Name="kod_pstyle" />
+            </Principal>
+            <Dependent Role="ARTWORK">
+              <PropertyRef Name="kod_pstyle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTWORK_RELATIONS_ARTWORK_">
+          <End Role="ARTWORK_TYPE_POSITION" Type="Self.ARTWORK_TYPE_POSITION" Multiplicity="0..1" />
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTWORK_TYPE_POSITION">
+              <PropertyRef Name="Kod_ATPosition" />
+            </Principal>
+            <Dependent Role="ARTWORK">
+              <PropertyRef Name="Kod_ATPosition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTWORK_RELATIONS_AUTHOR">
+          <End Role="AUTHOR" Type="Self.AUTHOR" Multiplicity="0..1" />
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTHOR">
+              <PropertyRef Name="kod_author" />
+            </Principal>
+            <Dependent Role="ARTWORK">
+              <PropertyRef Name="kod_author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTWORK_RELATIONS_HISTORIC">
+          <End Role="HISTORICAL_PERIOD" Type="Self.HISTORICAL_PERIOD" Multiplicity="0..1" />
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HISTORICAL_PERIOD">
+              <PropertyRef Name="kod_perioda" />
+            </Principal>
+            <Dependent Role="ARTWORK">
+              <PropertyRef Name="kod_perioda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTWORK_RELATIONS_LOCATION">
+          <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="0..1" />
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCATION">
+              <PropertyRef Name="kod_location" />
+            </Principal>
+            <Dependent Role="ARTWORK">
+              <PropertyRef Name="kod_location" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTWORK_SCHOOL_AR_PAINTING">
+          <End Role="PAINTING_SCHOOL" Type="Self.PAINTING_SCHOOL" Multiplicity="0..1" />
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAINTING_SCHOOL">
+              <PropertyRef Name="kod_school" />
+            </Principal>
+            <Dependent Role="ARTWORK">
+              <PropertyRef Name="kod_school" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CITY_RELATIONS_COUNTRY">
+          <End Role="COUNTRY" Type="Self.COUNTRY" Multiplicity="1" />
+          <End Role="CITY" Type="Self.CITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTRY">
+              <PropertyRef Name="kod_country" />
+            </Principal>
+            <Dependent Role="CITY">
+              <PropertyRef Name="kod_country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CITY_RELATIONS_LOCATION">
+          <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="1" />
+          <End Role="CITY" Type="Self.CITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCATION">
+              <PropertyRef Name="kod_location" />
+            </Principal>
+            <Dependent Role="CITY">
+              <PropertyRef Name="kod_location" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATE_REM_RELATIONS_ARTWORK">
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="0..1" />
+          <End Role="DATE_REMARKS" Type="Self.DATE_REMARKS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTWORK">
+              <PropertyRef Name="kod_artwork" />
+            </Principal>
+            <Dependent Role="DATE_REMARKS">
+              <PropertyRef Name="kod_artwork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATE_REM_RELATIONS_CREATION">
+          <End Role="CREATION_DATE" Type="Self.CREATION_DATE" Multiplicity="1" />
+          <End Role="DATE_REMARKS" Type="Self.DATE_REMARKS" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CREATION_DATE">
+              <PropertyRef Name="kod_date" />
+            </Principal>
+            <Dependent Role="DATE_REMARKS">
+              <PropertyRef Name="kod_date" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOCUS_SE_RELATIONS_ARTWORK">
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="0..1" />
+          <End Role="FOCUS_SECTION(SpectralResearch)" Type="Self.FOCUS_SECTION(SpectralResearch)" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTWORK">
+              <PropertyRef Name="kod_artwork" />
+            </Principal>
+            <Dependent Role="FOCUS_SECTION(SpectralResearch)">
+              <PropertyRef Name="kod_artwork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOTO_RELATIONS_ARTWORK">
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="0..1" />
+          <End Role="FOTO" Type="Self.FOTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTWORK">
+              <PropertyRef Name="kod_artwork" />
+            </Principal>
+            <Dependent Role="FOTO">
+              <PropertyRef Name="kod_artwork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HISTORIC_RELATIONS_EPOCH">
+          <End Role="EPOCH" Type="Self.EPOCH" Multiplicity="0..1" />
+          <End Role="HISTORICAL_PERIOD" Type="Self.HISTORICAL_PERIOD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EPOCH">
+              <PropertyRef Name="kod_epoch" />
+            </Principal>
+            <Dependent Role="HISTORICAL_PERIOD">
+              <PropertyRef Name="kod_epoch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PASSPORT_RELATIONS_ARTWORK">
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="0..1" />
+          <End Role="PASSPORT_RESEARCH" Type="Self.PASSPORT_RESEARCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTWORK">
+              <PropertyRef Name="kod_artwork" />
+            </Principal>
+            <Dependent Role="PASSPORT_RESEARCH">
+              <PropertyRef Name="kod_artwork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PASSPORT_RELATIONS_INSTRUME">
+          <End Role="INSTRUMENTAL_METHODS" Type="Self.INSTRUMENTAL_METHODS" Multiplicity="1" />
+          <End Role="PASSPORT_RESEARCH" Type="Self.PASSPORT_RESEARCH" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUMENTAL_METHODS">
+              <PropertyRef Name="kod_method" />
+            </Principal>
+            <Dependent Role="PASSPORT_RESEARCH">
+              <PropertyRef Name="kod_method" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PIGMENTS_RELATIONS_PAINTS">
+          <End Role="PAINTS" Type="Self.PAINTS" Multiplicity="1" />
+          <End Role="PIGMENTS" Type="Self.PIGMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAINTS">
+              <PropertyRef Name="kod_paint" />
+            </Principal>
+            <Dependent Role="PIGMENTS">
+              <PropertyRef Name="kod_paint" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POSITION_RELATIONS_CITY">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
+          <End Role="POSITION" Type="Self.POSITION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="kod_country" />
+              <PropertyRef Name="kod_location" />
+              <PropertyRef Name="kod_city" />
+            </Principal>
+            <Dependent Role="POSITION">
+              <PropertyRef Name="kod_country" />
+              <PropertyRef Name="CIT_kod_location" />
+              <PropertyRef Name="kod_city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POSITION_RELATIONS_LOCATION">
+          <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="0..1" />
+          <End Role="POSITION" Type="Self.POSITION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCATION">
+              <PropertyRef Name="kod_location" />
+            </Principal>
+            <Dependent Role="POSITION">
+              <PropertyRef Name="kod_location" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RELATION_RELATIONS_ARTWORK">
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="1" />
+          <End Role="Relationship_19" Type="Self.Relationship_19" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTWORK">
+              <PropertyRef Name="kod_artwork" />
+            </Principal>
+            <Dependent Role="Relationship_19">
+              <PropertyRef Name="kod_artwork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RELATION_RELATIONS_POSITION">
+          <End Role="POSITION" Type="Self.POSITION" Multiplicity="1" />
+          <End Role="Relationship_19" Type="Self.Relationship_19" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POSITION">
+              <PropertyRef Name="kod_object" />
+            </Principal>
+            <Dependent Role="Relationship_19">
+              <PropertyRef Name="kod_object" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPEKTR_L_RELATIONS_LIBRARY_">
+          <End Role="LIBRARY_OF_SPEKTR_LINES" Type="Self.LIBRARY_OF_SPEKTR_LINES" Multiplicity="1" />
+          <End Role="SPEKTR_LINE" Type="Self.SPEKTR_LINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LIBRARY_OF_SPEKTR_LINES">
+              <PropertyRef Name="id_library" />
+            </Principal>
+            <Dependent Role="SPEKTR_LINE">
+              <PropertyRef Name="id_library" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPEKTR_RELATIONS_CHEMICAL">
+          <End Role="CHEMICAL_ELEMENT" Type="Self.CHEMICAL_ELEMENT" Multiplicity="1" />
+          <End Role="SPEKTR" Type="Self.SPEKTR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHEMICAL_ELEMENT">
+              <PropertyRef Name="id_element" />
+            </Principal>
+            <Dependent Role="SPEKTR">
+              <PropertyRef Name="id_element" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPEKTR_RELATIONS_FOCUS_SE">
+          <End Role="FOCUS_SECTION(SpectralResearch)" Type="Self.FOCUS_SECTION(SpectralResearch)" Multiplicity="1" />
+          <End Role="SPEKTR" Type="Self.SPEKTR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FOCUS_SECTION(SpectralResearch)">
+              <PropertyRef Name="id_focus" />
+            </Principal>
+            <Dependent Role="SPEKTR">
+              <PropertyRef Name="id_focus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPEKTR_RELATIONS_SPEKTR_L">
+          <End Role="SPEKTR_LINE" Type="Self.SPEKTR_LINE" Multiplicity="1" />
+          <End Role="SPEKTR" Type="Self.SPEKTR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SPEKTR_LINE">
+              <PropertyRef Name="id_sp_line" />
+            </Principal>
+            <Dependent Role="SPEKTR">
+              <PropertyRef Name="id_sp_line" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_RELATIONS_PRIVILEG">
+          <End Role="Privileges" Type="Self.Privileges" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privileges">
+              <PropertyRef Name="id_privilege" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="id_privilege" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LaserExpertiseContextModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARTWORK" EntityType="Self.ARTWORK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARTWORK_GENRE" EntityType="Self.ARTWORK_GENRE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARTWORK_TYPE_POSITION" EntityType="Self.ARTWORK_TYPE_POSITION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AUTHOR" EntityType="Self.AUTHOR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CHEMICAL_ELEMENT" EntityType="Self.CHEMICAL_ELEMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CITY" EntityType="Self.CITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COUNTRY" EntityType="Self.COUNTRY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CREATION_DATE" EntityType="Self.CREATION_DATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EPOCH" EntityType="Self.EPOCH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FOCUS_SECTION(SpectralResearch)" EntityType="Self.FOCUS_SECTION(SpectralResearch)" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FOTO" EntityType="Self.FOTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HISTORICAL_PERIOD" EntityType="Self.HISTORICAL_PERIOD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INSTRUMENTAL_METHODS" EntityType="Self.INSTRUMENTAL_METHODS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LIBRARY_OF_SPEKTR_LINES" EntityType="Self.LIBRARY_OF_SPEKTR_LINES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOCATION" EntityType="Self.LOCATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAINTING_SCHOOL" EntityType="Self.PAINTING_SCHOOL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAINTING_STYLE" EntityType="Self.PAINTING_STYLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAINTING_TECHNIQUE" EntityType="Self.PAINTING_TECHNIQUE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAINTS" EntityType="Self.PAINTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PIGMENTS" EntityType="Self.PIGMENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POSITION" EntityType="Self.POSITION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Privileges" EntityType="Self.Privileges" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Relationship_19" EntityType="Self.Relationship_19" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SPEKTR" EntityType="Self.SPEKTR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SPEKTR_LINE" EntityType="Self.SPEKTR_LINE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATE_REMARKS" EntityType="Self.DATE_REMARKS" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DATE_REMARKS].[kod_date] AS [kod_date], 
+    [DATE_REMARKS].[kod_artwork] AS [kod_artwork], 
+    [DATE_REMARKS].[remark_creation_date] AS [remark_creation_date]
+    FROM [dbo].[DATE_REMARKS] AS [DATE_REMARKS]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PASSPORT_RESEARCH" EntityType="Self.PASSPORT_RESEARCH" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PASSPORT_RESEARCH].[kod_artwork] AS [kod_artwork], 
+    [PASSPORT_RESEARCH].[kod_method] AS [kod_method], 
+    [PASSPORT_RESEARCH].[conclusion_method] AS [conclusion_method]
+    FROM [dbo].[PASSPORT_RESEARCH] AS [PASSPORT_RESEARCH]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ARTWORK_ART_ARTGE_ARTWORK_" Association="Self.FK_ARTWORK_ART_ARTGE_ARTWORK_">
+            <End Role="ARTWORK_GENRE" EntitySet="ARTWORK_GENRE" />
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTWORK_ART_HAS_T_PAINTING" Association="Self.FK_ARTWORK_ART_HAS_T_PAINTING">
+            <End Role="PAINTING_TECHNIQUE" EntitySet="PAINTING_TECHNIQUE" />
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTWORK_ART_STYLE_PAINTING" Association="Self.FK_ARTWORK_ART_STYLE_PAINTING">
+            <End Role="PAINTING_STYLE" EntitySet="PAINTING_STYLE" />
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTWORK_RELATIONS_ARTWORK_" Association="Self.FK_ARTWORK_RELATIONS_ARTWORK_">
+            <End Role="ARTWORK_TYPE_POSITION" EntitySet="ARTWORK_TYPE_POSITION" />
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTWORK_RELATIONS_AUTHOR" Association="Self.FK_ARTWORK_RELATIONS_AUTHOR">
+            <End Role="AUTHOR" EntitySet="AUTHOR" />
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTWORK_RELATIONS_HISTORIC" Association="Self.FK_ARTWORK_RELATIONS_HISTORIC">
+            <End Role="HISTORICAL_PERIOD" EntitySet="HISTORICAL_PERIOD" />
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTWORK_RELATIONS_LOCATION" Association="Self.FK_ARTWORK_RELATIONS_LOCATION">
+            <End Role="LOCATION" EntitySet="LOCATION" />
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTWORK_SCHOOL_AR_PAINTING" Association="Self.FK_ARTWORK_SCHOOL_AR_PAINTING">
+            <End Role="PAINTING_SCHOOL" EntitySet="PAINTING_SCHOOL" />
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CITY_RELATIONS_COUNTRY" Association="Self.FK_CITY_RELATIONS_COUNTRY">
+            <End Role="COUNTRY" EntitySet="COUNTRY" />
+            <End Role="CITY" EntitySet="CITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CITY_RELATIONS_LOCATION" Association="Self.FK_CITY_RELATIONS_LOCATION">
+            <End Role="LOCATION" EntitySet="LOCATION" />
+            <End Role="CITY" EntitySet="CITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATE_REM_RELATIONS_ARTWORK" Association="Self.FK_DATE_REM_RELATIONS_ARTWORK">
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+            <End Role="DATE_REMARKS" EntitySet="DATE_REMARKS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATE_REM_RELATIONS_CREATION" Association="Self.FK_DATE_REM_RELATIONS_CREATION">
+            <End Role="CREATION_DATE" EntitySet="CREATION_DATE" />
+            <End Role="DATE_REMARKS" EntitySet="DATE_REMARKS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOCUS_SE_RELATIONS_ARTWORK" Association="Self.FK_FOCUS_SE_RELATIONS_ARTWORK">
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+            <End Role="FOCUS_SECTION(SpectralResearch)" EntitySet="FOCUS_SECTION(SpectralResearch)" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOTO_RELATIONS_ARTWORK" Association="Self.FK_FOTO_RELATIONS_ARTWORK">
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+            <End Role="FOTO" EntitySet="FOTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HISTORIC_RELATIONS_EPOCH" Association="Self.FK_HISTORIC_RELATIONS_EPOCH">
+            <End Role="EPOCH" EntitySet="EPOCH" />
+            <End Role="HISTORICAL_PERIOD" EntitySet="HISTORICAL_PERIOD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PASSPORT_RELATIONS_ARTWORK" Association="Self.FK_PASSPORT_RELATIONS_ARTWORK">
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+            <End Role="PASSPORT_RESEARCH" EntitySet="PASSPORT_RESEARCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PASSPORT_RELATIONS_INSTRUME" Association="Self.FK_PASSPORT_RELATIONS_INSTRUME">
+            <End Role="INSTRUMENTAL_METHODS" EntitySet="INSTRUMENTAL_METHODS" />
+            <End Role="PASSPORT_RESEARCH" EntitySet="PASSPORT_RESEARCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PIGMENTS_RELATIONS_PAINTS" Association="Self.FK_PIGMENTS_RELATIONS_PAINTS">
+            <End Role="PAINTS" EntitySet="PAINTS" />
+            <End Role="PIGMENTS" EntitySet="PIGMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POSITION_RELATIONS_CITY" Association="Self.FK_POSITION_RELATIONS_CITY">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="POSITION" EntitySet="POSITION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POSITION_RELATIONS_LOCATION" Association="Self.FK_POSITION_RELATIONS_LOCATION">
+            <End Role="LOCATION" EntitySet="LOCATION" />
+            <End Role="POSITION" EntitySet="POSITION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RELATION_RELATIONS_ARTWORK" Association="Self.FK_RELATION_RELATIONS_ARTWORK">
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+            <End Role="Relationship_19" EntitySet="Relationship_19" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RELATION_RELATIONS_POSITION" Association="Self.FK_RELATION_RELATIONS_POSITION">
+            <End Role="POSITION" EntitySet="POSITION" />
+            <End Role="Relationship_19" EntitySet="Relationship_19" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPEKTR_L_RELATIONS_LIBRARY_" Association="Self.FK_SPEKTR_L_RELATIONS_LIBRARY_">
+            <End Role="LIBRARY_OF_SPEKTR_LINES" EntitySet="LIBRARY_OF_SPEKTR_LINES" />
+            <End Role="SPEKTR_LINE" EntitySet="SPEKTR_LINE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPEKTR_RELATIONS_CHEMICAL" Association="Self.FK_SPEKTR_RELATIONS_CHEMICAL">
+            <End Role="CHEMICAL_ELEMENT" EntitySet="CHEMICAL_ELEMENT" />
+            <End Role="SPEKTR" EntitySet="SPEKTR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPEKTR_RELATIONS_FOCUS_SE" Association="Self.FK_SPEKTR_RELATIONS_FOCUS_SE">
+            <End Role="FOCUS_SECTION(SpectralResearch)" EntitySet="FOCUS_SECTION(SpectralResearch)" />
+            <End Role="SPEKTR" EntitySet="SPEKTR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPEKTR_RELATIONS_SPEKTR_L" Association="Self.FK_SPEKTR_RELATIONS_SPEKTR_L">
+            <End Role="SPEKTR_LINE" EntitySet="SPEKTR_LINE" />
+            <End Role="SPEKTR" EntitySet="SPEKTR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_RELATIONS_PRIVILEG" Association="Self.FK_USER_RELATIONS_PRIVILEG">
+            <End Role="Privileges" EntitySet="Privileges" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LaserExpertiseContextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ARTWORK">
+          <Key>
+            <PropertyRef Name="kod_artwork" />
+          </Key>
+          <Property Name="kod_artwork" Type="Int32" Nullable="false" />
+          <Property Name="kod_ptechnique" Type="Int32" />
+          <Property Name="kod_genre" Type="Int32" />
+          <Property Name="kod_perioda" Type="Int32" />
+          <Property Name="kod_location" Type="Int32" />
+          <Property Name="kod_school" Type="Int32" />
+          <Property Name="kod_pstyle" Type="Int32" />
+          <Property Name="kod_author" Type="Int32" />
+          <Property Name="Kod_ATPosition" Type="Int32" />
+          <Property Name="artwork_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="original_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sizes" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="creation_date" Type="DateTime" Precision="3" />
+          <Property Name="description" Type="Binary" MaxLength="150" FixedLength="false" Nullable="false" />
+          <Property Name="basis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="ARTWORK_GENRE" Relationship="Self.FK_ARTWORK_ART_ARTGE_ARTWORK_" FromRole="ARTWORK" ToRole="ARTWORK_GENRE" />
+          <NavigationProperty Name="PAINTING_TECHNIQUE" Relationship="Self.FK_ARTWORK_ART_HAS_T_PAINTING" FromRole="ARTWORK" ToRole="PAINTING_TECHNIQUE" />
+          <NavigationProperty Name="PAINTING_STYLE" Relationship="Self.FK_ARTWORK_ART_STYLE_PAINTING" FromRole="ARTWORK" ToRole="PAINTING_STYLE" />
+          <NavigationProperty Name="ARTWORK_TYPE_POSITION" Relationship="Self.FK_ARTWORK_RELATIONS_ARTWORK_" FromRole="ARTWORK" ToRole="ARTWORK_TYPE_POSITION" />
+          <NavigationProperty Name="AUTHOR" Relationship="Self.FK_ARTWORK_RELATIONS_AUTHOR" FromRole="ARTWORK" ToRole="AUTHOR" />
+          <NavigationProperty Name="HISTORICAL_PERIOD" Relationship="Self.FK_ARTWORK_RELATIONS_HISTORIC" FromRole="ARTWORK" ToRole="HISTORICAL_PERIOD" />
+          <NavigationProperty Name="LOCATION" Relationship="Self.FK_ARTWORK_RELATIONS_LOCATION" FromRole="ARTWORK" ToRole="LOCATION" />
+          <NavigationProperty Name="PAINTING_SCHOOL" Relationship="Self.FK_ARTWORK_SCHOOL_AR_PAINTING" FromRole="ARTWORK" ToRole="PAINTING_SCHOOL" />
+          <NavigationProperty Name="DATE_REMARKS" Relationship="Self.FK_DATE_REM_RELATIONS_ARTWORK" FromRole="ARTWORK" ToRole="DATE_REMARKS" />
+          <NavigationProperty Name="FOCUS_SECTION_SpectralResearch_" Relationship="Self.FK_FOCUS_SE_RELATIONS_ARTWORK" FromRole="ARTWORK" ToRole="FOCUS_SECTION_SpectralResearch_" />
+          <NavigationProperty Name="FOTO" Relationship="Self.FK_FOTO_RELATIONS_ARTWORK" FromRole="ARTWORK" ToRole="FOTO" />
+          <NavigationProperty Name="PASSPORT_RESEARCH" Relationship="Self.FK_PASSPORT_RELATIONS_ARTWORK" FromRole="ARTWORK" ToRole="PASSPORT_RESEARCH" />
+          <NavigationProperty Name="POSITION" Relationship="Self.Relationship_19" FromRole="ARTWORK" ToRole="POSITION" />
+        </EntityType>
+        <EntityType Name="ARTWORK_GENRE">
+          <Key>
+            <PropertyRef Name="kod_genre" />
+          </Key>
+          <Property Name="kod_genre" Type="Int32" Nullable="false" />
+          <Property Name="genre_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="Binary" MaxLength="50" FixedLength="false" />
+          <NavigationProperty Name="ARTWORK" Relationship="Self.FK_ARTWORK_ART_ARTGE_ARTWORK_" FromRole="ARTWORK_GENRE" ToRole="ARTWORK" />
+        </EntityType>
+        <EntityType Name="ARTWORK_TYPE_POSITION">
+          <Key>
+            <PropertyRef Name="Kod_ATPosition" />
+          </Key>
+          <Property Name="Kod_ATPosition" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ARTWORK" Relationship="Self.FK_ARTWORK_RELATIONS_ARTWORK_" FromRole="ARTWORK_TYPE_POSITION" ToRole="ARTWORK" />
+        </EntityType>
+        <EntityType Name="AUTHOR">
+          <Key>
+            <PropertyRef Name="kod_author" />
+          </Key>
+          <Property Name="kod_author" Type="Int32" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="another_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pseudonym" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateOfDeath" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="biography" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
+          <Property Name="photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="soc_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="oridin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="education" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sex" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="marital_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ARTWORK" Relationship="Self.FK_ARTWORK_RELATIONS_AUTHOR" FromRole="AUTHOR" ToRole="ARTWORK" />
+        </EntityType>
+        <EntityType Name="CHEMICAL_ELEMENT">
+          <Key>
+            <PropertyRef Name="id_element" />
+          </Key>
+          <Property Name="id_element" Type="Int32" Nullable="false" />
+          <Property Name="element_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="atomic_number" Type="Int32" />
+          <Property Name="atomic_weight" Type="Double" />
+          <Property Name="description" Type="Binary" MaxLength="150" FixedLength="false" />
+          <Property Name="core" Type="Int32" />
+          <Property Name="ions" Type="Int32" />
+          <NavigationProperty Name="SPEKTR" Relationship="Self.FK_SPEKTR_RELATIONS_CHEMICAL" FromRole="CHEMICAL_ELEMENT" ToRole="SPEKTR" />
+        </EntityType>
+        <EntityType Name="CITY">
+          <Key>
+            <PropertyRef Name="kod_country" />
+            <PropertyRef Name="kod_location" />
+            <PropertyRef Name="kod_city" />
+          </Key>
+          <Property Name="kod_country" Type="Int32" Nullable="false" />
+          <Property Name="kod_location" Type="Int32" Nullable="false" />
+          <Property Name="kod_city" Type="Int32" Nullable="false" />
+          <Property Name="city_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="administrative_devision" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="region" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="COUNTRY" Relationship="Self.FK_CITY_RELATIONS_COUNTRY" FromRole="CITY" ToRole="COUNTRY" />
+          <NavigationProperty Name="LOCATION" Relationship="Self.FK_CITY_RELATIONS_LOCATION" FromRole="CITY" ToRole="LOCATION" />
+          <NavigationProperty Name="POSITION" Relationship="Self.FK_POSITION_RELATIONS_CITY" FromRole="CITY" ToRole="POSITION" />
+        </EntityType>
+        <EntityType Name="COUNTRY">
+          <Key>
+            <PropertyRef Name="kod_country" />
+          </Key>
+          <Property Name="kod_country" Type="Int32" Nullable="false" />
+          <Property Name="country_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="Binary" MaxLength="150" FixedLength="false" />
+          <Property Name="capital" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="languages" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="country_code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CITY" Relationship="Self.FK_CITY_RELATIONS_COUNTRY" FromRole="COUNTRY" ToRole="CITY" />
+        </EntityType>
+        <EntityType Name="CREATION_DATE">
+          <Key>
+            <PropertyRef Name="kod_date" />
+          </Key>
+          <Property Name="kod_date" Type="Int32" Nullable="false" />
+          <Property Name="date_value" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DATE_REMARKS" Relationship="Self.FK_DATE_REM_RELATIONS_CREATION" FromRole="CREATION_DATE" ToRole="DATE_REMARKS" />
+        </EntityType>
+        <EntityType Name="EPOCH">
+          <Key>
+            <PropertyRef Name="kod_epoch" />
+          </Key>
+          <Property Name="kod_epoch" Type="Int32" Nullable="false" />
+          <Property Name="epoch_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="epoch_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="HISTORICAL_PERIOD" Relationship="Self.FK_HISTORIC_RELATIONS_EPOCH" FromRole="EPOCH" ToRole="HISTORICAL_PERIOD" />
+        </EntityType>
+        <EntityType Name="FOCUS_SECTION_SpectralResearch_">
+          <Key>
+            <PropertyRef Name="id_focus" />
+          </Key>
+          <Property Name="id_focus" Type="Int32" Nullable="false" />
+          <Property Name="kod_artwork" Type="Int32" />
+          <Property Name="focus_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="time" Type="DateTime" Precision="3" />
+          <Property Name="file" Type="Binary" MaxLength="8000" FixedLength="true" />
+          <Property Name="PointFocusDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MainColourFocus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ARTWORK" Relationship="Self.FK_FOCUS_SE_RELATIONS_ARTWORK" FromRole="FOCUS_SECTION_SpectralResearch_" ToRole="ARTWORK" />
+          <NavigationProperty Name="SPEKTR" Relationship="Self.FK_SPEKTR_RELATIONS_FOCUS_SE" FromRole="FOCUS_SECTION_SpectralResearch_" ToRole="SPEKTR" />
+        </EntityType>
+        <EntityType Name="FOTO">
+          <Key>
+            <PropertyRef Name="kod_foto" />
+          </Key>
+          <Property Name="kod_foto" Type="Int32" Nullable="false" />
+          <Property Name="kod_artwork" Type="Int32" />
+          <Property Name="path_to_foto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="foto_notes" Type="Binary" MaxLength="150" FixedLength="false" />
+          <NavigationProperty Name="ARTWORK" Relationship="Self.FK_FOTO_RELATIONS_ARTWORK" FromRole="FOTO" ToRole="ARTWORK" />
+        </EntityType>
+        <EntityType Name="HISTORICAL_PERIOD">
+          <Key>
+            <PropertyRef Name="kod_perioda" />
+          </Key>
+          <Property Name="kod_perioda" Type="Int32" Nullable="false" />
+          <Property Name="kod_epoch" Type="Int32" />
+          <Property Name="period_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="short_description" Type="Binary" MaxLength="150" FixedLength="false" />
+          <Property Name="dates" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ARTWORK" Relationship="Self.FK_ARTWORK_RELATIONS_HISTORIC" FromRole="HISTORICAL_PERIOD" ToRole="ARTWORK" />
+          <NavigationProperty Name="EPOCH" Relationship="Self.FK_HISTORIC_RELATIONS_EPOCH" FromRole="HISTORICAL_PERIOD" ToRole="EPOCH" />
+        </EntityType>
+        <EntityType Name="INSTRUMENTAL_METHODS">
+          <Key>
+            <PropertyRef Name="kod_method" />
+          </Key>
+          <Property Name="kod_method" Type="Int32" Nullable="false" />
+          <Property Name="method_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="Binary" MaxLength="150" FixedLength="false" />
+          <NavigationProperty Name="PASSPORT_RESEARCH" Relationship="Self.FK_PASSPORT_RELATIONS_INSTRUME" FromRole="INSTRUMENTAL_METHODS" ToRole="PASSPORT_RESEARCH" />
+        </EntityType>
+        <EntityType Name="LIBRARY_OF_SPEKTR_LINES">
+          <Key>
+            <PropertyRef Name="id_library" />
+          </Key>
+          <Property Name="id_library" Type="Byte" Nullable="false" />
+          <Property Name="name_library" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="library_description" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="comments_library" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SPEKTR_LINE" Relationship="Self.FK_SPEKTR_L_RELATIONS_LIBRARY_" FromRole="LIBRARY_OF_SPEKTR_LINES" ToRole="SPEKTR_LINE" />
+        </EntityType>
+        <EntityType Name="LOCATION">
+          <Key>
+            <PropertyRef Name="kod_location" />
+          </Key>
+          <Property Name="kod_location" Type="Int32" Nullable="false" />
+          <Property Name="location_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="location_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="longitude_loc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="latitude_loc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="location_description" Type="Binary" MaxLength="100" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="ARTWORK" Relationship="Self.FK_ARTWORK_RELATIONS_LOCATION" FromRole="LOCATION" ToRole="ARTWORK" />
+          <NavigationProperty Name="CITY" Relationship="Self.FK_CITY_RELATIONS_LOCATION" FromRole="LOCATION" ToRole="CITY" />
+          <NavigationProperty Name="POSITION" Relationship="Self.FK_POSITION_RELATIONS_LOCATION" FromRole="LOCATION" ToRole="POSITION" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="id_organization" />
+          </Key>
+          <Property Name="id_organization" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Phone_Number" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PAINTING_SCHOOL">
+          <Key>
+            <PropertyRef Name="kod_school" />
+          </Key>
+          <Property Name="kod_school" Type="Int32" Nullable="false" />
+          <Property Name="school_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="school_description" Type="Binary" MaxLength="100" FixedLength="false" Nullable="false" />
+          <Property Name="creation_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="lead_school" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="origin_sname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ARTWORK" Relationship="Self.FK_ARTWORK_SCHOOL_AR_PAINTING" FromRole="PAINTING_SCHOOL" ToRole="ARTWORK" />
+        </EntityType>
+        <EntityType Name="PAINTING_STYLE">
+          <Key>
+            <PropertyRef Name="kod_pstyle" />
+          </Key>
+          <Property Name="kod_pstyle" Type="Int32" Nullable="false" />
+          <Property Name="pstyle_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pstyle_description" Type="Binary" MaxLength="150" FixedLength="false" Nullable="false" />
+          <Property Name="pstyle_source" Type="Binary" MaxLength="150" FixedLength="false" Nullable="false" />
+          <Property Name="origin_pstyle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ARTWORK" Relationship="Self.FK_ARTWORK_ART_STYLE_PAINTING" FromRole="PAINTING_STYLE" ToRole="ARTWORK" />
+        </EntityType>
+        <EntityType Name="PAINTING_TECHNIQUE">
+          <Key>
+            <PropertyRef Name="kod_ptechnique" />
+          </Key>
+          <Property Name="kod_ptechnique" Type="Int32" Nullable="false" />
+          <Property Name="ptechnique_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ptechnique_description" Type="Binary" MaxLength="150" FixedLength="false" />
+          <Property Name="origin_ptechnique_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ARTWORK" Relationship="Self.FK_ARTWORK_ART_HAS_T_PAINTING" FromRole="PAINTING_TECHNIQUE" ToRole="ARTWORK" />
+        </EntityType>
+        <EntityType Name="PAINTS">
+          <Key>
+            <PropertyRef Name="kod_paint" />
+          </Key>
+          <Property Name="kod_paint" Type="Int32" Nullable="false" />
+          <Property Name="paint_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PIGMENTS" Relationship="Self.FK_PIGMENTS_RELATIONS_PAINTS" FromRole="PAINTS" ToRole="PIGMENTS" />
+        </EntityType>
+        <EntityType Name="PIGMENTS">
+          <Key>
+            <PropertyRef Name="id_pigment" />
+          </Key>
+          <Property Name="id_pigment" Type="Int32" Nullable="false" />
+          <Property Name="kod_paint" Type="Int32" Nullable="false" />
+          <Property Name="pigment_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pigment_group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pigment_description" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PAINTS" Relationship="Self.FK_PIGMENTS_RELATIONS_PAINTS" FromRole="PIGMENTS" ToRole="PAINTS" />
+        </EntityType>
+        <EntityType Name="POSITION">
+          <Key>
+            <PropertyRef Name="kod_object" />
+          </Key>
+          <Property Name="kod_object" Type="Int32" Nullable="false" />
+          <Property Name="kod_country" Type="Int32" />
+          <Property Name="CIT_kod_location" Type="Int32" />
+          <Property Name="kod_city" Type="Int32" />
+          <Property Name="kod_location" Type="Int32" />
+          <Property Name="name_object" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="type_object" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="longitude_loc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="latitude_loc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pos_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="Binary" MaxLength="150" FixedLength="false" />
+          <NavigationProperty Name="CITY" Relationship="Self.FK_POSITION_RELATIONS_CITY" FromRole="POSITION" ToRole="CITY" />
+          <NavigationProperty Name="LOCATION" Relationship="Self.FK_POSITION_RELATIONS_LOCATION" FromRole="POSITION" ToRole="LOCATION" />
+          <NavigationProperty Name="ARTWORK" Relationship="Self.Relationship_19" FromRole="POSITION" ToRole="ARTWORK" />
+        </EntityType>
+        <EntityType Name="Privileges">
+          <Key>
+            <PropertyRef Name="id_privilege" />
+          </Key>
+          <Property Name="id_privilege" Type="Int32" Nullable="false" />
+          <Property Name="User_Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="privileges1" Type="Int32" />
+          <Property Name="Description2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_USER_RELATIONS_PRIVILEG" FromRole="Privileges" ToRole="User" />
+        </EntityType>
+        <EntityType Name="SPEKTR">
+          <Key>
+            <PropertyRef Name="kod_spektr" />
+          </Key>
+          <Property Name="kod_spektr" Type="Int32" Nullable="false" />
+          <Property Name="id_focus" Type="Int32" Nullable="false" />
+          <Property Name="id_sp_line" Type="Int64" Nullable="false" />
+          <Property Name="id_element" Type="Int32" Nullable="false" />
+          <Property Name="Wave_Length" Type="Int32" />
+          <Property Name="Line_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Spektrs_Base" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CHEMICAL_ELEMENT" Relationship="Self.FK_SPEKTR_RELATIONS_CHEMICAL" FromRole="SPEKTR" ToRole="CHEMICAL_ELEMENT" />
+          <NavigationProperty Name="FOCUS_SECTION_SpectralResearch_" Relationship="Self.FK_SPEKTR_RELATIONS_FOCUS_SE" FromRole="SPEKTR" ToRole="FOCUS_SECTION_SpectralResearch_" />
+          <NavigationProperty Name="SPEKTR_LINE" Relationship="Self.FK_SPEKTR_RELATIONS_SPEKTR_L" FromRole="SPEKTR" ToRole="SPEKTR_LINE" />
+        </EntityType>
+        <EntityType Name="SPEKTR_LINE">
+          <Key>
+            <PropertyRef Name="id_sp_line" />
+          </Key>
+          <Property Name="id_sp_line" Type="Int64" Nullable="false" />
+          <Property Name="id_library" Type="Byte" Nullable="false" />
+          <Property Name="Date_line" Type="DateTime" Precision="3" />
+          <Property Name="Name_of_the_person" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WavellengthLine" Type="Double" />
+          <Property Name="Other_options" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LIBRARY_OF_SPEKTR_LINES" Relationship="Self.FK_SPEKTR_L_RELATIONS_LIBRARY_" FromRole="SPEKTR_LINE" ToRole="LIBRARY_OF_SPEKTR_LINES" />
+          <NavigationProperty Name="SPEKTR" Relationship="Self.FK_SPEKTR_RELATIONS_SPEKTR_L" FromRole="SPEKTR_LINE" ToRole="SPEKTR" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id_user" />
+          </Key>
+          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <Property Name="id_privilege" Type="Int32" />
+          <Property Name="Login_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Privileges" Relationship="Self.FK_USER_RELATIONS_PRIVILEG" FromRole="User" ToRole="Privileges" />
+        </EntityType>
+        <EntityType Name="DATE_REMARKS">
+          <Key>
+            <PropertyRef Name="kod_date" />
+          </Key>
+          <Property Name="kod_date" Type="Int32" Nullable="false" />
+          <Property Name="kod_artwork" Type="Int32" />
+          <Property Name="remark_creation_date" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ARTWORK" Relationship="Self.FK_DATE_REM_RELATIONS_ARTWORK" FromRole="DATE_REMARKS" ToRole="ARTWORK" />
+          <NavigationProperty Name="CREATION_DATE" Relationship="Self.FK_DATE_REM_RELATIONS_CREATION" FromRole="DATE_REMARKS" ToRole="CREATION_DATE" />
+        </EntityType>
+        <EntityType Name="PASSPORT_RESEARCH">
+          <Key>
+            <PropertyRef Name="kod_method" />
+          </Key>
+          <Property Name="kod_artwork" Type="Int32" />
+          <Property Name="kod_method" Type="Int32" Nullable="false" />
+          <Property Name="conclusion_method" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ARTWORK" Relationship="Self.FK_PASSPORT_RELATIONS_ARTWORK" FromRole="PASSPORT_RESEARCH" ToRole="ARTWORK" />
+          <NavigationProperty Name="INSTRUMENTAL_METHODS" Relationship="Self.FK_PASSPORT_RELATIONS_INSTRUME" FromRole="PASSPORT_RESEARCH" ToRole="INSTRUMENTAL_METHODS" />
+        </EntityType>
+        <Association Name="FK_ARTWORK_ART_ARTGE_ARTWORK_">
+          <End Role="ARTWORK_GENRE" Type="Self.ARTWORK_GENRE" Multiplicity="0..1" />
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTWORK_GENRE">
+              <PropertyRef Name="kod_genre" />
+            </Principal>
+            <Dependent Role="ARTWORK">
+              <PropertyRef Name="kod_genre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTWORK_ART_HAS_T_PAINTING">
+          <End Role="PAINTING_TECHNIQUE" Type="Self.PAINTING_TECHNIQUE" Multiplicity="0..1" />
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAINTING_TECHNIQUE">
+              <PropertyRef Name="kod_ptechnique" />
+            </Principal>
+            <Dependent Role="ARTWORK">
+              <PropertyRef Name="kod_ptechnique" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTWORK_ART_STYLE_PAINTING">
+          <End Role="PAINTING_STYLE" Type="Self.PAINTING_STYLE" Multiplicity="0..1" />
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAINTING_STYLE">
+              <PropertyRef Name="kod_pstyle" />
+            </Principal>
+            <Dependent Role="ARTWORK">
+              <PropertyRef Name="kod_pstyle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTWORK_RELATIONS_ARTWORK_">
+          <End Role="ARTWORK_TYPE_POSITION" Type="Self.ARTWORK_TYPE_POSITION" Multiplicity="0..1" />
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTWORK_TYPE_POSITION">
+              <PropertyRef Name="Kod_ATPosition" />
+            </Principal>
+            <Dependent Role="ARTWORK">
+              <PropertyRef Name="Kod_ATPosition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTWORK_RELATIONS_AUTHOR">
+          <End Role="AUTHOR" Type="Self.AUTHOR" Multiplicity="0..1" />
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTHOR">
+              <PropertyRef Name="kod_author" />
+            </Principal>
+            <Dependent Role="ARTWORK">
+              <PropertyRef Name="kod_author" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTWORK_RELATIONS_HISTORIC">
+          <End Role="HISTORICAL_PERIOD" Type="Self.HISTORICAL_PERIOD" Multiplicity="0..1" />
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HISTORICAL_PERIOD">
+              <PropertyRef Name="kod_perioda" />
+            </Principal>
+            <Dependent Role="ARTWORK">
+              <PropertyRef Name="kod_perioda" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTWORK_RELATIONS_LOCATION">
+          <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="0..1" />
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCATION">
+              <PropertyRef Name="kod_location" />
+            </Principal>
+            <Dependent Role="ARTWORK">
+              <PropertyRef Name="kod_location" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTWORK_SCHOOL_AR_PAINTING">
+          <End Role="PAINTING_SCHOOL" Type="Self.PAINTING_SCHOOL" Multiplicity="0..1" />
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAINTING_SCHOOL">
+              <PropertyRef Name="kod_school" />
+            </Principal>
+            <Dependent Role="ARTWORK">
+              <PropertyRef Name="kod_school" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATE_REM_RELATIONS_ARTWORK">
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="0..1" />
+          <End Role="DATE_REMARKS" Type="Self.DATE_REMARKS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTWORK">
+              <PropertyRef Name="kod_artwork" />
+            </Principal>
+            <Dependent Role="DATE_REMARKS">
+              <PropertyRef Name="kod_artwork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOCUS_SE_RELATIONS_ARTWORK">
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="0..1" />
+          <End Role="FOCUS_SECTION_SpectralResearch_" Type="Self.FOCUS_SECTION_SpectralResearch_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTWORK">
+              <PropertyRef Name="kod_artwork" />
+            </Principal>
+            <Dependent Role="FOCUS_SECTION_SpectralResearch_">
+              <PropertyRef Name="kod_artwork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FOTO_RELATIONS_ARTWORK">
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="0..1" />
+          <End Role="FOTO" Type="Self.FOTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTWORK">
+              <PropertyRef Name="kod_artwork" />
+            </Principal>
+            <Dependent Role="FOTO">
+              <PropertyRef Name="kod_artwork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PASSPORT_RELATIONS_ARTWORK">
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="0..1" />
+          <End Role="PASSPORT_RESEARCH" Type="Self.PASSPORT_RESEARCH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTWORK">
+              <PropertyRef Name="kod_artwork" />
+            </Principal>
+            <Dependent Role="PASSPORT_RESEARCH">
+              <PropertyRef Name="kod_artwork" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPEKTR_RELATIONS_CHEMICAL">
+          <End Role="CHEMICAL_ELEMENT" Type="Self.CHEMICAL_ELEMENT" Multiplicity="1" />
+          <End Role="SPEKTR" Type="Self.SPEKTR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHEMICAL_ELEMENT">
+              <PropertyRef Name="id_element" />
+            </Principal>
+            <Dependent Role="SPEKTR">
+              <PropertyRef Name="id_element" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CITY_RELATIONS_COUNTRY">
+          <End Role="COUNTRY" Type="Self.COUNTRY" Multiplicity="1" />
+          <End Role="CITY" Type="Self.CITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTRY">
+              <PropertyRef Name="kod_country" />
+            </Principal>
+            <Dependent Role="CITY">
+              <PropertyRef Name="kod_country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CITY_RELATIONS_LOCATION">
+          <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="1" />
+          <End Role="CITY" Type="Self.CITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCATION">
+              <PropertyRef Name="kod_location" />
+            </Principal>
+            <Dependent Role="CITY">
+              <PropertyRef Name="kod_location" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POSITION_RELATIONS_CITY">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
+          <End Role="POSITION" Type="Self.POSITION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="kod_country" />
+              <PropertyRef Name="kod_location" />
+              <PropertyRef Name="kod_city" />
+            </Principal>
+            <Dependent Role="POSITION">
+              <PropertyRef Name="kod_country" />
+              <PropertyRef Name="CIT_kod_location" />
+              <PropertyRef Name="kod_city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DATE_REM_RELATIONS_CREATION">
+          <End Role="CREATION_DATE" Type="Self.CREATION_DATE" Multiplicity="1" />
+          <End Role="DATE_REMARKS" Type="Self.DATE_REMARKS" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CREATION_DATE">
+              <PropertyRef Name="kod_date" />
+            </Principal>
+            <Dependent Role="DATE_REMARKS">
+              <PropertyRef Name="kod_date" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HISTORIC_RELATIONS_EPOCH">
+          <End Role="EPOCH" Type="Self.EPOCH" Multiplicity="0..1" />
+          <End Role="HISTORICAL_PERIOD" Type="Self.HISTORICAL_PERIOD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EPOCH">
+              <PropertyRef Name="kod_epoch" />
+            </Principal>
+            <Dependent Role="HISTORICAL_PERIOD">
+              <PropertyRef Name="kod_epoch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPEKTR_RELATIONS_FOCUS_SE">
+          <End Role="FOCUS_SECTION_SpectralResearch_" Type="Self.FOCUS_SECTION_SpectralResearch_" Multiplicity="1" />
+          <End Role="SPEKTR" Type="Self.SPEKTR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FOCUS_SECTION_SpectralResearch_">
+              <PropertyRef Name="id_focus" />
+            </Principal>
+            <Dependent Role="SPEKTR">
+              <PropertyRef Name="id_focus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PASSPORT_RELATIONS_INSTRUME">
+          <End Role="INSTRUMENTAL_METHODS" Type="Self.INSTRUMENTAL_METHODS" Multiplicity="1" />
+          <End Role="PASSPORT_RESEARCH" Type="Self.PASSPORT_RESEARCH" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="INSTRUMENTAL_METHODS">
+              <PropertyRef Name="kod_method" />
+            </Principal>
+            <Dependent Role="PASSPORT_RESEARCH">
+              <PropertyRef Name="kod_method" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPEKTR_L_RELATIONS_LIBRARY_">
+          <End Role="LIBRARY_OF_SPEKTR_LINES" Type="Self.LIBRARY_OF_SPEKTR_LINES" Multiplicity="1" />
+          <End Role="SPEKTR_LINE" Type="Self.SPEKTR_LINE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LIBRARY_OF_SPEKTR_LINES">
+              <PropertyRef Name="id_library" />
+            </Principal>
+            <Dependent Role="SPEKTR_LINE">
+              <PropertyRef Name="id_library" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POSITION_RELATIONS_LOCATION">
+          <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="0..1" />
+          <End Role="POSITION" Type="Self.POSITION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOCATION">
+              <PropertyRef Name="kod_location" />
+            </Principal>
+            <Dependent Role="POSITION">
+              <PropertyRef Name="kod_location" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PIGMENTS_RELATIONS_PAINTS">
+          <End Role="PAINTS" Type="Self.PAINTS" Multiplicity="1" />
+          <End Role="PIGMENTS" Type="Self.PIGMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAINTS">
+              <PropertyRef Name="kod_paint" />
+            </Principal>
+            <Dependent Role="PIGMENTS">
+              <PropertyRef Name="kod_paint" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USER_RELATIONS_PRIVILEG">
+          <End Role="Privileges" Type="Self.Privileges" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Privileges">
+              <PropertyRef Name="id_privilege" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="id_privilege" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SPEKTR_RELATIONS_SPEKTR_L">
+          <End Role="SPEKTR_LINE" Type="Self.SPEKTR_LINE" Multiplicity="1" />
+          <End Role="SPEKTR" Type="Self.SPEKTR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SPEKTR_LINE">
+              <PropertyRef Name="id_sp_line" />
+            </Principal>
+            <Dependent Role="SPEKTR">
+              <PropertyRef Name="id_sp_line" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Relationship_19">
+          <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
+          <End Role="POSITION" Type="Self.POSITION" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="LaserExpertiseContextEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="ARTWORK" EntityType="Self.ARTWORK" />
+          <EntitySet Name="ARTWORK_GENRE" EntityType="Self.ARTWORK_GENRE" />
+          <EntitySet Name="ARTWORK_TYPE_POSITION" EntityType="Self.ARTWORK_TYPE_POSITION" />
+          <EntitySet Name="AUTHOR" EntityType="Self.AUTHOR" />
+          <EntitySet Name="CHEMICAL_ELEMENT" EntityType="Self.CHEMICAL_ELEMENT" />
+          <EntitySet Name="CITY" EntityType="Self.CITY" />
+          <EntitySet Name="COUNTRY" EntityType="Self.COUNTRY" />
+          <EntitySet Name="CREATION_DATE" EntityType="Self.CREATION_DATE" />
+          <EntitySet Name="EPOCH" EntityType="Self.EPOCH" />
+          <EntitySet Name="FOCUS_SECTION_SpectralResearch_" EntityType="Self.FOCUS_SECTION_SpectralResearch_" />
+          <EntitySet Name="FOTO" EntityType="Self.FOTO" />
+          <EntitySet Name="HISTORICAL_PERIOD" EntityType="Self.HISTORICAL_PERIOD" />
+          <EntitySet Name="INSTRUMENTAL_METHODS" EntityType="Self.INSTRUMENTAL_METHODS" />
+          <EntitySet Name="LIBRARY_OF_SPEKTR_LINES" EntityType="Self.LIBRARY_OF_SPEKTR_LINES" />
+          <EntitySet Name="LOCATION" EntityType="Self.LOCATION" />
+          <EntitySet Name="Organization" EntityType="Self.Organization" />
+          <EntitySet Name="PAINTING_SCHOOL" EntityType="Self.PAINTING_SCHOOL" />
+          <EntitySet Name="PAINTING_STYLE" EntityType="Self.PAINTING_STYLE" />
+          <EntitySet Name="PAINTING_TECHNIQUE" EntityType="Self.PAINTING_TECHNIQUE" />
+          <EntitySet Name="PAINTS" EntityType="Self.PAINTS" />
+          <EntitySet Name="PIGMENTS" EntityType="Self.PIGMENTS" />
+          <EntitySet Name="POSITION" EntityType="Self.POSITION" />
+          <EntitySet Name="Privileges" EntityType="Self.Privileges" />
+          <EntitySet Name="SPEKTR" EntityType="Self.SPEKTR" />
+          <EntitySet Name="SPEKTR_LINE" EntityType="Self.SPEKTR_LINE" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="DATE_REMARKS" EntityType="Self.DATE_REMARKS" />
+          <EntitySet Name="PASSPORT_RESEARCH" EntityType="Self.PASSPORT_RESEARCH" />
+          <AssociationSet Name="FK_ARTWORK_ART_ARTGE_ARTWORK_" Association="Self.FK_ARTWORK_ART_ARTGE_ARTWORK_">
+            <End Role="ARTWORK_GENRE" EntitySet="ARTWORK_GENRE" />
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTWORK_ART_HAS_T_PAINTING" Association="Self.FK_ARTWORK_ART_HAS_T_PAINTING">
+            <End Role="PAINTING_TECHNIQUE" EntitySet="PAINTING_TECHNIQUE" />
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTWORK_ART_STYLE_PAINTING" Association="Self.FK_ARTWORK_ART_STYLE_PAINTING">
+            <End Role="PAINTING_STYLE" EntitySet="PAINTING_STYLE" />
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTWORK_RELATIONS_ARTWORK_" Association="Self.FK_ARTWORK_RELATIONS_ARTWORK_">
+            <End Role="ARTWORK_TYPE_POSITION" EntitySet="ARTWORK_TYPE_POSITION" />
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTWORK_RELATIONS_AUTHOR" Association="Self.FK_ARTWORK_RELATIONS_AUTHOR">
+            <End Role="AUTHOR" EntitySet="AUTHOR" />
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTWORK_RELATIONS_HISTORIC" Association="Self.FK_ARTWORK_RELATIONS_HISTORIC">
+            <End Role="HISTORICAL_PERIOD" EntitySet="HISTORICAL_PERIOD" />
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTWORK_RELATIONS_LOCATION" Association="Self.FK_ARTWORK_RELATIONS_LOCATION">
+            <End Role="LOCATION" EntitySet="LOCATION" />
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTWORK_SCHOOL_AR_PAINTING" Association="Self.FK_ARTWORK_SCHOOL_AR_PAINTING">
+            <End Role="PAINTING_SCHOOL" EntitySet="PAINTING_SCHOOL" />
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATE_REM_RELATIONS_ARTWORK" Association="Self.FK_DATE_REM_RELATIONS_ARTWORK">
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+            <End Role="DATE_REMARKS" EntitySet="DATE_REMARKS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOCUS_SE_RELATIONS_ARTWORK" Association="Self.FK_FOCUS_SE_RELATIONS_ARTWORK">
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+            <End Role="FOCUS_SECTION_SpectralResearch_" EntitySet="FOCUS_SECTION_SpectralResearch_" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FOTO_RELATIONS_ARTWORK" Association="Self.FK_FOTO_RELATIONS_ARTWORK">
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+            <End Role="FOTO" EntitySet="FOTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PASSPORT_RELATIONS_ARTWORK" Association="Self.FK_PASSPORT_RELATIONS_ARTWORK">
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+            <End Role="PASSPORT_RESEARCH" EntitySet="PASSPORT_RESEARCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPEKTR_RELATIONS_CHEMICAL" Association="Self.FK_SPEKTR_RELATIONS_CHEMICAL">
+            <End Role="CHEMICAL_ELEMENT" EntitySet="CHEMICAL_ELEMENT" />
+            <End Role="SPEKTR" EntitySet="SPEKTR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CITY_RELATIONS_COUNTRY" Association="Self.FK_CITY_RELATIONS_COUNTRY">
+            <End Role="COUNTRY" EntitySet="COUNTRY" />
+            <End Role="CITY" EntitySet="CITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CITY_RELATIONS_LOCATION" Association="Self.FK_CITY_RELATIONS_LOCATION">
+            <End Role="LOCATION" EntitySet="LOCATION" />
+            <End Role="CITY" EntitySet="CITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POSITION_RELATIONS_CITY" Association="Self.FK_POSITION_RELATIONS_CITY">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="POSITION" EntitySet="POSITION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DATE_REM_RELATIONS_CREATION" Association="Self.FK_DATE_REM_RELATIONS_CREATION">
+            <End Role="CREATION_DATE" EntitySet="CREATION_DATE" />
+            <End Role="DATE_REMARKS" EntitySet="DATE_REMARKS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HISTORIC_RELATIONS_EPOCH" Association="Self.FK_HISTORIC_RELATIONS_EPOCH">
+            <End Role="EPOCH" EntitySet="EPOCH" />
+            <End Role="HISTORICAL_PERIOD" EntitySet="HISTORICAL_PERIOD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPEKTR_RELATIONS_FOCUS_SE" Association="Self.FK_SPEKTR_RELATIONS_FOCUS_SE">
+            <End Role="FOCUS_SECTION_SpectralResearch_" EntitySet="FOCUS_SECTION_SpectralResearch_" />
+            <End Role="SPEKTR" EntitySet="SPEKTR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PASSPORT_RELATIONS_INSTRUME" Association="Self.FK_PASSPORT_RELATIONS_INSTRUME">
+            <End Role="INSTRUMENTAL_METHODS" EntitySet="INSTRUMENTAL_METHODS" />
+            <End Role="PASSPORT_RESEARCH" EntitySet="PASSPORT_RESEARCH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPEKTR_L_RELATIONS_LIBRARY_" Association="Self.FK_SPEKTR_L_RELATIONS_LIBRARY_">
+            <End Role="LIBRARY_OF_SPEKTR_LINES" EntitySet="LIBRARY_OF_SPEKTR_LINES" />
+            <End Role="SPEKTR_LINE" EntitySet="SPEKTR_LINE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POSITION_RELATIONS_LOCATION" Association="Self.FK_POSITION_RELATIONS_LOCATION">
+            <End Role="LOCATION" EntitySet="LOCATION" />
+            <End Role="POSITION" EntitySet="POSITION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PIGMENTS_RELATIONS_PAINTS" Association="Self.FK_PIGMENTS_RELATIONS_PAINTS">
+            <End Role="PAINTS" EntitySet="PAINTS" />
+            <End Role="PIGMENTS" EntitySet="PIGMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USER_RELATIONS_PRIVILEG" Association="Self.FK_USER_RELATIONS_PRIVILEG">
+            <End Role="Privileges" EntitySet="Privileges" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SPEKTR_RELATIONS_SPEKTR_L" Association="Self.FK_SPEKTR_RELATIONS_SPEKTR_L">
+            <End Role="SPEKTR_LINE" EntitySet="SPEKTR_LINE" />
+            <End Role="SPEKTR" EntitySet="SPEKTR" />
+          </AssociationSet>
+          <AssociationSet Name="Relationship_19" Association="Self.Relationship_19">
+            <End Role="ARTWORK" EntitySet="ARTWORK" />
+            <End Role="POSITION" EntitySet="POSITION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LaserExpertiseContextModelStoreContainer" CdmEntityContainer="LaserExpertiseContextEntities1">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARTWORK">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.ARTWORK">
+              <MappingFragment StoreEntitySet="ARTWORK">
+                <ScalarProperty Name="kod_artwork" ColumnName="kod_artwork" />
+                <ScalarProperty Name="kod_ptechnique" ColumnName="kod_ptechnique" />
+                <ScalarProperty Name="kod_genre" ColumnName="kod_genre" />
+                <ScalarProperty Name="kod_perioda" ColumnName="kod_perioda" />
+                <ScalarProperty Name="kod_location" ColumnName="kod_location" />
+                <ScalarProperty Name="kod_school" ColumnName="kod_school" />
+                <ScalarProperty Name="kod_pstyle" ColumnName="kod_pstyle" />
+                <ScalarProperty Name="kod_author" ColumnName="kod_author" />
+                <ScalarProperty Name="Kod_ATPosition" ColumnName="Kod_ATPosition" />
+                <ScalarProperty Name="artwork_name" ColumnName="artwork_name" />
+                <ScalarProperty Name="original_name" ColumnName="original_name" />
+                <ScalarProperty Name="sizes" ColumnName="sizes" />
+                <ScalarProperty Name="creation_date" ColumnName="creation_date" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="basis" ColumnName="basis" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARTWORK_GENRE">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.ARTWORK_GENRE">
+              <MappingFragment StoreEntitySet="ARTWORK_GENRE">
+                <ScalarProperty Name="kod_genre" ColumnName="kod_genre" />
+                <ScalarProperty Name="genre_name" ColumnName="genre_name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ARTWORK_TYPE_POSITION">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.ARTWORK_TYPE_POSITION">
+              <MappingFragment StoreEntitySet="ARTWORK_TYPE_POSITION">
+                <ScalarProperty Name="Kod_ATPosition" ColumnName="Kod_ATPosition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AUTHOR">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.AUTHOR">
+              <MappingFragment StoreEntitySet="AUTHOR">
+                <ScalarProperty Name="kod_author" ColumnName="kod_author" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="another_name" ColumnName="another_name" />
+                <ScalarProperty Name="pseudonym" ColumnName="pseudonym" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="dateOfDeath" ColumnName="dateOfDeath" />
+                <ScalarProperty Name="biography" ColumnName="biography" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="soc_status" ColumnName="soc_status" />
+                <ScalarProperty Name="oridin" ColumnName="oridin" />
+                <ScalarProperty Name="education" ColumnName="education" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="marital_status" ColumnName="marital_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CHEMICAL_ELEMENT">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.CHEMICAL_ELEMENT">
+              <MappingFragment StoreEntitySet="CHEMICAL_ELEMENT">
+                <ScalarProperty Name="id_element" ColumnName="id_element" />
+                <ScalarProperty Name="element_name" ColumnName="element_name" />
+                <ScalarProperty Name="atomic_number" ColumnName="atomic_number" />
+                <ScalarProperty Name="atomic_weight" ColumnName="atomic_weight" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="core" ColumnName="core" />
+                <ScalarProperty Name="ions" ColumnName="ions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CITY">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.CITY">
+              <MappingFragment StoreEntitySet="CITY">
+                <ScalarProperty Name="kod_country" ColumnName="kod_country" />
+                <ScalarProperty Name="kod_location" ColumnName="kod_location" />
+                <ScalarProperty Name="kod_city" ColumnName="kod_city" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="administrative_devision" ColumnName="administrative_devision" />
+                <ScalarProperty Name="region" ColumnName="region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COUNTRY">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.COUNTRY">
+              <MappingFragment StoreEntitySet="COUNTRY">
+                <ScalarProperty Name="kod_country" ColumnName="kod_country" />
+                <ScalarProperty Name="country_name" ColumnName="country_name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="capital" ColumnName="capital" />
+                <ScalarProperty Name="languages" ColumnName="languages" />
+                <ScalarProperty Name="country_code" ColumnName="country_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CREATION_DATE">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.CREATION_DATE">
+              <MappingFragment StoreEntitySet="CREATION_DATE">
+                <ScalarProperty Name="kod_date" ColumnName="kod_date" />
+                <ScalarProperty Name="date_value" ColumnName="date_value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EPOCH">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.EPOCH">
+              <MappingFragment StoreEntitySet="EPOCH">
+                <ScalarProperty Name="kod_epoch" ColumnName="kod_epoch" />
+                <ScalarProperty Name="epoch_name" ColumnName="epoch_name" />
+                <ScalarProperty Name="epoch_time" ColumnName="epoch_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FOCUS_SECTION_SpectralResearch_">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.FOCUS_SECTION_SpectralResearch_">
+              <MappingFragment StoreEntitySet="FOCUS_SECTION(SpectralResearch)">
+                <ScalarProperty Name="id_focus" ColumnName="id_focus" />
+                <ScalarProperty Name="kod_artwork" ColumnName="kod_artwork" />
+                <ScalarProperty Name="focus_name" ColumnName="focus_name" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="file" ColumnName="file" />
+                <ScalarProperty Name="PointFocusDescription" ColumnName="PointFocusDescription" />
+                <ScalarProperty Name="MainColourFocus" ColumnName="MainColourFocus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FOTO">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.FOTO">
+              <MappingFragment StoreEntitySet="FOTO">
+                <ScalarProperty Name="kod_foto" ColumnName="kod_foto" />
+                <ScalarProperty Name="kod_artwork" ColumnName="kod_artwork" />
+                <ScalarProperty Name="path_to_foto" ColumnName="path_to_foto" />
+                <ScalarProperty Name="foto_notes" ColumnName="foto_notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HISTORICAL_PERIOD">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.HISTORICAL_PERIOD">
+              <MappingFragment StoreEntitySet="HISTORICAL_PERIOD">
+                <ScalarProperty Name="kod_perioda" ColumnName="kod_perioda" />
+                <ScalarProperty Name="kod_epoch" ColumnName="kod_epoch" />
+                <ScalarProperty Name="period_name" ColumnName="period_name" />
+                <ScalarProperty Name="short_description" ColumnName="short_description" />
+                <ScalarProperty Name="dates" ColumnName="dates" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INSTRUMENTAL_METHODS">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.INSTRUMENTAL_METHODS">
+              <MappingFragment StoreEntitySet="INSTRUMENTAL_METHODS">
+                <ScalarProperty Name="kod_method" ColumnName="kod_method" />
+                <ScalarProperty Name="method_name" ColumnName="method_name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LIBRARY_OF_SPEKTR_LINES">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.LIBRARY_OF_SPEKTR_LINES">
+              <MappingFragment StoreEntitySet="LIBRARY_OF_SPEKTR_LINES">
+                <ScalarProperty Name="id_library" ColumnName="id_library" />
+                <ScalarProperty Name="name_library" ColumnName="name_library" />
+                <ScalarProperty Name="library_description" ColumnName="library_description" />
+                <ScalarProperty Name="comments_library" ColumnName="comments_library" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOCATION">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.LOCATION">
+              <MappingFragment StoreEntitySet="LOCATION">
+                <ScalarProperty Name="kod_location" ColumnName="kod_location" />
+                <ScalarProperty Name="location_name" ColumnName="location_name" />
+                <ScalarProperty Name="location_type" ColumnName="location_type" />
+                <ScalarProperty Name="longitude_loc" ColumnName="longitude_loc" />
+                <ScalarProperty Name="latitude_loc" ColumnName="latitude_loc" />
+                <ScalarProperty Name="location_description" ColumnName="location_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organization">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.Organization">
+              <MappingFragment StoreEntitySet="Organization">
+                <ScalarProperty Name="id_organization" ColumnName="id_organization" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Description3" ColumnName="Description3" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAINTING_SCHOOL">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.PAINTING_SCHOOL">
+              <MappingFragment StoreEntitySet="PAINTING_SCHOOL">
+                <ScalarProperty Name="kod_school" ColumnName="kod_school" />
+                <ScalarProperty Name="school_name" ColumnName="school_name" />
+                <ScalarProperty Name="school_description" ColumnName="school_description" />
+                <ScalarProperty Name="creation_date" ColumnName="creation_date" />
+                <ScalarProperty Name="lead_school" ColumnName="lead_school" />
+                <ScalarProperty Name="origin_sname" ColumnName="origin_sname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAINTING_STYLE">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.PAINTING_STYLE">
+              <MappingFragment StoreEntitySet="PAINTING_STYLE">
+                <ScalarProperty Name="kod_pstyle" ColumnName="kod_pstyle" />
+                <ScalarProperty Name="pstyle_name" ColumnName="pstyle_name" />
+                <ScalarProperty Name="pstyle_description" ColumnName="pstyle_description" />
+                <ScalarProperty Name="pstyle_source" ColumnName="pstyle_source" />
+                <ScalarProperty Name="origin_pstyle" ColumnName="origin_pstyle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAINTING_TECHNIQUE">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.PAINTING_TECHNIQUE">
+              <MappingFragment StoreEntitySet="PAINTING_TECHNIQUE">
+                <ScalarProperty Name="kod_ptechnique" ColumnName="kod_ptechnique" />
+                <ScalarProperty Name="ptechnique_name" ColumnName="ptechnique_name" />
+                <ScalarProperty Name="ptechnique_description" ColumnName="ptechnique_description" />
+                <ScalarProperty Name="origin_ptechnique_name" ColumnName="origin_ptechnique_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAINTS">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.PAINTS">
+              <MappingFragment StoreEntitySet="PAINTS">
+                <ScalarProperty Name="kod_paint" ColumnName="kod_paint" />
+                <ScalarProperty Name="paint_name" ColumnName="paint_name" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PIGMENTS">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.PIGMENTS">
+              <MappingFragment StoreEntitySet="PIGMENTS">
+                <ScalarProperty Name="id_pigment" ColumnName="id_pigment" />
+                <ScalarProperty Name="kod_paint" ColumnName="kod_paint" />
+                <ScalarProperty Name="pigment_name" ColumnName="pigment_name" />
+                <ScalarProperty Name="pigment_group" ColumnName="pigment_group" />
+                <ScalarProperty Name="pigment_description" ColumnName="pigment_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POSITION">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.POSITION">
+              <MappingFragment StoreEntitySet="POSITION">
+                <ScalarProperty Name="kod_object" ColumnName="kod_object" />
+                <ScalarProperty Name="kod_country" ColumnName="kod_country" />
+                <ScalarProperty Name="CIT_kod_location" ColumnName="CIT_kod_location" />
+                <ScalarProperty Name="kod_city" ColumnName="kod_city" />
+                <ScalarProperty Name="kod_location" ColumnName="kod_location" />
+                <ScalarProperty Name="name_object" ColumnName="name_object" />
+                <ScalarProperty Name="type_object" ColumnName="type_object" />
+                <ScalarProperty Name="longitude_loc" ColumnName="longitude_loc" />
+                <ScalarProperty Name="latitude_loc" ColumnName="latitude_loc" />
+                <ScalarProperty Name="pos_address" ColumnName="pos_address" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Privileges">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.Privileges">
+              <MappingFragment StoreEntitySet="Privileges">
+                <ScalarProperty Name="id_privilege" ColumnName="id_privilege" />
+                <ScalarProperty Name="User_Type" ColumnName="User_Type" />
+                <ScalarProperty Name="privileges1" ColumnName="privileges" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SPEKTR">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.SPEKTR">
+              <MappingFragment StoreEntitySet="SPEKTR">
+                <ScalarProperty Name="kod_spektr" ColumnName="kod_spektr" />
+                <ScalarProperty Name="id_focus" ColumnName="id_focus" />
+                <ScalarProperty Name="id_sp_line" ColumnName="id_sp_line" />
+                <ScalarProperty Name="id_element" ColumnName="id_element" />
+                <ScalarProperty Name="Wave_Length" ColumnName="Wave_Length" />
+                <ScalarProperty Name="Line_Description" ColumnName="Line_Description" />
+                <ScalarProperty Name="Spektrs_Base" ColumnName="Spektrs_Base" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SPEKTR_LINE">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.SPEKTR_LINE">
+              <MappingFragment StoreEntitySet="SPEKTR_LINE">
+                <ScalarProperty Name="id_sp_line" ColumnName="id_sp_line" />
+                <ScalarProperty Name="id_library" ColumnName="id_library" />
+                <ScalarProperty Name="Date_line" ColumnName="Date_line" />
+                <ScalarProperty Name="Name_of_the_person" ColumnName="Name_of_the_person" />
+                <ScalarProperty Name="WavellengthLine" ColumnName="WavellengthLine" />
+                <ScalarProperty Name="Other_options" ColumnName="Other_options" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
+                <ScalarProperty Name="id_privilege" ColumnName="id_privilege" />
+                <ScalarProperty Name="Login_Name" ColumnName="Login_Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATE_REMARKS">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.DATE_REMARKS">
+              <MappingFragment StoreEntitySet="DATE_REMARKS">
+                <ScalarProperty Name="kod_date" ColumnName="kod_date" />
+                <ScalarProperty Name="kod_artwork" ColumnName="kod_artwork" />
+                <ScalarProperty Name="remark_creation_date" ColumnName="remark_creation_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PASSPORT_RESEARCH">
+            <EntityTypeMapping TypeName="LaserExpertiseContextModel.PASSPORT_RESEARCH">
+              <MappingFragment StoreEntitySet="PASSPORT_RESEARCH">
+                <ScalarProperty Name="kod_artwork" ColumnName="kod_artwork" />
+                <ScalarProperty Name="kod_method" ColumnName="kod_method" />
+                <ScalarProperty Name="conclusion_method" ColumnName="conclusion_method" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Relationship_19" TypeName="LaserExpertiseContextModel.Relationship_19" StoreEntitySet="Relationship_19">
+            <EndProperty Name="ARTWORK">
+              <ScalarProperty Name="kod_artwork" ColumnName="kod_artwork" />
+            </EndProperty>
+            <EndProperty Name="POSITION">
+              <ScalarProperty Name="kod_object" ColumnName="kod_object" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,7 +1,8 @@
-﻿import {Injectable} from "@angular/core";
-import {ActivatedRouteSnapshot, CanActivate, Router} from "@angular/router";
-import {User} from "../../models/user";
-import {Role} from "../../models/role";
+﻿import { Injectable } from "@angular/core";
+import { ActivatedRouteSnapshot, CanActivate, Router } from "@angular/router";
+import { User } from "../../models/user";
+import { Role } from "../../models/role";
+
 
 @Injectable()
 export class SecurityService implements CanActivate {
@@ -25,6 +26,8 @@ export class SecurityService implements CanActivate {
         return user;
     }
 
+
+
     static containsRole(array: any[], obj: any): boolean {
         let index = array.length;
         while (index--) {
@@ -42,3 +45,6 @@ export class SecurityService implements CanActivate {
         return flag;
     }
 }
+
+
+

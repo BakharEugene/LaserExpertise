@@ -12,11 +12,13 @@ var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var alert_service_1 = require("../../alert/alert.service");
 var artwork_service_1 = require("../artwork.service");
+var image_service_1 = require("../image.service");
 var ArtworCreateComponent = (function () {
-    function ArtworCreateComponent(router, artworkService, alertService) {
+    function ArtworCreateComponent(router, artworkService, alertService, imageService) {
         this.router = router;
         this.artworkService = artworkService;
         this.alertService = alertService;
+        this.imageService = imageService;
         this.model = {};
         this.genres = [
             { id: 1, name: "United States" },
@@ -48,7 +50,24 @@ var ArtworCreateComponent = (function () {
             _this.loading = false;
         });
     };
-    ArtworCreateComponent.prototype.onChange = function (event) {
+    ArtworCreateComponent.prototype.fileChange = function (event) {
+        var _this = this;
+        var fileList = event.target.files;
+        if (fileList.length > 0) {
+            for (var i = 0; i < fileList.length; i++) {
+                var file = fileList[i];
+                var formData = new FormData();
+                formData.append('uploadFile', file, file.name);
+                this.imageService.create(formData)
+                    .subscribe(function (data) {
+                    _this.loading = true;
+                    _this.alertService.success(JSON.stringify(data), true);
+                }, function (error) {
+                    _this.alertService.error(JSON.stringify(error));
+                    _this.loading = false;
+                });
+            }
+        }
     };
     return ArtworCreateComponent;
 }());
@@ -56,11 +75,12 @@ ArtworCreateComponent = __decorate([
     core_1.Component({
         selector: 'artwork-create',
         templateUrl: 'app/artwork/create/artwork-create.component.html',
-        providers: [artwork_service_1.ArtworkService]
+        providers: [artwork_service_1.ArtworkService, image_service_1.ImageService]
     }),
     __metadata("design:paramtypes", [router_1.Router,
         artwork_service_1.ArtworkService,
-        alert_service_1.AlertService])
+        alert_service_1.AlertService,
+        image_service_1.ImageService])
 ], ArtworCreateComponent);
 exports.ArtworCreateComponent = ArtworCreateComponent;
 //# sourceMappingURL=artwork-create.component.js.map

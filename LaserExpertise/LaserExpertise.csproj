@@ -162,14 +162,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArtworksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\IndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -647,7 +646,10 @@
   <ItemGroup>
     <Folder Include="app\artwork\delete\" />
     <Folder Include="app\artwork\update\" />
+    <Folder Include="app\images\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="Views\Image\" />
     <Folder Include="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
@@ -692,6 +694,7 @@
     <TypeScriptCompile Include="app\home\home.component.ts" />
     <TypeScriptCompile Include="app\home\home.module.ts" />
     <TypeScriptCompile Include="app\home\home.service.ts" />
+    <TypeScriptCompile Include="app\artwork\image.service.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\models\artwork.ts" />
     <TypeScriptCompile Include="app\models\image.ts" />

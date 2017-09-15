@@ -7,73 +7,42 @@ namespace LaserExpertise.DAL.Models.Information
     public class UnitOfWork : IDisposable
     {
         private LaserExpertiseContext db = new LaserExpertiseContext();
-
-        private UserRepository userRepository;
-        private RoleRepository roleRepository;
-        private PictureRepository pictureRepository;
+        private PrivilegesRepository privilegesRepository;
+        private ArtworkGenreRepository artworkGenreRepository;
         private ArtworkRepository artworkRepository;
-        private ServiceRepository serviceRepository;
-        private ServiceStatesRepository serviceStatesRepository;
+        private ArtworkTypePositionRepository artworkTypePositionRepository;
+        private UsersRepository usersRepository;
 
-        public ServiceStatesRepository ServiceStates
+
+
+        public PrivilegesRepository Privileges
         {
             get
             {
-                if (serviceStatesRepository == null)
-                    serviceStatesRepository = new ServiceStatesRepository(db);
-                return serviceStatesRepository;
+                if (privilegesRepository == null)
+                    privilegesRepository = new PrivilegesRepository(db);
+                return privilegesRepository;
             }
         }
-        public ServiceRepository Services
-        {
-            get
-            {
-                if (serviceRepository == null)
-                    serviceRepository = new ServiceRepository(db);
-                return serviceRepository;
-            }
-        }
-
-        public PictureRepository Pictures
-        {
-            get
-            {
-                if (pictureRepository == null)
-                    pictureRepository = new PictureRepository(db);
-                return pictureRepository;
-            }
-        }
-
-
         public ArtworkRepository Artworks
         {
             get
             {
-                if (artworkRepository == null)
+                if (artworkRepository== null)
                     artworkRepository = new ArtworkRepository(db);
                 return artworkRepository;
             }
         }
+        public UsersRepository Users
+        {
+            get
+            {
+                if (usersRepository == null)
+                    usersRepository = new UsersRepository(db);
+                return usersRepository;
+            }
+        }
 
-        public RoleRepository Roles
-        {
-            get
-            {
-                if (roleRepository == null)
-                    roleRepository = new RoleRepository(db);
-                return roleRepository;
-            }
-        }
-        public UserRepository Users
-        {
-            get
-            {
-                if (userRepository == null)
-                    userRepository = new UserRepository(db);
-                return userRepository;
-            }
-        }
-      
         public void Save()
         {
             db.SaveChanges();
@@ -85,7 +54,7 @@ namespace LaserExpertise.DAL.Models.Information
         {
             if (!this.disposed)
             {
-                  if (disposing)
+                if (disposing)
                 {
                     db.Dispose();
                 }

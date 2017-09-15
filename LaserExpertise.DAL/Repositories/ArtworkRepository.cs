@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LaserExpertise.DAL.Data;
 using LaserExpertise.DAL.EF;
-using LaserExpertise.DAL.Models.Artwork;
-using LaserExpertise.DAL.Repositories;
 
 namespace LaserExpertise.DAL.Repositories
 {
-    public class ArtworkRepository:IRepository<Artwork>
+    public class ArtworkRepository : IRepository<ARTWORK>
     {
         private LaserExpertiseContext _applicationDbContext;
 
@@ -19,23 +15,23 @@ namespace LaserExpertise.DAL.Repositories
             this._applicationDbContext = context;
         }
 
-        public IEnumerable<Artwork> GetAll()
+        public IEnumerable<ARTWORK> GetAll()
         {
-            List<Artwork> Artworks = _applicationDbContext.Artworks.ToList();
+            List<ARTWORK> Artworks = _applicationDbContext.Artworks.ToList();
             return Artworks.ToList();
         }
 
-        public Artwork GetById(int? id)
+        public ARTWORK GetById(int? id)
         {
             return _applicationDbContext.Artworks.Find(id);
         }
 
-        public void Create(Artwork item)
+        public void Create(ARTWORK item)
         {
             _applicationDbContext.Artworks.Add(item);
         }
 
-        public void Update(Artwork item)
+        public void Update(ARTWORK item)
         {
             _applicationDbContext.Entry(item).State = EntityState.Modified;
         }

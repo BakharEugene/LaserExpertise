@@ -1,9 +1,9 @@
 ﻿import { Component, OnInit} from '@angular/core';
 import { Response} from '@angular/http';
 import { ArtworkService } from './artwork.service';
-import {Artwork} from '../models/artwork';
+import { Artwork } from '../models/artwork';
 import { RouterModule, Routes } from '@angular/router';
-import {SerializationHelper} from '../serialize/serializable'
+import { SerializationHelper } from '../serialize/serializable'
 
 
 @Component({

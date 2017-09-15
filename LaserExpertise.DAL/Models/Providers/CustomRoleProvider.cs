@@ -1,6 +1,5 @@
 ﻿
 using LaserExpertise.DAL.EF;
-using LaserExpertise.DAL.Models.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Security;
+using LaserExpertise.DAL.Data;
+
 namespace LaserExpertise.DAL.Models.Providers
 {
     public class CustomRoleProvider : RoleProvider
@@ -18,22 +19,22 @@ namespace LaserExpertise.DAL.Models.Providers
             using (LaserExpertiseContext db = new LaserExpertiseContext())
             {
                 // Получаем пользователя
-                User.User user = db.Users.FirstOrDefault(u => u.Email == username);
+                User user = db.Users.FirstOrDefault(u => u.Login_Name == username);
                 if (user != null)
                 {
                     // получаем роль
-                    Role userRole = db.Roles.Find(user.RoleId);
+                    Privileges userRole = db.Privilegeses.Find(user.id_privilege);
                     if (userRole != null)
-                        role = new string[] { userRole.Name };
+                        role = new string[] { userRole.User_Type };
                 }
             }
             return role;
         }
         public override void CreateRole(string roleName)
         {
-            Role newRole = new Role() { Name = roleName };
+            Privileges newRole = new Privileges() { User_Type = roleName };
             LaserExpertiseContext db = new LaserExpertiseContext();
-            db.Roles.Add(newRole);
+            db.Privilegeses.Add(newRole);
             db.SaveChanges();
         }
         public override bool IsUserInRole(string username, string roleName)
@@ -43,13 +44,13 @@ namespace LaserExpertise.DAL.Models.Providers
             using (LaserExpertiseContext db = new LaserExpertiseContext())
             {
                 // Получаем пользователя
-                User.User user = db.Users.FirstOrDefault(u => u.Email == username);
+                User user = db.Users.FirstOrDefault(u => u.Login_Name == username);
                 if (user != null)
                 {
                     
-                    Role userRole = db.Roles.Find(user.RoleId);
+                    Privileges userRole = db.Privilegeses.Find(user.id_privilege);
                     
-                    if (userRole != null && userRole.Name == roleName)
+                    if (userRole != null && userRole.User_Type == roleName)
                         outputResult = true;
                 }
             }

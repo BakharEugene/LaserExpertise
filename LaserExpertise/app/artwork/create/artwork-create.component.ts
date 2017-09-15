@@ -2,12 +2,14 @@
 import { Response } from '@angular/http';
 import { Artwork } from '../../models/artwork';
 import { ActivatedRoute, Router, RouterModule, Routes } from '@angular/router';
-import {AlertService} from '../../alert/alert.service';
+import { AlertService } from '../../alert/alert.service';
 import { ArtworkService } from '../artwork.service';
+import { ImageService } from '../image.service';
+
 @Component({
     selector: 'artwork-create',
     templateUrl: 'app/artwork/create/artwork-create.component.html',
-    providers: [ArtworkService]
+    providers: [ArtworkService, ImageService]
 })
 export class ArtworCreateComponent implements OnInit {
     model: any = {};
@@ -31,7 +33,8 @@ export class ArtworCreateComponent implements OnInit {
     constructor(
         private router: Router,
         private artworkService: ArtworkService,
-        private alertService: AlertService) {
+        private alertService: AlertService,
+        private imageService: ImageService) {
     }
 
     ngOnInit() {
@@ -54,7 +57,29 @@ export class ArtworCreateComponent implements OnInit {
             });
     }
 
-    onChange(event: EventTarget) {
+    fileChange(event: any) {
+        let fileList: FileList = event.target.files;
+        if (fileList.length > 0) {
+            for (var i = 0; i < fileList.length; i++) {
+                let file: File = fileList[i];
+                let formData: FormData = new FormData();
+                formData.append('uploadFile', file, file.name);
+                
+                this.imageService.create(formData)
+                    .subscribe(
+                    data => {
+                        this.loading = true;
+                        this.alertService.success(JSON.stringify(data), true);
 
+                    },
+                    error => {
+                        this.alertService.error(JSON.stringify(error));
+                        this.loading = false;
+                    });
+
+
+            }
+        }
     }
 }
+

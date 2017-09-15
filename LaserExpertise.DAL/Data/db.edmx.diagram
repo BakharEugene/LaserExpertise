@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3a4d851856ee42708fc722a668b2c8bd" Name="Diagram1">
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.C__MigrationHistory" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.ARTWORK" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.ARTWORK_GENRE" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.ARTWORK_TYPE_POSITION" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.AUTHOR" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.CHEMICAL_ELEMENT" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.CITY" Width="1.5" PointX="6" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.COUNTRY" Width="1.5" PointX="3.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.CREATION_DATE" Width="1.5" PointX="6" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.EPOCH" Width="1.5" PointX="1.5" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.FOCUS_SECTION_SpectralResearch_" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.FOTO" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.HISTORICAL_PERIOD" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.INSTRUMENTAL_METHODS" Width="1.5" PointX="8" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.LIBRARY_OF_SPEKTR_LINES" Width="1.5" PointX="3" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.LOCATION" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.Organization" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.PAINTING_SCHOOL" Width="1.5" PointX="0.75" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.PAINTING_STYLE" Width="1.5" PointX="0.75" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.PAINTING_TECHNIQUE" Width="1.5" PointX="0.75" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.PAINTS" Width="1.5" PointX="10.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.PIGMENTS" Width="1.5" PointX="13" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.POSITION" Width="1.5" PointX="8.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.Privileges" Width="1.5" PointX="10.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.SPEKTR" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.SPEKTR_LINE" Width="1.5" PointX="5.25" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.User" Width="1.5" PointX="13" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.DATE_REMARKS" Width="1.5" PointX="8.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LaserExpertiseContextModel.PASSPORT_RESEARCH" Width="1.5" PointX="10.25" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_ARTWORK_ART_ARTGE_ARTWORK_" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_ARTWORK_ART_HAS_T_PAINTING" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_ARTWORK_ART_STYLE_PAINTING" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_ARTWORK_RELATIONS_ARTWORK_" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_ARTWORK_RELATIONS_AUTHOR" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_ARTWORK_RELATIONS_HISTORIC" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_ARTWORK_RELATIONS_LOCATION" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_ARTWORK_SCHOOL_AR_PAINTING" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_DATE_REM_RELATIONS_ARTWORK" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_FOCUS_SE_RELATIONS_ARTWORK" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_FOTO_RELATIONS_ARTWORK" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_PASSPORT_RELATIONS_ARTWORK" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_SPEKTR_RELATIONS_CHEMICAL" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_CITY_RELATIONS_COUNTRY" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_CITY_RELATIONS_LOCATION" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_POSITION_RELATIONS_CITY" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_DATE_REM_RELATIONS_CREATION" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_HISTORIC_RELATIONS_EPOCH" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_SPEKTR_RELATIONS_FOCUS_SE" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_PASSPORT_RELATIONS_INSTRUME" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_SPEKTR_L_RELATIONS_LIBRARY_" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_POSITION_RELATIONS_LOCATION" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_PIGMENTS_RELATIONS_PAINTS" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_USER_RELATIONS_PRIVILEG" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.FK_SPEKTR_RELATIONS_SPEKTR_L" ManuallyRouted="false" />
+        <AssociationConnector Association="LaserExpertiseContextModel.Relationship_19" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

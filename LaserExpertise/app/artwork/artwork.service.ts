@@ -15,7 +15,7 @@ export class ArtworkService {
     artworksById(id: number) {
         return this.http.get('/Artworks/Detail/'+id);
     }
-
+    
     create(artwork: Artwork) {
         
         return this.http.post('/Artworks/Create' + artwork,"");

@@ -1,4 +1,4 @@
-﻿import {Role} from './role'
+﻿import {Privileges} from './privileges'
 export class User {
     Id: number;
     FirstName: string;
@@ -6,7 +6,7 @@ export class User {
     Email: string;
     Telephone: string;
     Skype: string
-    Role: Role;
+    Privileges: Privileges;
     Gender: string;
     Password: string;
     BirthDay: Date;

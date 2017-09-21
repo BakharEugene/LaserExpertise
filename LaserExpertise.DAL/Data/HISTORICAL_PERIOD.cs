@@ -23,7 +23,7 @@ namespace LaserExpertise.DAL.Data
         public int kod_perioda { get; set; }
         public Nullable<int> kod_epoch { get; set; }
         public string period_name { get; set; }
-        public byte[] short_description { get; set; }
+        public string short_description { get; set; }
         public Nullable<System.DateTime> dates { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

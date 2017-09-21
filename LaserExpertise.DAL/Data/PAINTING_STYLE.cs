@@ -22,8 +22,8 @@ namespace LaserExpertise.DAL.Data
     
         public int kod_pstyle { get; set; }
         public string pstyle_name { get; set; }
-        public byte[] pstyle_description { get; set; }
-        public byte[] pstyle_source { get; set; }
+        public string pstyle_description { get; set; }
+        public string pstyle_source { get; set; }
         public string origin_pstyle { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

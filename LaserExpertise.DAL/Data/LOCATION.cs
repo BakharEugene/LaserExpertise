@@ -27,7 +27,7 @@ namespace LaserExpertise.DAL.Data
         public string location_type { get; set; }
         public string longitude_loc { get; set; }
         public string latitude_loc { get; set; }
-        public byte[] location_description { get; set; }
+        public string location_description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ARTWORK> ARTWORK { get; set; }

@@ -17,7 +17,6 @@ namespace LaserExpertise.DAL.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ARTWORK()
         {
-
             this.DATE_REMARKS = new HashSet<DATE_REMARKS>();
             this.FOCUS_SECTION_SpectralResearch_ = new HashSet<FOCUS_SECTION_SpectralResearch_>();
             this.FOTO = new HashSet<FOTO>();
@@ -36,9 +35,9 @@ namespace LaserExpertise.DAL.Data
         public Nullable<int> Kod_ATPosition { get; set; }
         public string artwork_name { get; set; }
         public string original_name { get; set; }
-        public byte[] sizes { get; set; }
+        public string sizes { get; set; }
         public Nullable<System.DateTime> creation_date { get; set; }
-        public byte[] description { get; set; }
+        public string description { get; set; }
         public string basis { get; set; }
         public Nullable<decimal> Cost { get; set; }
     

@@ -22,7 +22,7 @@ namespace LaserExpertise.DAL.Data
     
         public int kod_country { get; set; }
         public string country_name { get; set; }
-        public byte[] description { get; set; }
+        public string description { get; set; }
         public string capital { get; set; }
         public string languages { get; set; }
         public string country_code { get; set; }

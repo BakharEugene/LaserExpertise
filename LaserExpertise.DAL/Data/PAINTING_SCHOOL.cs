@@ -22,7 +22,7 @@ namespace LaserExpertise.DAL.Data
     
         public int kod_school { get; set; }
         public string school_name { get; set; }
-        public byte[] school_description { get; set; }
+        public string school_description { get; set; }
         public System.DateTime creation_date { get; set; }
         public string lead_school { get; set; }
         public string origin_sname { get; set; }

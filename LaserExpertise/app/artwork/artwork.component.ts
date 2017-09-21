@@ -35,12 +35,12 @@ export class ArtworkComponent implements OnInit {
     private load(): void {
         this.httpService.artworks()
             .subscribe((data: Response) => {
+                alert(data.json());
                 let artworksList = data.json();
                 for (let index in artworksList) {
                     let artwork: Artwork;
                     this.artworks.push(artwork = SerializationHelper.toInstance(new Artwork, (JSON.stringify(artworksList[index]))));
-                }
-                
+                }                
                 this.filteredItems = this.artworks;
                 this.createPagination();
             });

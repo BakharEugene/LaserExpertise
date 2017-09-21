@@ -17,7 +17,7 @@ namespace LaserExpertise.DAL.Data
         public int kod_foto { get; set; }
         public Nullable<int> kod_artwork { get; set; }
         public string path_to_foto { get; set; }
-        public byte[] foto_notes { get; set; }
+        public string foto_notes { get; set; }
     
         public virtual ARTWORK ARTWORK { get; set; }
     }

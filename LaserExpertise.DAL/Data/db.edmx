@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="LaserExpertiseContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="LaserExpertiseContextModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -49,6 +49,7 @@
             <PropertyRef Name="Kod_ATPosition" />
           </Key>
           <Property Name="Kod_ATPosition" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="AUTHOR">
           <Key>
@@ -260,6 +261,13 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Property Name="pigment_group" Type="varchar" MaxLength="50" />
           <Property Name="pigment_description" Type="varchar" MaxLength="1024" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'LaserExpertiseContext.dbo.PIGMENTS_FORMULA' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="PIGMENTS_FORMULA">
+          <Property Name="id_element" Type="int" />
+          <Property Name="id_pigment" Type="int" />
+          <Property Name="quantity" Type="float" />
+        </EntityType>-->
         <EntityType Name="POSITION">
           <Key>
             <PropertyRef Name="kod_object" />
@@ -529,6 +537,9 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'LaserExpertiseContext.dbo.PIGMENTS_FORMULA' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_PIGMENTS_RELATIONS_CHEMICAL" />-->
         <Association Name="FK_PIGMENTS_RELATIONS_PAINTS">
           <End Role="PAINTS" Type="Self.PAINTS" Multiplicity="1" />
           <End Role="PIGMENTS" Type="Self.PIGMENTS" Multiplicity="*" />
@@ -541,6 +552,9 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'LaserExpertiseContext.dbo.PIGMENTS_FORMULA' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_PIGMENTS_RELATIONS_PIGMENTS" />-->
         <Association Name="FK_POSITION_RELATIONS_CITY">
           <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
           <End Role="POSITION" Type="Self.POSITION" Multiplicity="*" />
@@ -805,7 +819,8 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LaserExpertiseContextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -823,7 +838,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="kod_artwork" />
           </Key>
-          <Property Name="kod_artwork" Type="Int32" Nullable="false" />
+          <Property Name="kod_artwork" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="kod_ptechnique" Type="Int32" />
           <Property Name="kod_genre" Type="Int32" />
           <Property Name="kod_perioda" Type="Int32" />
@@ -834,9 +849,9 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Property Name="Kod_ATPosition" Type="Int32" />
           <Property Name="artwork_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="original_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="sizes" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="sizes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="creation_date" Type="DateTime" Precision="3" />
-          <Property Name="description" Type="Binary" MaxLength="150" FixedLength="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="basis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="ARTWORK_GENRE" Relationship="Self.FK_ARTWORK_ART_ARTGE_ARTWORK_" FromRole="ARTWORK" ToRole="ARTWORK_GENRE" />
@@ -857,30 +872,31 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="kod_genre" />
           </Key>
-          <Property Name="kod_genre" Type="Int32" Nullable="false" />
+          <Property Name="kod_genre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="genre_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="description" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ARTWORK" Relationship="Self.FK_ARTWORK_ART_ARTGE_ARTWORK_" FromRole="ARTWORK_GENRE" ToRole="ARTWORK" />
         </EntityType>
         <EntityType Name="ARTWORK_TYPE_POSITION">
           <Key>
             <PropertyRef Name="Kod_ATPosition" />
           </Key>
-          <Property Name="Kod_ATPosition" Type="Int32" Nullable="false" />
+          <Property Name="Kod_ATPosition" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ARTWORK" Relationship="Self.FK_ARTWORK_RELATIONS_ARTWORK_" FromRole="ARTWORK_TYPE_POSITION" ToRole="ARTWORK" />
         </EntityType>
         <EntityType Name="AUTHOR">
           <Key>
             <PropertyRef Name="kod_author" />
           </Key>
-          <Property Name="kod_author" Type="Int32" Nullable="false" />
+          <Property Name="kod_author" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="another_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="pseudonym" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="dateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="dateOfDeath" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="biography" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
+          <Property Name="biography" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="soc_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="oridin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -893,11 +909,11 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="id_element" />
           </Key>
-          <Property Name="id_element" Type="Int32" Nullable="false" />
+          <Property Name="id_element" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="element_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="atomic_number" Type="Int32" />
           <Property Name="atomic_weight" Type="Double" />
-          <Property Name="description" Type="Binary" MaxLength="150" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="core" Type="Int32" />
           <Property Name="ions" Type="Int32" />
           <NavigationProperty Name="SPEKTR" Relationship="Self.FK_SPEKTR_RELATIONS_CHEMICAL" FromRole="CHEMICAL_ELEMENT" ToRole="SPEKTR" />
@@ -908,7 +924,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
             <PropertyRef Name="kod_location" />
             <PropertyRef Name="kod_city" />
           </Key>
-          <Property Name="kod_country" Type="Int32" Nullable="false" />
+          <Property Name="kod_country" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="kod_location" Type="Int32" Nullable="false" />
           <Property Name="kod_city" Type="Int32" Nullable="false" />
           <Property Name="city_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -922,9 +938,9 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="kod_country" />
           </Key>
-          <Property Name="kod_country" Type="Int32" Nullable="false" />
+          <Property Name="kod_country" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="country_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="description" Type="Binary" MaxLength="150" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="capital" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="languages" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="country_code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
@@ -934,7 +950,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="kod_date" />
           </Key>
-          <Property Name="kod_date" Type="Int32" Nullable="false" />
+          <Property Name="kod_date" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="date_value" Type="DateTime" Precision="3" />
           <NavigationProperty Name="DATE_REMARKS" Relationship="Self.FK_DATE_REM_RELATIONS_CREATION" FromRole="CREATION_DATE" ToRole="DATE_REMARKS" />
         </EntityType>
@@ -942,7 +958,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="kod_epoch" />
           </Key>
-          <Property Name="kod_epoch" Type="Int32" Nullable="false" />
+          <Property Name="kod_epoch" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="epoch_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="epoch_time" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="HISTORICAL_PERIOD" Relationship="Self.FK_HISTORIC_RELATIONS_EPOCH" FromRole="EPOCH" ToRole="HISTORICAL_PERIOD" />
@@ -951,7 +967,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="id_focus" />
           </Key>
-          <Property Name="id_focus" Type="Int32" Nullable="false" />
+          <Property Name="id_focus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="kod_artwork" Type="Int32" />
           <Property Name="focus_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="time" Type="DateTime" Precision="3" />
@@ -965,20 +981,20 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="kod_foto" />
           </Key>
-          <Property Name="kod_foto" Type="Int32" Nullable="false" />
+          <Property Name="kod_foto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="kod_artwork" Type="Int32" />
           <Property Name="path_to_foto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="foto_notes" Type="Binary" MaxLength="150" FixedLength="false" />
+          <Property Name="foto_notes" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ARTWORK" Relationship="Self.FK_FOTO_RELATIONS_ARTWORK" FromRole="FOTO" ToRole="ARTWORK" />
         </EntityType>
         <EntityType Name="HISTORICAL_PERIOD">
           <Key>
             <PropertyRef Name="kod_perioda" />
           </Key>
-          <Property Name="kod_perioda" Type="Int32" Nullable="false" />
+          <Property Name="kod_perioda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="kod_epoch" Type="Int32" />
           <Property Name="period_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="short_description" Type="Binary" MaxLength="150" FixedLength="false" />
+          <Property Name="short_description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="dates" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ARTWORK" Relationship="Self.FK_ARTWORK_RELATIONS_HISTORIC" FromRole="HISTORICAL_PERIOD" ToRole="ARTWORK" />
           <NavigationProperty Name="EPOCH" Relationship="Self.FK_HISTORIC_RELATIONS_EPOCH" FromRole="HISTORICAL_PERIOD" ToRole="EPOCH" />
@@ -987,16 +1003,16 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="kod_method" />
           </Key>
-          <Property Name="kod_method" Type="Int32" Nullable="false" />
+          <Property Name="kod_method" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="method_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="description" Type="Binary" MaxLength="150" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PASSPORT_RESEARCH" Relationship="Self.FK_PASSPORT_RELATIONS_INSTRUME" FromRole="INSTRUMENTAL_METHODS" ToRole="PASSPORT_RESEARCH" />
         </EntityType>
         <EntityType Name="LIBRARY_OF_SPEKTR_LINES">
           <Key>
             <PropertyRef Name="id_library" />
           </Key>
-          <Property Name="id_library" Type="Byte" Nullable="false" />
+          <Property Name="id_library" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name_library" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="library_description" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
           <Property Name="comments_library" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -1006,12 +1022,12 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="kod_location" />
           </Key>
-          <Property Name="kod_location" Type="Int32" Nullable="false" />
+          <Property Name="kod_location" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="location_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="location_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="longitude_loc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="latitude_loc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="location_description" Type="Binary" MaxLength="100" FixedLength="false" Nullable="false" />
+          <Property Name="location_description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="ARTWORK" Relationship="Self.FK_ARTWORK_RELATIONS_LOCATION" FromRole="LOCATION" ToRole="ARTWORK" />
           <NavigationProperty Name="CITY" Relationship="Self.FK_CITY_RELATIONS_LOCATION" FromRole="LOCATION" ToRole="CITY" />
           <NavigationProperty Name="POSITION" Relationship="Self.FK_POSITION_RELATIONS_LOCATION" FromRole="LOCATION" ToRole="POSITION" />
@@ -1020,7 +1036,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="id_organization" />
           </Key>
-          <Property Name="id_organization" Type="Int32" Nullable="false" />
+          <Property Name="id_organization" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1033,9 +1049,9 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="kod_school" />
           </Key>
-          <Property Name="kod_school" Type="Int32" Nullable="false" />
+          <Property Name="kod_school" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="school_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="school_description" Type="Binary" MaxLength="100" FixedLength="false" Nullable="false" />
+          <Property Name="school_description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="creation_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="lead_school" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="origin_sname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -1045,10 +1061,10 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="kod_pstyle" />
           </Key>
-          <Property Name="kod_pstyle" Type="Int32" Nullable="false" />
+          <Property Name="kod_pstyle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="pstyle_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="pstyle_description" Type="Binary" MaxLength="150" FixedLength="false" Nullable="false" />
-          <Property Name="pstyle_source" Type="Binary" MaxLength="150" FixedLength="false" Nullable="false" />
+          <Property Name="pstyle_description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pstyle_source" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="origin_pstyle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ARTWORK" Relationship="Self.FK_ARTWORK_ART_STYLE_PAINTING" FromRole="PAINTING_STYLE" ToRole="ARTWORK" />
         </EntityType>
@@ -1056,9 +1072,9 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="kod_ptechnique" />
           </Key>
-          <Property Name="kod_ptechnique" Type="Int32" Nullable="false" />
+          <Property Name="kod_ptechnique" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ptechnique_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ptechnique_description" Type="Binary" MaxLength="150" FixedLength="false" />
+          <Property Name="ptechnique_description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="origin_ptechnique_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ARTWORK" Relationship="Self.FK_ARTWORK_ART_HAS_T_PAINTING" FromRole="PAINTING_TECHNIQUE" ToRole="ARTWORK" />
         </EntityType>
@@ -1066,7 +1082,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="kod_paint" />
           </Key>
-          <Property Name="kod_paint" Type="Int32" Nullable="false" />
+          <Property Name="kod_paint" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="paint_name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PIGMENTS" Relationship="Self.FK_PIGMENTS_RELATIONS_PAINTS" FromRole="PAINTS" ToRole="PIGMENTS" />
@@ -1075,7 +1091,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="id_pigment" />
           </Key>
-          <Property Name="id_pigment" Type="Int32" Nullable="false" />
+          <Property Name="id_pigment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="kod_paint" Type="Int32" Nullable="false" />
           <Property Name="pigment_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pigment_group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -1096,7 +1112,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Property Name="longitude_loc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="latitude_loc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pos_address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="description" Type="Binary" MaxLength="150" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CITY" Relationship="Self.FK_POSITION_RELATIONS_CITY" FromRole="POSITION" ToRole="CITY" />
           <NavigationProperty Name="LOCATION" Relationship="Self.FK_POSITION_RELATIONS_LOCATION" FromRole="POSITION" ToRole="LOCATION" />
           <NavigationProperty Name="ARTWORK" Relationship="Self.Relationship_19" FromRole="POSITION" ToRole="ARTWORK" />
@@ -1105,7 +1121,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="id_privilege" />
           </Key>
-          <Property Name="id_privilege" Type="Int32" Nullable="false" />
+          <Property Name="id_privilege" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="User_Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="privileges1" Type="Int32" />
           <Property Name="Description2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1115,7 +1131,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="kod_spektr" />
           </Key>
-          <Property Name="kod_spektr" Type="Int32" Nullable="false" />
+          <Property Name="kod_spektr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_focus" Type="Int32" Nullable="false" />
           <Property Name="id_sp_line" Type="Int64" Nullable="false" />
           <Property Name="id_element" Type="Int32" Nullable="false" />
@@ -1130,7 +1146,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="id_sp_line" />
           </Key>
-          <Property Name="id_sp_line" Type="Int64" Nullable="false" />
+          <Property Name="id_sp_line" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_library" Type="Byte" Nullable="false" />
           <Property Name="Date_line" Type="DateTime" Precision="3" />
           <Property Name="Name_of_the_person" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -1143,7 +1159,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="id_user" />
           </Key>
-          <Property Name="id_user" Type="Int32" Nullable="false" />
+          <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_privilege" Type="Int32" />
           <Property Name="Login_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1153,7 +1169,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <Key>
             <PropertyRef Name="kod_date" />
           </Key>
-          <Property Name="kod_date" Type="Int32" Nullable="false" />
+          <Property Name="kod_date" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="kod_artwork" Type="Int32" />
           <Property Name="remark_creation_date" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ARTWORK" Relationship="Self.FK_DATE_REM_RELATIONS_ARTWORK" FromRole="DATE_REMARKS" ToRole="ARTWORK" />
@@ -1477,7 +1493,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
           <End Role="ARTWORK" Type="Self.ARTWORK" Multiplicity="*" />
           <End Role="POSITION" Type="Self.POSITION" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="LaserExpertiseContextEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="LaserExpertiseContextEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
           <EntitySet Name="ARTWORK" EntityType="Self.ARTWORK" />
           <EntitySet Name="ARTWORK_GENRE" EntityType="Self.ARTWORK_GENRE" />
@@ -1617,7 +1633,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LaserExpertiseContextModelStoreContainer" CdmEntityContainer="LaserExpertiseContextEntities1">
+        <EntityContainerMapping StorageEntityContainer="LaserExpertiseContextModelStoreContainer" CdmEntityContainer="LaserExpertiseContextEntities2">
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="LaserExpertiseContextModel.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -1663,6 +1679,7 @@ warning 6002: The table/view 'LaserExpertiseContext.dbo.PASSPORT_RESEARCH' does 
             <EntityTypeMapping TypeName="LaserExpertiseContextModel.ARTWORK_TYPE_POSITION">
               <MappingFragment StoreEntitySet="ARTWORK_TYPE_POSITION">
                 <ScalarProperty Name="Kod_ATPosition" ColumnName="Kod_ATPosition" />
+                <ScalarProperty Name="description" ColumnName="description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

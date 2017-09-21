@@ -21,6 +21,7 @@ namespace LaserExpertise.DAL.Data
         }
     
         public int Kod_ATPosition { get; set; }
+        public string description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ARTWORK> ARTWORK { get; set; }

@@ -27,6 +27,7 @@ var ArtworkComponent = (function () {
         var _this = this;
         this.httpService.artworks()
             .subscribe(function (data) {
+            alert(data.json());
             var artworksList = data.json();
             for (var index in artworksList) {
                 var artwork = void 0;

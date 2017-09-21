@@ -22,7 +22,7 @@ namespace LaserExpertise.DAL.Data
     
         public int kod_ptechnique { get; set; }
         public string ptechnique_name { get; set; }
-        public byte[] ptechnique_description { get; set; }
+        public string ptechnique_description { get; set; }
         public string origin_ptechnique_name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

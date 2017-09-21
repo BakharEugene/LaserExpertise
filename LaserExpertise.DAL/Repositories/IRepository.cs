@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LaserExpertise.DAL.Repositories
 {
-    interface IRepository<T>
+    public interface IRepository<T>
      where T : class
     {
         IEnumerable<T> GetAll(); // получение всех объектов

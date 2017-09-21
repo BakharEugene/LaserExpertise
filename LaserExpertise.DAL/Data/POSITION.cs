@@ -30,7 +30,7 @@ namespace LaserExpertise.DAL.Data
         public string longitude_loc { get; set; }
         public string latitude_loc { get; set; }
         public string pos_address { get; set; }
-        public byte[] description { get; set; }
+        public string description { get; set; }
     
         public virtual CITY CITY { get; set; }
         public virtual LOCATION LOCATION { get; set; }

@@ -16,7 +16,7 @@ namespace LaserExpertise.DAL.Data
     {
         public int kod_method { get; set; }
         public string method_name { get; set; }
-        public byte[] description { get; set; }
+        public string description { get; set; }
     
         public virtual PASSPORT_RESEARCH PASSPORT_RESEARCH { get; set; }
     }

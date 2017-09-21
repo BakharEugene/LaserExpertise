@@ -24,7 +24,7 @@ namespace LaserExpertise.DAL.Data
         public string element_name { get; set; }
         public Nullable<int> atomic_number { get; set; }
         public Nullable<double> atomic_weight { get; set; }
-        public byte[] description { get; set; }
+        public string description { get; set; }
         public Nullable<int> core { get; set; }
         public Nullable<int> ions { get; set; }
     

@@ -7,8 +7,8 @@
     <ProjectGuid>{CFC7E51F-ED43-4FE0-831E-F4947EFD4FD1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LaserExpertise.DAL3</RootNamespace>
-    <AssemblyName>LaserExpertise.DAL3</AssemblyName>
+    <RootNamespace>LaserExpertise.DAL</RootNamespace>
+    <AssemblyName>LaserExpertise.DAL</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -85,11 +85,6 @@
     <Compile Include="Data\DATE_REMARKS.cs">
       <DependentUpon>db.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\db.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>db.Context.tt</DependentUpon>
-    </Compile>
     <Compile Include="Data\db.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,6 +95,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>db.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Data\EF\LaserExpertiseContext.cs" />
     <Compile Include="Data\EPOCH.cs">
       <DependentUpon>db.tt</DependentUpon>
     </Compile>
@@ -157,7 +153,6 @@
     <Compile Include="Data\User.cs">
       <DependentUpon>db.tt</DependentUpon>
     </Compile>
-    <Compile Include="EF\LaserExpertiseContext.cs" />
     <Compile Include="Migrations\201704271916437_initial.cs" />
     <Compile Include="Migrations\201704271916437_initial.Designer.cs">
       <DependentUpon>201704271916437_initial.cs</DependentUpon>
@@ -231,8 +226,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>db.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
     <None Include="Data\db.edmx.diagram">
       <DependentUpon>db.edmx</DependentUpon>
     </None>
@@ -264,21 +257,15 @@
       <DependentUpon>201709081257064_initial7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Data\db.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>db.edmx</DependentUpon>
-      <LastGenOutput>db.Context.cs</LastGenOutput>
-    </Content>
     <Content Include="Data\db.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>db.edmx</DependentUpon>
       <LastGenOutput>db.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -27,7 +27,7 @@ namespace LaserExpertise.DAL.Data
         public string pseudonym { get; set; }
         public System.DateTime dateOfBirth { get; set; }
         public System.DateTime dateOfDeath { get; set; }
-        public byte[] biography { get; set; }
+        public string biography { get; set; }
         public string photo { get; set; }
         public string soc_status { get; set; }
         public string oridin { get; set; }

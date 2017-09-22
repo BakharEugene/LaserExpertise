@@ -5,6 +5,7 @@
 *.js
 # User-specific files
 *.suo
+*.js.map
 *.user
 *.userosscache
 *.sln.docstates

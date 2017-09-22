@@ -5,6 +5,7 @@
 *.js
 # User-specific files
 *.suo
+*compiled.js
 *.js.map
 *.user
 *.userosscache

@@ -256,6 +256,5 @@ paket-files/
 *.sln.iml
 *.zip
 *.stackdump
-/LaserExpertise/app/*.js
-/LaserExpertise/app/*.js.map
-/LaserExpertise/app/*.map
+/LaserExpertise/app/**/*.js
+/LaserExpertise/app/**/*.js.map
